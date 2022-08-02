@@ -1,5 +1,5 @@
 import * as React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 interface InputProps {
   isInput: boolean;
@@ -11,22 +11,30 @@ interface InputProps {
   type: string;
   padding: string;
   value?: string;
+  border?: string;
+  required?: boolean;
 }
-
-const InputEl = styled.input<InputProps>`
+const inputCss = css<InputProps>`
   width: 100%;
   height: ${props => props.height};
   background-color: ${props => props.bgColor};
   color: ${props => props.color};
   border-radius: 5px;
   padding: ${props => props.padding};
-  border: none;
+  border: ${props => props.border};
   &:focus {
     outline: none;
   }
 `;
+const InputEl = styled.input<InputProps>`
+  ${inputCss}
+  border: none;
+`;
 
-const TextareaAtom = styled.textarea<InputProps>``;
+const TextareaAtom = styled.textarea<InputProps>`
+  ${inputCss}
+  resize: none;
+`;
 
 const Input = ({
   isInput = true,
@@ -38,6 +46,8 @@ const Input = ({
   type,
   padding,
   value,
+  border,
+  required = true,
 }: InputProps) => {
   return (
     <>
@@ -52,6 +62,7 @@ const Input = ({
           type={type}
           padding={padding}
           value={value ?? value}
+          required={required ?? required}
         />
       ) : (
         <TextareaAtom
@@ -64,6 +75,8 @@ const Input = ({
           type={type}
           padding={padding}
           value={value ?? value}
+          border={border ?? border}
+          required={required ?? required}
         />
       )}
       <div />
