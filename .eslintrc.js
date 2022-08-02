@@ -23,12 +23,10 @@ module.exports = {
     ],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    rules: {
-      "react/function-component-definition": [
-        2,
-        { namedcomponents: "arrow-function" },
-      ],
-    },
+    "react/function-component-definition": [
+      2,
+      { namedComponents: "arrow-function" },
+    ],
   },
   settings: {
     "import/resolver": {
