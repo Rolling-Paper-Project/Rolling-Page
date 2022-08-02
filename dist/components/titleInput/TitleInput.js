@@ -10,7 +10,7 @@ var TitleInput = function () {
     return (React.createElement("form", null,
         React.createElement("label", { htmlFor: "title" },
             React.createElement(Title, null, "Title")),
-        React.createElement(Input, { isInput: true, height: "auto", color: "black", bgColor: "#EFEFEF", placeholder: "\uBC1B\uB294 \uC0AC\uB78C\uC744 \uC785\uB825\uD574\uC8FC\uC138\uC694", id: "title", type: "text", padding: "13px", required: true })));
+        React.createElement(Input, { isInput: true, height: "auto", bgColor: "#EFEFEF", placeholder: "\uBC1B\uB294 \uC0AC\uB78C\uC744 \uC785\uB825\uD574\uC8FC\uC138\uC694", id: "title", padding: "13px", fontSize: "14px", fontWeight: "400", required: true })));
 };
 export default TitleInput;
 var templateObject_1;

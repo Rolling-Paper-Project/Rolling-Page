@@ -19,12 +19,12 @@ const TitleInput = () => {
       <Input
         isInput
         height="auto"
-        color="black"
         bgColor="#EFEFEF"
         placeholder="받는 사람을 입력해주세요"
         id="title"
-        type="text"
         padding="13px"
+        fontSize="14px"
+        fontWeight="400"
         required
       />
     </form>
