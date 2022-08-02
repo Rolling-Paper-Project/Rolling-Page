@@ -1,7 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
 import Input from "../../elements/input/Input";
-// import { FC } from "react";
 
 const Title = styled.h2`
   color: #b4b4b4;
@@ -14,7 +13,7 @@ const Title = styled.h2`
 const TitleInput = () => {
   return (
     <form>
-      <label htmlFor="contents">
+      <label htmlFor="title">
         <Title>Title</Title>
       </label>
       <Input
@@ -23,10 +22,10 @@ const TitleInput = () => {
         color="black"
         bgColor="#EFEFEF"
         placeholder="받는 사람을 입력해주세요"
-        id="contents"
+        id="title"
         type="text"
         padding="13px"
-        // value=""
+        required
       />
     </form>
   );
