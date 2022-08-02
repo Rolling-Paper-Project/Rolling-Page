@@ -4,27 +4,32 @@ import styled from "styled-components";
 interface InputProps {
   isInput: boolean;
   bgColor: string;
-  color: string;
-  height: string;
+  color?: string;
+  height?: string;
   placeholder: string;
   id: string;
   type: string;
   padding: string;
+  value?: string;
 }
 
-const InputAtom = styled.input<InputProps>`
+const InputEl = styled.input<InputProps>`
   width: 100%;
   height: ${props => props.height};
   background-color: ${props => props.bgColor};
   color: ${props => props.color};
   border-radius: 5px;
   padding: ${props => props.padding};
+  border: none;
+  &:focus {
+    outline: none;
+  }
 `;
 
 const TextareaAtom = styled.textarea<InputProps>``;
 
 const Input = ({
-  isInput,
+  isInput = true,
   height,
   color,
   bgColor,
@@ -32,30 +37,33 @@ const Input = ({
   id,
   type,
   padding,
+  value,
 }: InputProps) => {
   return (
     <>
       {isInput ? (
-        <InputAtom
-          height={height}
-          color={color}
+        <InputEl
+          height={height ?? height}
+          color={color ?? color}
           bgColor={bgColor}
           isInput={isInput}
           placeholder={placeholder}
           id={id}
           type={type}
           padding={padding}
+          value={value ?? value}
         />
       ) : (
         <TextareaAtom
           height={height}
-          color={color}
+          color={color ?? color}
           bgColor={bgColor}
           isInput={isInput}
           placeholder={placeholder}
           id={id}
           type={type}
           padding={padding}
+          value={value ?? value}
         />
       )}
       <div />
