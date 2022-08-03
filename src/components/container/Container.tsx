@@ -90,25 +90,23 @@ const Container = () => {
     setToggle(prev => !prev);
   };
 
-  React.useEffect(() => {
-    const getPostList = async () => {
-      const url = `${BASE_URL}/post/62ea2b3417ae666581a02810/comments`;
-      const config = {
-        headers: {
-          Authorization: `Bearer ${TOKEN}`,
-          "Content-type": "application/json",
-        },
-      };
-      try {
-        const res = await axios.get(url, config);
-        setPostData(res.data);
-        return res.data;
-      } catch (err) {
-        return err;
-      }
+  // 포스트 등록 모달창 구현 완성되면 저장버튼에 온클릭 이벤트핸들러 달기
+  const handleGetPostList = async () => {
+    const url = `${BASE_URL}/post/62ea2b3417ae666581a02810/comments`;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${TOKEN}`,
+        "Content-type": "application/json",
+      },
     };
-    getPostList();
-  }, []);
+    try {
+      const res = await axios.get(url, config);
+      setPostData(res.data);
+      return res.data;
+    } catch (err) {
+      return err;
+    }
+  };
 
   return (
     <ContainerStyled>
