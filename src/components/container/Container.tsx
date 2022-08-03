@@ -158,9 +158,5 @@ export default Container;
 // BoardMain element
 // title element (input value 가져오기)
 // BoardButton element (클릭시 생성모달 출력)
-
-// height: ${props => props.height};
-//   background-color: ${props => props.bgColor};
-//   color: ${props => props.color};
-//   border-radius: 5px;
-//   padding: ${props => props.padding};
+// 리액트에서 클릭 시 컴포넌트 불러오는 방법
+// 모달에서 생성 버튼 클릭시 false 부분 출력되도록 우선 localStorage에서 postId 값으로 진행?
