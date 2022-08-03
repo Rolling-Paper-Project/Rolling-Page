@@ -65,6 +65,17 @@ const BoardPostUl = styled.ul`
   gap: 20px;
   padding: 0 31px;
   overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #977ae1;
+    border-radius: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    background: white;
+  }
 `;
 const BoardPostLi = styled.li`
   width: 250px;
