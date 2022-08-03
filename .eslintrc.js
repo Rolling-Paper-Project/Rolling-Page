@@ -11,6 +11,23 @@ module.exports = {
     "plugin:prettier/recommended",
   ],
   rules: {
+    "react/require-default-props": "off",
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      {
+        required: {
+          some: ["nesting", "id"],
+        },
+      },
+    ],
+    "jsx-a11y/label-has-for": [
+      "error",
+      {
+        required: {
+          some: ["nesting", "id"],
+        },
+      },
+    ],
     "prettier/prettier": 0,
     "react/jsx-filename-extension": ["warn", { extensions: [".tsx"] }],
     "import/extensions": [
