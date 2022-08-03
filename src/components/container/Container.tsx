@@ -62,7 +62,7 @@ const BoardPostUl = styled.ul`
   flex-wrap: wrap;
   gap: 20px;
   padding: 0 31px;
-  overflow: scroll;
+  overflow-y: scroll;
 `;
 const BoardPostLi = styled.li`
   width: 250px;
