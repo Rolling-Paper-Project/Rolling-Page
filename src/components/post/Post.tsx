@@ -2,17 +2,11 @@ import * as React from "react";
 import styled from "styled-components";
 
 interface PostProps {
-  // eslint-disable-next-line react/require-default-props
   bgColor?: string;
-  // eslint-disable-next-line react/require-default-props
   shadowColor?: string;
-  // eslint-disable-next-line react/require-default-props
   content?: string;
-  // eslint-disable-next-line react/require-default-props
   name?: string;
-  // eslint-disable-next-line react/require-default-props
   profile?: string;
-  // eslint-disable-next-line react/require-default-props
   onClick?: () => void;
 }
 
