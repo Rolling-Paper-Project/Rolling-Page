@@ -1,8 +1,10 @@
 import * as React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset"; // style-reset 패키지
-import Container from "../components/container/Container";
-import { BasicBtn, CancelBtn, KakaoBtn } from "../elements/button";
+import Board from "../pages/board/Board";
+import FixedBoard from "../pages/fixedBoard/FixedBoard";
+import Main from "../pages/main/Main";
 
 const GlobalStyles = createGlobalStyle` 
     ${reset}
@@ -31,24 +33,13 @@ const App: React.FC = () => {
   return (
     <>
       <GlobalStyles />
-      <h1>Hello TypeScript starter!!!</h1>
-      <Container />
-      <BasicBtn
-        onClick={() => {
-          ("");
-        }}
-      />
-      <CancelBtn
-        onClick={() => {
-          ("");
-        }}
-      />
-
-      <KakaoBtn
-        onClick={() => {
-          ("");
-        }}
-      />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/board/:id" element={<Board />} />
+          <Route path="/done/:id" element={<FixedBoard />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 };
