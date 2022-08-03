@@ -1,6 +1,10 @@
 import * as React from "react";
 import styled from "styled-components";
 
+import axios from "axios";
+import Post from "../post/Post";
+import { URL, TOKEN, ACCOUNTNAME } from "../../constants/index";
+
 // interface ContainerProps {
 //   className: string;
 // }
@@ -60,7 +64,7 @@ const BoardPostUl = styled.ul`
   flex-wrap: wrap;
   gap: 20px;
   padding: 0 31px;
-  overflow: scroll;
+  overflow-y: scroll;
 `;
 const BoardPostLi = styled.li`
   width: 250px;
@@ -69,9 +73,32 @@ const BoardPostLi = styled.li`
 `;
 const Container = () => {
   const [toggle, setToggle] = React.useState<boolean>(false);
+  const [postData, setPostData] = React.useState(null);
+
   const clickedToggle = () => {
     setToggle(prev => !prev);
   };
+
+  React.useEffect(() => {
+    const getPostList = async () => {
+      const url = `${URL}/post/62ea2b3417ae666581a02810/comments`;
+      const config = {
+        headers: {
+          Authorization: `Bearer ${TOKEN}`,
+          "Content-type": "application/json",
+        },
+      };
+      try {
+        const res = await axios.get(url, config);
+        setPostData(res.data);
+        return res.data;
+      } catch (err) {
+        return err;
+      }
+    };
+    getPostList();
+  }, []);
+
   return (
     <ContainerStyled>
       <TestBtn onClick={clickedToggle}>test Button</TestBtn>
@@ -80,7 +107,30 @@ const Container = () => {
         <BoardTextStyled>새로운 롤링페이퍼를 만들어보세요!</BoardTextStyled>
       ) : (
         <BoardPostUl>
-          <BoardPostLi />
+          <Post
+            bgColor="#E5EDFF"
+            shadowColor="#B6CCFF"
+            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias atque similique blanditiis temporibus itaque iure voluptas optio, cum fugiat dolor quisquam consequuntur, recusandae perspiciatis odio omnis! Magnam vero dolor fugiat."
+            name="실세유진"
+          />
+          <Post
+            bgColor="#FBF1F6"
+            shadowColor="#F9CCE3"
+            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias atque similique blanditiis temporibus itaque iure voluptas optio, cum fugiat dolor quisquam consequuntur, recusandae perspiciatis odio omnis! Magnam vero dolor fugiat."
+            name="실세유진"
+          />
+          <Post
+            bgColor="#EAE7F5"
+            shadowColor="#CBC2FA"
+            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias atque similique blanditiis temporibus itaque iure voluptas optio, cum fugiat dolor quisquam consequuntur, recusandae perspiciatis odio omnis! Magnam vero dolor fugiat."
+            name="실세유진"
+          />
+          <Post
+            bgColor="#FCF6D8"
+            shadowColor="#FCEEAB"
+            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias atque similique blanditiis temporibus itaque iure voluptas optio, cum fugiat dolor quisquam consequuntur, recusandae perspiciatis odio omnis! Magnam vero dolor fugiat."
+            name="실세유진"
+          />
           <BoardPostLi />
           <BoardPostLi />
           <BoardPostLi />
