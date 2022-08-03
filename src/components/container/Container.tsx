@@ -1,6 +1,8 @@
 import * as React from "react";
 import styled from "styled-components";
 
+import Post from "../post/Post";
+
 // interface ContainerProps {
 //   className: string;
 // }
@@ -80,7 +82,30 @@ const Container = () => {
         <BoardTextStyled>새로운 롤링페이퍼를 만들어보세요!</BoardTextStyled>
       ) : (
         <BoardPostUl>
-          <BoardPostLi />
+          <Post
+            bgColor="#E5EDFF"
+            shadowColor="#B6CCFF"
+            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias atque similique blanditiis temporibus itaque iure voluptas optio, cum fugiat dolor quisquam consequuntur, recusandae perspiciatis odio omnis! Magnam vero dolor fugiat."
+            name="실세유진"
+          />
+          <Post
+            bgColor="#FBF1F6"
+            shadowColor="#F9CCE3"
+            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias atque similique blanditiis temporibus itaque iure voluptas optio, cum fugiat dolor quisquam consequuntur, recusandae perspiciatis odio omnis! Magnam vero dolor fugiat."
+            name="실세유진"
+          />
+          <Post
+            bgColor="#EAE7F5"
+            shadowColor="#CBC2FA"
+            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias atque similique blanditiis temporibus itaque iure voluptas optio, cum fugiat dolor quisquam consequuntur, recusandae perspiciatis odio omnis! Magnam vero dolor fugiat."
+            name="실세유진"
+          />
+          <Post
+            bgColor="#FCF6D8"
+            shadowColor="#FCEEAB"
+            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias atque similique blanditiis temporibus itaque iure voluptas optio, cum fugiat dolor quisquam consequuntur, recusandae perspiciatis odio omnis! Magnam vero dolor fugiat."
+            name="실세유진"
+          />
           <BoardPostLi />
           <BoardPostLi />
           <BoardPostLi />
