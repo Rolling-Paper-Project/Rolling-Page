@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import axios from "axios";
 import Post from "../post/Post";
-import { URL, TOKEN, ACCOUNTNAME } from "../../constants/index";
+import { BASE_URL, TOKEN, ACCOUNTNAME } from "../../constants/index";
 
 // interface ContainerProps {
 //   className: string;
@@ -92,7 +92,7 @@ const Container = () => {
 
   React.useEffect(() => {
     const getPostList = async () => {
-      const url = `${URL}/post/62ea2b3417ae666581a02810/comments`;
+      const url = `${BASE_URL}/post/62ea2b3417ae666581a02810/comments`;
       const config = {
         headers: {
           Authorization: `Bearer ${TOKEN}`,
