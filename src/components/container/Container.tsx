@@ -1,7 +1,9 @@
 import * as React from "react";
 import styled from "styled-components";
 
+import axios from "axios";
 import Post from "../post/Post";
+import { URL, TOKEN, ACCOUNTNAME } from "../../constants/index";
 
 // interface ContainerProps {
 //   className: string;
@@ -71,9 +73,32 @@ const BoardPostLi = styled.li`
 `;
 const Container = () => {
   const [toggle, setToggle] = React.useState<boolean>(false);
+  const [postData, setPostData] = React.useState(null);
+
   const clickedToggle = () => {
     setToggle(prev => !prev);
   };
+
+  React.useEffect(() => {
+    const getPostList = async () => {
+      const url = `${URL}/post/62ea2b3417ae666581a02810/comments`;
+      const config = {
+        headers: {
+          Authorization: `Bearer ${TOKEN}`,
+          "Content-type": "application/json",
+        },
+      };
+      try {
+        const res = await axios.get(url, config);
+        setPostData(res.data);
+        return res.data;
+      } catch (err) {
+        return err;
+      }
+    };
+    getPostList();
+  }, []);
+
   return (
     <ContainerStyled>
       <TestBtn onClick={clickedToggle}>test Button</TestBtn>
