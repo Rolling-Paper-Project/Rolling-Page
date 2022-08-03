@@ -1,6 +1,7 @@
 import * as React from "react";
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset"; // style-reset 패키지
+import Container from "../components/container/Container";
 
 const GlobalStyles = createGlobalStyle` 
     ${reset}
@@ -30,6 +31,7 @@ const App: React.FC = () => {
     <>
       <GlobalStyles />
       <h1>Hello TypeScript starter!!!</h1>
+      <Container />
     </>
   );
 };
