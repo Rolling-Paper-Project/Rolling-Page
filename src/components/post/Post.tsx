@@ -46,7 +46,7 @@ const PostImg = styled.img<PostProps>`
   background-color: #000;
 `;
 
-const PostNickname = styled.p<PostProps>`
+const PostNickname = styled.strong<PostProps>`
   font-size: 18px;
   font-weight: bold;
 `;
@@ -81,6 +81,7 @@ const Post = ({
   return (
     <div>
       <PostArticle bgColor={bgColor ?? bgColor}>
+        <h3 className="ir">{name}님의 포스트잇</h3>
         <PostContent>{content}</PostContent>
         <PostFooter>
           <PostImg />
