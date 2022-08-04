@@ -85,6 +85,12 @@ const BoardPostLi = styled.li`
 const Container = () => {
   const [toggle, setToggle] = React.useState<boolean>(false);
   const [postData, setPostData] = React.useState(null);
+  const colorArray = [
+    "#E5EDFF, #B6CCFF",
+    "#FBF1F6, #F9CCE3",
+    "#EAE7F5, #CBC2FA",
+    "#FCF6D8, #FCEEAB",
+  ];
 
   const clickedToggle = () => {
     setToggle(prev => !prev);
@@ -126,16 +132,22 @@ const Container = () => {
         <BoardTextStyled>새로운 롤링페이퍼를 만들어보세요!</BoardTextStyled>
       ) : (
         <BoardPostUl>
-          {testCommentData.map(element => {
+          {testCommentData.map(function (element) {
+            const randomIdx = Math.floor(Math.random() * 3 + 1);
+            const randomColor = colorArray[randomIdx].split(",");
+
+            const bgColor = randomColor[0];
+            const shadowColor = randomColor[1];
             const comment = element.split(",");
             const content = comment[0];
             const name = comment[1];
             const profile = comment[2];
+
             return (
               <Post
                 key={1}
-                bgColor="#E5EDFF"
-                shadowColor="#B6CCFF"
+                bgColor={bgColor}
+                shadowColor={shadowColor}
                 content={content}
                 name={name}
                 profile={profile}
