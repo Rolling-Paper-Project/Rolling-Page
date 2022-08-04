@@ -28,7 +28,7 @@ const TitleInput = () => {
           onClick={() => {
             ("");
           }}
-        />
+        >저장</TitleBtn>
         </DivFlex>
       </form>
     </TitleWrap>

@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import axios from "axios";
 import Post from "../post/Post";
-import { URL, TOKEN, ACCOUNTNAME } from "../../constants/index";
+import { BASE_URL, TOKEN, ACCOUNTNAME } from "../../constants/index";
 
 // interface ContainerProps {
 //   className: string;
@@ -65,6 +65,17 @@ const BoardPostUl = styled.ul`
   gap: 20px;
   padding: 0 31px;
   overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #977ae1;
+    border-radius: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    background: white;
+  }
 `;
 const BoardPostLi = styled.li`
   width: 250px;
@@ -79,25 +90,33 @@ const Container = () => {
     setToggle(prev => !prev);
   };
 
-  React.useEffect(() => {
-    const getPostList = async () => {
-      const url = `${URL}/post/62ea2b3417ae666581a02810/comments`;
-      const config = {
-        headers: {
-          Authorization: `Bearer ${TOKEN}`,
-          "Content-type": "application/json",
-        },
-      };
-      try {
-        const res = await axios.get(url, config);
-        setPostData(res.data);
-        return res.data;
-      } catch (err) {
-        return err;
-      }
+  // 포스트 등록 모달창 구현 완성되면 저장버튼에 온클릭 이벤트핸들러 달기
+  const handleGetPostList = async () => {
+    const url = `${BASE_URL}/post/62ea2b3417ae666581a02810/comments`;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${TOKEN}`,
+        "Content-type": "application/json",
+      },
     };
-    getPostList();
-  }, []);
+    try {
+      const res = await axios.get(url, config);
+      setPostData(res.data);
+      return res.data;
+    } catch (err) {
+      return err;
+    }
+  };
+
+  // 임시 데이터
+  const testCommentData = [
+    "길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까, 전어입니다, https://mandarin.api.weniv.co.kr/1659545455369.png",
+    "길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까, 전어입니다, https://mandarin.api.weniv.co.kr/1659545455369.png",
+    "길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까, 전어입니다, https://mandarin.api.weniv.co.kr/1659545455369.png",
+    "길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까, 전어입니다, https://mandarin.api.weniv.co.kr/1659545455369.png",
+    "길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까, 전어입니다, https://mandarin.api.weniv.co.kr/1659545455369.png",
+    "길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까, 전어입니다, https://mandarin.api.weniv.co.kr/1659545455369.png",
+  ];
 
   return (
     <ContainerStyled>
@@ -107,45 +126,22 @@ const Container = () => {
         <BoardTextStyled>새로운 롤링페이퍼를 만들어보세요!</BoardTextStyled>
       ) : (
         <BoardPostUl>
-          <Post
-            bgColor="#E5EDFF"
-            shadowColor="#B6CCFF"
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias atque similique blanditiis temporibus itaque iure voluptas optio, cum fugiat dolor quisquam consequuntur, recusandae perspiciatis odio omnis! Magnam vero dolor fugiat."
-            name="실세유진"
-          />
-          <Post
-            bgColor="#FBF1F6"
-            shadowColor="#F9CCE3"
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias atque similique blanditiis temporibus itaque iure voluptas optio, cum fugiat dolor quisquam consequuntur, recusandae perspiciatis odio omnis! Magnam vero dolor fugiat."
-            name="실세유진"
-          />
-          <Post
-            bgColor="#EAE7F5"
-            shadowColor="#CBC2FA"
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias atque similique blanditiis temporibus itaque iure voluptas optio, cum fugiat dolor quisquam consequuntur, recusandae perspiciatis odio omnis! Magnam vero dolor fugiat."
-            name="실세유진"
-          />
-          <Post
-            bgColor="#FCF6D8"
-            shadowColor="#FCEEAB"
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias atque similique blanditiis temporibus itaque iure voluptas optio, cum fugiat dolor quisquam consequuntur, recusandae perspiciatis odio omnis! Magnam vero dolor fugiat."
-            name="실세유진"
-          />
-          <BoardPostLi />
-          <BoardPostLi />
-          <BoardPostLi />
-          <BoardPostLi />
-          <BoardPostLi />
-          <BoardPostLi />
-          <BoardPostLi />
-          <BoardPostLi />
-          <BoardPostLi />
-          <BoardPostLi />
-          <BoardPostLi />
-          <BoardPostLi />
-          <BoardPostLi />
-          <BoardPostLi />
-          <BoardPostLi />
+          {testCommentData.map(element => {
+            const comment = element.split(",");
+            const content = comment[0];
+            const name = comment[1];
+            const profile = comment[2];
+            return (
+              <Post
+                key={1}
+                bgColor="#E5EDFF"
+                shadowColor="#B6CCFF"
+                content={content}
+                name={name}
+                profile={profile}
+              />
+            );
+          })}
         </BoardPostUl>
       )}
       <BoardButtonStyled>+</BoardButtonStyled>
@@ -158,9 +154,5 @@ export default Container;
 // BoardMain element
 // title element (input value 가져오기)
 // BoardButton element (클릭시 생성모달 출력)
-
-// height: ${props => props.height};
-//   background-color: ${props => props.bgColor};
-//   color: ${props => props.color};
-//   border-radius: 5px;
-//   padding: ${props => props.padding};
+// 리액트에서 클릭 시 컴포넌트 불러오는 방법
+// 모달에서 생성 버튼 클릭시 false 부분 출력되도록 우선 localStorage에서 postId 값으로 진행?
