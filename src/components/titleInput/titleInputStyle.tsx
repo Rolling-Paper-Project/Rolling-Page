@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Basic} from "../../elements/button";
+import { BasicBtn } from "../../elements/buttons/button";
 
 const Title = styled.h2`
   color: #b4b4b4;
@@ -19,7 +19,7 @@ const DivFlex = styled.div`
   gap: 25px;
 `;
 
-const TitleBtn = styled(Basic)`
+const TitleBtn = styled(BasicBtn)`
   flex-shrink: 0;
 `;
 

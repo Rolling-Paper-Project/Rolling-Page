@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Basic, CancelBtn } from "../../elements/button";
+import { BasicBtn, CancelBtn } from "../../elements/buttons/button";
 import './deleteModalStyle'
 import { BtnWrap, ModalBg, ModalExp, ModalTitle, ModalWrap } from "./deleteModalStyle";
 
@@ -15,12 +15,12 @@ const DeletModal = () => {
             ("");
           }}
         />
-        <Basic
+        <BasicBtn
           onClick={() => {
               ("");
             }}
           >삭제
-        </Basic>
+        </BasicBtn>
       </BtnWrap>
     </ModalWrap>
     <ModalBg/>
