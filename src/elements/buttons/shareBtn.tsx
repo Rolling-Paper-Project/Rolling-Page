@@ -13,7 +13,9 @@ const ShareLinkBtn = styled.button`
   border: none;
   border-bottom: 2px solid #d4caed;
   &:hover {
-    transform: translateY(-1px);
+    color: #5a4a82;
+    border-bottom: 2px solid #5a4a82;
+    transform: translateY(-2px);
   }
 `;
 

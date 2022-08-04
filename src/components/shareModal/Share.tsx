@@ -1,7 +1,9 @@
 import * as React from "react";
 import { PropsWithChildren } from "react";
+import { Helmet } from "react-helmet";
 import styled from "styled-components";
 import { KakaoBtn, CloseBtn, CopyBtn } from "../../elements/buttons/button";
+import kakaoShare from "./kakao";
 
 interface ModalDefaultType {
   onClickToggleModal: () => void;
@@ -34,11 +36,13 @@ const LinkBox = styled.div`
   width: 590px;
   height: 100px;
   margin: 10px 0 34px;
+  padding: 14px 19px 55px;
   display: flex;
   align-items: center;
   border-radius: 10px;
   background-color: #efefef;
   z-index: 30;
+  overflow: hidden;
 `;
 
 const Backdrop = styled.div`
@@ -54,11 +58,27 @@ const Share = ({ onClickToggleModal }: PropsWithChildren<ModalDefaultType>) => {
   return (
     <ModalContainer>
       <DialogBox>
-        <CloseBtn bottom="10px" left="330px" />
+        <CloseBtn
+          bottom="10px"
+          left="330px"
+          onClick={() => {
+            if (onClickToggleModal) {
+              onClickToggleModal();
+            }
+          }}
+        />
         <LinkBox>
-          <CopyBtn bottom="35px" left="570px" />
+          <CopyBtn bottom="15px" left="550px" />
+          https::/rollingpage.com
         </LinkBox>
-        <KakaoBtn />
+        <Helmet>
+          <script src="https://developers.kakao.com/sdk/js/kakao.js" />
+        </Helmet>
+        <KakaoBtn
+          onClick={() => {
+            kakaoShare();
+          }}
+        />
       </DialogBox>
       <Backdrop
         onClick={(e: React.MouseEvent) => {
