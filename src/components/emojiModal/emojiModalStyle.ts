@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { EmojiImg } from "../../elements/emoji/Emoji"
 
 export const ModalOver = styled.div`
   position: fixed;
@@ -10,8 +11,6 @@ export const ModalOver = styled.div`
   z-index: 100;
 `
 export const ModalWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
   width: 50%;
   min-width: 410px;
   position: absolute;
@@ -22,6 +21,7 @@ export const ModalWrapper = styled.div`
   background-color: white;
   border-radius: 10px;
   box-sizing: border-box;
+  text-align: center;
 `
 
 export const ContentsWrapper = styled.div`
@@ -52,9 +52,12 @@ export const TitleText = styled.p`
   margin-bottom: 40px;
 `
 
-export const Img = styled.img`
-  width: 100px;
-  height: 100px;
+export const Img = styled(EmojiImg)`
   border-radius: 50%;
   cursor: pointer;
+  box-sizing: border-box;
+
+  :hover {
+    outline: 5px solid #977ae1;
+  }
 `
