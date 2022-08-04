@@ -1,6 +1,6 @@
 import React from 'react'
 import { ModalWrapper, EmojiWrapper, PostWrapper, TitleText, Img, EmojiflexBox, ModalOver, ContentsWrapper } from './emojiModalStyle'
-import { BasicBtn } from '../../elements/button'
+import { BasicBtn } from '../../elements/buttons/button'
 import Emoji1 from "../../assets/emoji-cute.svg"
 import Emoji2 from "../../assets/emoji-sad.svg"
 import Emoji3 from "../../assets/emoji-sad-fun.svg"
