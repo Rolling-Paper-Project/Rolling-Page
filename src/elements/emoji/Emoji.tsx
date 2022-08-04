@@ -7,7 +7,7 @@ interface Props {
   src: string;
 }
 
-const EmojiImg = styled.img<Props>`
+export const EmojiImg = styled.img<Props>`
   width: ${props => props.width}px;
   height: ${props => props.height}px;
 `
