@@ -63,14 +63,18 @@ const BoardPostUl = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  padding: 0 31px;
+  padding: 0 30px;
   overflow-y: scroll;
+  ::-webkit-scrollbar {
+    background-color: transparent;
+    width: 7px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #977ae1;
+    border-radius: 10px;
+  }
 `;
-const BoardPostLi = styled.li`
-  width: 250px;
-  height: 250px;
-  background-color: tomato;
-`;
+
 const Container = () => {
   const [toggle, setToggle] = React.useState<boolean>(false);
   const [postData, setPostData] = React.useState(null);
@@ -91,6 +95,7 @@ const Container = () => {
       try {
         const res = await axios.get(url, config);
         setPostData(res.data);
+        console.log(res.data);
         return res.data;
       } catch (err) {
         return err;
@@ -131,21 +136,54 @@ const Container = () => {
             content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias atque similique blanditiis temporibus itaque iure voluptas optio, cum fugiat dolor quisquam consequuntur, recusandae perspiciatis odio omnis! Magnam vero dolor fugiat."
             name="실세유진"
           />
-          <BoardPostLi />
-          <BoardPostLi />
-          <BoardPostLi />
-          <BoardPostLi />
-          <BoardPostLi />
-          <BoardPostLi />
-          <BoardPostLi />
-          <BoardPostLi />
-          <BoardPostLi />
-          <BoardPostLi />
-          <BoardPostLi />
-          <BoardPostLi />
-          <BoardPostLi />
-          <BoardPostLi />
-          <BoardPostLi />
+          <Post
+            bgColor="#FCF6D8"
+            shadowColor="#FCEEAB"
+            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias atque similique blanditiis temporibus itaque iure voluptas optio, cum fugiat dolor quisquam consequuntur, recusandae perspiciatis odio omnis! Magnam vero dolor fugiat."
+            name="실세유진"
+          />
+          <Post
+            bgColor="#FCF6D8"
+            shadowColor="#FCEEAB"
+            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias atque similique blanditiis temporibus itaque iure voluptas optio, cum fugiat dolor quisquam consequuntur, recusandae perspiciatis odio omnis! Magnam vero dolor fugiat."
+            name="실세유진"
+          />
+          <Post
+            bgColor="#FCF6D8"
+            shadowColor="#FCEEAB"
+            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias atque similique blanditiis temporibus itaque iure voluptas optio, cum fugiat dolor quisquam consequuntur, recusandae perspiciatis odio omnis! Magnam vero dolor fugiat."
+            name="실세유진"
+          />
+          <Post
+            bgColor="#FCF6D8"
+            shadowColor="#FCEEAB"
+            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias atque similique blanditiis temporibus itaque iure voluptas optio, cum fugiat dolor quisquam consequuntur, recusandae perspiciatis odio omnis! Magnam vero dolor fugiat."
+            name="실세유진"
+          />
+          <Post
+            bgColor="#FCF6D8"
+            shadowColor="#FCEEAB"
+            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias atque similique blanditiis temporibus itaque iure voluptas optio, cum fugiat dolor quisquam consequuntur, recusandae perspiciatis odio omnis! Magnam vero dolor fugiat."
+            name="실세유진"
+          />
+          <Post
+            bgColor="#FCF6D8"
+            shadowColor="#FCEEAB"
+            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias atque similique blanditiis temporibus itaque iure voluptas optio, cum fugiat dolor quisquam consequuntur, recusandae perspiciatis odio omnis! Magnam vero dolor fugiat."
+            name="실세유진"
+          />
+          <Post
+            bgColor="#FCF6D8"
+            shadowColor="#FCEEAB"
+            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias atque similique blanditiis temporibus itaque iure voluptas optio, cum fugiat dolor quisquam consequuntur, recusandae perspiciatis odio omnis! Magnam vero dolor fugiat."
+            name="실세유진"
+          />
+          <Post
+            bgColor="#FCF6D8"
+            shadowColor="#FCEEAB"
+            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias atque similique blanditiis temporibus itaque iure voluptas optio, cum fugiat dolor quisquam consequuntur, recusandae perspiciatis odio omnis! Magnam vero dolor fugiat."
+            name="실세유진"
+          />
         </BoardPostUl>
       )}
       <BoardButtonStyled>+</BoardButtonStyled>

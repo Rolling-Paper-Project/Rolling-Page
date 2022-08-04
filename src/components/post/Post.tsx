@@ -16,7 +16,7 @@ interface PostProps {
   onClick?: () => void;
 }
 
-const PostArticle = styled.article<PostProps>`
+const PostArticle = styled.ul<PostProps>`
   width: 250px;
   height: 250px;
   clip-path: polygon(100% 0, 100% 100%, 15% 100%, 0 85%, 0 0);
@@ -79,18 +79,16 @@ const Post = ({
   onClick,
 }: PostProps) => {
   return (
-    <div>
-      <PostArticle bgColor={bgColor ?? bgColor}>
-        <h3 className="ir">{name}님의 포스트잇</h3>
-        <PostContent>{content}</PostContent>
-        <PostFooter>
-          <PostImg />
-          <PostNickname>{name}</PostNickname>
-        </PostFooter>
-        <PostEdge shadowColor={shadowColor ?? shadowColor} />
-        <PostCloseBtn onClick={onClick} />
-      </PostArticle>
-    </div>
+    <PostArticle bgColor={bgColor ?? bgColor}>
+      <h3 className="ir">{name}님의 포스트잇</h3>
+      <PostContent>{content}</PostContent>
+      <PostFooter>
+        <PostImg />
+        <PostNickname>{name}</PostNickname>
+      </PostFooter>
+      <PostEdge shadowColor={shadowColor ?? shadowColor} />
+      <PostCloseBtn onClick={onClick} />
+    </PostArticle>
   );
 };
 
