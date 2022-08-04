@@ -26,20 +26,23 @@ const Btn = styled.button`
   border-radius: 5px;
   font-size: 18px;
   font-weight: 700;
-  &:hover {
-    opacity: 0.5;
-  }
 `;
 
 const Basic = styled(Btn)`
   background: #977ae1;
   color: #ffffff;
+  &:hover {
+    background-color: #5a4a82;
+  }
 `;
 
 const Cancel = styled(Btn)`
   background: #ffffff;
   color: black;
   border: 1px solid #977ae1;
+  &:hover {
+    background-color: #eae7f5;
+  }
 `;
 
 const ShareSNS = styled.button`
@@ -55,15 +58,15 @@ const ShareSNS = styled.button`
   color: black;
   text-align: center;
   line-height: 24px;
-  &:hover {
-    opacity: 0.5;
-  }
   &::before {
     display: inline;
     content: url(${kakaoLogo});
     position: relative;
     left: -5px;
     vertical-align: middle;
+  }
+  &:hover {
+    filter: brightness(0.9);
   }
 `;
 
