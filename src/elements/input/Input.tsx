@@ -16,6 +16,7 @@ interface InputProps {
   border?: string;
   required?: boolean;
   className?: string;
+  onChange?: (event:React.ChangeEvent<HTMLInputElement>) => void;
 }
 const inputCss = css<InputProps>`
   width: 100%;
@@ -65,6 +66,7 @@ const Input = ({
   fontSize,
   className,
   required = true,
+  onChange,
 }: InputProps) => {
   return (
     <>
@@ -83,6 +85,7 @@ const Input = ({
           placeholder={placeholder}
           id={id}
           className={className ?? className}
+          onChange={onChange ?? onChange}
         />
       ) : (
         <TextareaAtom
@@ -100,6 +103,7 @@ const Input = ({
           placeholder={placeholder}
           id={id}
           className={className ?? className}
+          // onChange={onChange ?? onChange}
         />
       )}
       <div />
