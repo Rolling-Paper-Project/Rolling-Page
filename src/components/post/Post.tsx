@@ -1,5 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
+import Emoji, { EmojiImg } from "../../elements/emoji/Emoji";
+import closeBtn from "../../assets/icon-close.svg";
 
 interface PostProps {
   bgColor?: string;
@@ -34,12 +36,6 @@ const PostFooter = styled.div<PostProps>`
   align-items: center;
 `;
 
-const PostImg = styled.img<PostProps>`
-  width: 40px;
-  height: 40px;
-  background-color: #000;
-`;
-
 const PostNickname = styled.strong<PostProps>`
   font-size: 18px;
   font-weight: bold;
@@ -55,13 +51,10 @@ const PostEdge = styled.div<PostProps>`
   background-color: ${props => props.shadowColor};
 `;
 
-const PostCloseBtn = styled.img<PostProps>`
-  width: 15px;
-  height: 15px;
+const PostCloseBtn = styled(EmojiImg)<PostProps>`
   position: absolute;
   top: 8px;
   right: 8px;
-  background-color: #000;
 `;
 
 const Post = ({
@@ -78,11 +71,17 @@ const Post = ({
         <h3 className="ir">{name}님의 포스트잇</h3>
         <PostContent>{content}</PostContent>
         <PostFooter>
-          <PostImg />
+          <Emoji width={40} height={40} src={profile!} />
           <PostNickname>{name}</PostNickname>
         </PostFooter>
         <PostEdge shadowColor={shadowColor ?? shadowColor} />
-        <PostCloseBtn onClick={onClick} />
+        <PostCloseBtn
+          className="btn-base"
+          alt="포스트 삭제"
+          width={15}
+          height={15}
+          src={closeBtn}
+        />
       </PostArticle>
     </div>
   );
