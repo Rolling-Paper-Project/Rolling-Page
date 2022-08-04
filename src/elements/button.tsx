@@ -67,4 +67,4 @@ const KakaoBtn = ({ onClick }: Props) => {
   return <ShareSNS onClick={onClick}>카카오톡으로 공유하기</ShareSNS>;
 };
 
-export { BasicBtn, CancelBtn, KakaoBtn };
+export { BasicBtn, CancelBtn, KakaoBtn, Basic };

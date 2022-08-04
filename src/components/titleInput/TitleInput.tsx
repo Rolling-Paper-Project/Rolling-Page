@@ -1,33 +1,37 @@
 import * as React from "react";
-import styled from "styled-components";
 import Input from "../../elements/input/Input";
-
-const Title = styled.h2`
-  color: #b4b4b4;
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 18px;
-  margin-bottom: 5px;
-`;
+import "./titleInputStyle";
+import { Title, TitleWrap, DivFlex, TitleBtn } from "./titleInputStyle";
 
 const TitleInput = () => {
   return (
-    <form>
-      <label htmlFor="title">
-        <Title>Title</Title>
-      </label>
-      <Input
-        isInput
-        height="auto"
-        bgColor="#EFEFEF"
-        placeholder="받는 사람을 입력해주세요"
-        id="title"
-        padding="13px"
-        fontSize="14px"
-        fontWeight="400"
-        required
-      />
-    </form>
+    <TitleWrap>
+      <h2 className="ir">타이틀 입력</h2>
+      <form>
+        <label htmlFor="title">
+          <Title>Title</Title>
+        </label>
+
+        <DivFlex>
+        <Input
+          isInput
+          height="auto"
+          bgColor="#EFEFEF"
+          placeholder="받는 사람을 입력해주세요"
+          id="title"
+          padding="13px"
+          fontSize="14px"
+          fontWeight="400"
+          required
+          />
+        <TitleBtn 
+          onClick={() => {
+            ("");
+          }}
+        >저장</TitleBtn>
+        </DivFlex>
+      </form>
+    </TitleWrap>
   );
 };
 
