@@ -63,7 +63,7 @@ const BoardPostUl = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  padding: 0 31px;
+  padding: 0 30px;
   overflow-y: scroll;
 
   &::-webkit-scrollbar {
@@ -112,33 +112,30 @@ const Container = () => {
   return (
     <ContainerStyled>
       <BoardTitleStyled>내가 설정한 보드 이름</BoardTitleStyled>
-      {toggle ? (
-        <BoardTextStyled>새로운 롤링페이퍼를 만들어보세요!</BoardTextStyled>
-      ) : (
-        <BoardPostUl>
-          {postData?.map(element => {
-            const randomIdx = Math.floor(Math.random() * 3 + 1);
-            const randomColor = colorArray[randomIdx].split(",");
-            const bgColor = randomColor[0];
-            const shadowColor = randomColor[1];
-            const comment = element.content.split(",");
-            const content = comment[0];
-            const name = comment[1];
-            const profile = comment[2];
+      {/* <BoardTextStyled>새로운 롤링페이퍼를 만들어보세요!</BoardTextStyled> */}
+      <BoardPostUl>
+        {postData?.map(element => {
+          const randomIdx = Math.floor(Math.random() * 3 + 1);
+          const randomColor = colorArray[randomIdx].split(",");
+          const bgColor = randomColor[0];
+          const shadowColor = randomColor[1];
+          const comment = element.content.split(",");
+          const content = comment[0];
+          const name = comment[1];
+          const profile = comment[2];
 
-            return (
-              <Post
-                key={element.id}
-                bgColor={bgColor}
-                shadowColor={shadowColor}
-                content={content}
-                name={name}
-                profile={profile}
-              />
-            );
-          })}
-        </BoardPostUl>
-      )}
+          return (
+            <Post
+              key={element.id}
+              bgColor={bgColor}
+              shadowColor={shadowColor}
+              content={content}
+              name={name}
+              profile={profile}
+            />
+          );
+        })}
+      </BoardPostUl>
       <BoardButtonStyled>+</BoardButtonStyled>
     </ContainerStyled>
   );
