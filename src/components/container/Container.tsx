@@ -11,8 +11,13 @@ interface PostDataProps {
   id: string;
   content: string;
 }
+
 interface PostDataResponse {
   post: PostDataProps[];
+}
+
+interface TitleProps {
+  done?: string | undefined;
 }
 
 const ContainerStyled = styled.div`
@@ -55,6 +60,7 @@ const BoardButtonStyled = styled.button`
   border: none;
   bottom: 29px;
   right: 48px;
+  cursor: pointer;
 `;
 
 const BoardPostUl = styled.ul`
@@ -78,7 +84,7 @@ const BoardPostUl = styled.ul`
   }
 `;
 
-const Container = () => {
+const Container = ({ done }: TitleProps) => {
   const { id } = useParams();
   const [postData, setPostData] = React.useState<PostDataResponse["post"]>([]);
   const colorArray = [
@@ -136,7 +142,7 @@ const Container = () => {
           );
         })}
       </BoardPostUl>
-      <BoardButtonStyled>+</BoardButtonStyled>
+      <BoardButtonStyled className={done}>+</BoardButtonStyled>
     </ContainerStyled>
   );
 };
