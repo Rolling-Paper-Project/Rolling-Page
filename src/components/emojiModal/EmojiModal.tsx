@@ -1,13 +1,14 @@
 import React from 'react'
-import { ModalWrapper, EmojiWrapper, PostWrapper, TitleText, Img, EmojiflexBox, ModalOver, ContentsWrapper } from './emojiModalStyle'
-import { BasicBtn } from '../../elements/button'
+import { ModalWrapper, EmojiWrapper, PostWrapper, TitleText, Img, EmojiflexBox, ModalOver, ContentsWrapper } from "./emojiModalStyle"
+import { BasicBtn } from "../../elements/buttons/button"
+import Emoji from "../../elements/emoji/Emoji"
+import Post from "../post/Post"
 import Emoji1 from "../../assets/emoji-cute.svg"
 import Emoji2 from "../../assets/emoji-sad.svg"
 import Emoji3 from "../../assets/emoji-sad-fun.svg"
 import Emoji4 from "../../assets/emoji-happy.svg"
 import Emoji5 from "../../assets/emoji-teasing.svg"
 import Emoji6 from "../../assets/emoji-angry.svg"
-import Post from '../post/Post'
 
 const EmojiModal = () => {
   return (
@@ -17,12 +18,12 @@ const EmojiModal = () => {
           <EmojiWrapper>
             <TitleText>1. 스티커를 골라볼까요?</TitleText>
             <EmojiflexBox>
-              <Img src={Emoji1} />
-              <Img src={Emoji2} />
-              <Img src={Emoji3} />
-              <Img src={Emoji4} />
-              <Img src={Emoji5} />
-              <Img src={Emoji6} />
+              <Img width={100} height={100} src={Emoji1} />
+              <Img width={100} height={100} src={Emoji2} />
+              <Img width={100} height={100} src={Emoji3} />
+              <Img width={100} height={100} src={Emoji4} />
+              <Img width={100} height={100} src={Emoji5} />
+              <Img width={100} height={100} src={Emoji6} />
             </EmojiflexBox>
           </EmojiWrapper>
           <PostWrapper>
@@ -30,7 +31,7 @@ const EmojiModal = () => {
             <Post />
           </PostWrapper>
         </ContentsWrapper>
-        <BasicBtn onClick={() => console.log()} />
+        <BasicBtn>저장</BasicBtn>
       </ModalWrapper>
     </ModalOver>
   )

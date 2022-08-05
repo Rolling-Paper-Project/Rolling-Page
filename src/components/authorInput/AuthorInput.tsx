@@ -11,6 +11,7 @@ const AuthorInput = () => {
       fontWeight="700"
       border="none"
       className="right"
+      bgColor="transparent"
       required
     />
   );

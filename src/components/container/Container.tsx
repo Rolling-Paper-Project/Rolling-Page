@@ -1,13 +1,23 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import * as React from "react";
 import styled from "styled-components";
+import { useParams } from "react-router";
+import axios, { AxiosResponse } from "axios";
 
-import axios from "axios";
 import Post from "../post/Post";
 import { BASE_URL, TOKEN, ACCOUNTNAME } from "../../constants/index";
 
 // interface ContainerProps {
 //   className: string;
 // }
+
+interface PostDataProps {
+  id: string;
+  content: string;
+}
+interface PostDataResponse {
+  post: PostDataProps[];
+}
 
 const ContainerStyled = styled.div`
   box-sizing: border-box;
@@ -37,6 +47,7 @@ const BoardTextStyled = styled.div`
   font-weight: 400;
   font-size: 22px;
 `;
+
 const BoardButtonStyled = styled.button`
   position: absolute;
   width: 60px;
@@ -57,6 +68,7 @@ const TestBtn = styled.button`
   top: 10px;
   left: 10px;
 `;
+
 const BoardPostUl = styled.ul`
   height: 520px;
   margin-bottom: 148px;
@@ -77,14 +89,11 @@ const BoardPostUl = styled.ul`
     background: white;
   }
 `;
-const BoardPostLi = styled.li`
-  width: 250px;
-  height: 250px;
-  background-color: tomato;
-`;
+
 const Container = () => {
+  const { id } = useParams();
   const [toggle, setToggle] = React.useState<boolean>(false);
-  const [postData, setPostData] = React.useState(null);
+  const [postData, setPostData] = React.useState<PostDataResponse["post"]>([]);
   const colorArray = [
     "#E5EDFF, #B6CCFF",
     "#FBF1F6, #F9CCE3",
@@ -96,9 +105,8 @@ const Container = () => {
     setToggle(prev => !prev);
   };
 
-  // 포스트 등록 모달창 구현 완성되면 저장버튼에 온클릭 이벤트핸들러 달기
-  const handleGetPostList = async () => {
-    const url = `${BASE_URL}/post/62ea2b3417ae666581a02810/comments`;
+  const setPost = async () => {
+    const url = `${BASE_URL}/post/${id}/comments`;
     const config = {
       headers: {
         Authorization: `Bearer ${TOKEN}`,
@@ -107,22 +115,16 @@ const Container = () => {
     };
     try {
       const res = await axios.get(url, config);
-      setPostData(res.data);
-      return res.data;
+      setPostData(res.data.comments);
+      return res.data.comments;
     } catch (err) {
       return err;
     }
   };
 
-  // 임시 데이터
-  const testCommentData = [
-    "길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까, 전어입니다, https://mandarin.api.weniv.co.kr/1659545455369.png",
-    "길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까, 전어입니다, https://mandarin.api.weniv.co.kr/1659545455369.png",
-    "길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까, 전어입니다, https://mandarin.api.weniv.co.kr/1659545455369.png",
-    "길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까, 전어입니다, https://mandarin.api.weniv.co.kr/1659545455369.png",
-    "길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까, 전어입니다, https://mandarin.api.weniv.co.kr/1659545455369.png",
-    "길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까길게한번써볼까, 전어입니다, https://mandarin.api.weniv.co.kr/1659545455369.png",
-  ];
+  React.useEffect(() => {
+    setPost();
+  }, []);
 
   return (
     <ContainerStyled>
@@ -132,20 +134,19 @@ const Container = () => {
         <BoardTextStyled>새로운 롤링페이퍼를 만들어보세요!</BoardTextStyled>
       ) : (
         <BoardPostUl>
-          {testCommentData.map(function (element) {
+          {postData?.map(element => {
             const randomIdx = Math.floor(Math.random() * 3 + 1);
             const randomColor = colorArray[randomIdx].split(",");
-
             const bgColor = randomColor[0];
             const shadowColor = randomColor[1];
-            const comment = element.split(",");
+            const comment = element.content.split(",");
             const content = comment[0];
             const name = comment[1];
             const profile = comment[2];
 
             return (
               <Post
-                key={1}
+                key={element.id}
                 bgColor={bgColor}
                 shadowColor={shadowColor}
                 content={content}

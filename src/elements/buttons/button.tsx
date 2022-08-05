@@ -150,4 +150,4 @@ const CopyBtn = ({
   );
 };
 
-export { BasicBtn, CancelBtn, KakaoBtn, CloseBtn, CopyBtn };
+export { BasicBtn, CancelBtn, KakaoBtn, CloseBtn, CopyBtn, Basic };
