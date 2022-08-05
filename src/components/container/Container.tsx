@@ -122,10 +122,10 @@ const Container = ({ done }: TitleProps) => {
       <BoardPostUl>
         {postData?.map(element => {
           const randomIdx = Math.floor(Math.random() * 3 + 1);
-          const randomColor = colorArray[randomIdx].split("☇⚁♘");
+          const randomColor = colorArray[randomIdx].split(",");
           const bgColor = randomColor[0];
           const shadowColor = randomColor[1];
-          const comment = element.content.split(",");
+          const comment = element.content.split("☇⚁♘");
           const content = comment[0];
           const name = comment[1];
           const profile = comment[2];
