@@ -1,6 +1,5 @@
-const { Kakao } = window;
-
 const kakaoShare = () => {
+  const { Kakao } = window;
   if (!Kakao.isInitialized()) {
     Kakao.init("7407a27ef864aaf8a5af6933a8b35200");
   }
