@@ -7,10 +7,6 @@ import axios, { AxiosResponse } from "axios";
 import Post from "../post/Post";
 import { BASE_URL, TOKEN, ACCOUNTNAME } from "../../constants/index";
 
-// interface ContainerProps {
-//   className: string;
-// }
-
 interface PostDataProps {
   id: string;
   content: string;
@@ -61,14 +57,6 @@ const BoardButtonStyled = styled.button`
   right: 48px;
 `;
 
-const TestBtn = styled.button`
-  width: 50px;
-  cursor: pointer;
-  position: absolute;
-  top: 10px;
-  left: 10px;
-`;
-
 const BoardPostUl = styled.ul`
   height: 520px;
   margin-bottom: 148px;
@@ -92,7 +80,6 @@ const BoardPostUl = styled.ul`
 
 const Container = () => {
   const { id } = useParams();
-  const [toggle, setToggle] = React.useState<boolean>(false);
   const [postData, setPostData] = React.useState<PostDataResponse["post"]>([]);
   const colorArray = [
     "#E5EDFF, #B6CCFF",
@@ -100,10 +87,6 @@ const Container = () => {
     "#EAE7F5, #CBC2FA",
     "#FCF6D8, #FCEEAB",
   ];
-
-  const clickedToggle = () => {
-    setToggle(prev => !prev);
-  };
 
   const setPost = async () => {
     const url = `${BASE_URL}/post/${id}/comments`;
@@ -128,7 +111,6 @@ const Container = () => {
 
   return (
     <ContainerStyled>
-      <TestBtn onClick={clickedToggle}>test Button</TestBtn>
       <BoardTitleStyled>내가 설정한 보드 이름</BoardTitleStyled>
       {toggle ? (
         <BoardTextStyled>새로운 롤링페이퍼를 만들어보세요!</BoardTextStyled>
@@ -163,9 +145,3 @@ const Container = () => {
 };
 
 export default Container;
-
-// BoardMain element
-// title element (input value 가져오기)
-// BoardButton element (클릭시 생성모달 출력)
-// 리액트에서 클릭 시 컴포넌트 불러오는 방법
-// 모달에서 생성 버튼 클릭시 false 부분 출력되도록 우선 localStorage에서 postId 값으로 진행?
