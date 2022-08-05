@@ -1,15 +1,16 @@
 import * as React from "react";
 import styled from "styled-components";
 import Emoji, { EmojiImg } from "../../elements/emoji/Emoji";
-import closeBtn from "../../assets/icon-close.svg";
+import CloseBtn from "../../assets/icon-close.svg"
+import DeletModal from "../deleteModal/DeleteModal";
 
 interface PostProps {
+  key?: string;
   bgColor?: string;
   shadowColor?: string;
   content?: string;
   name?: string;
   profile?: string;
-  onClick?: () => void;
 }
 
 const PostArticle = styled.article<PostProps>`
@@ -58,20 +59,28 @@ const PostCloseBtn = styled(EmojiImg)<PostProps>`
 `;
 
 const Post = ({
+  key,
   bgColor,
   shadowColor,
   content,
   name,
   profile,
-  onClick,
 }: PostProps) => {
+  const [isModalState, setIsModalState] = React.useState<boolean>(false);
+  const ShowDeleteModal = (): void => {
+    setIsModalState(!isModalState);
+  }
+  const closeDeleteModal = (): void => {
+    setIsModalState(false);
+  }
+
   return (
     <div>
       <PostArticle bgColor={bgColor ?? bgColor}>
         <h3 className="ir">{name}님의 포스트잇</h3>
         <PostContent>{content}</PostContent>
         <PostFooter>
-          <Emoji width={40} height={40} src={profile!} />
+          <Emoji width={40} height={40} src={profile} />
           <PostNickname>{name}</PostNickname>
         </PostFooter>
         <PostEdge shadowColor={shadowColor ?? shadowColor} />
@@ -80,9 +89,11 @@ const Post = ({
           alt="포스트 삭제"
           width={15}
           height={15}
-          src={closeBtn}
+          src={CloseBtn}
+          onClick={ShowDeleteModal}
         />
       </PostArticle>
+      {isModalState === true && <DeletModal key={key} closeDeleteModal={closeDeleteModal}/>}
     </div>
   );
 };

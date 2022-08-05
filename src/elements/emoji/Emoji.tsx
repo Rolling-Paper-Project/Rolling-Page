@@ -4,7 +4,7 @@ import styled from "styled-components"
 interface Props {
   width?: number;
   height?: number;
-  src: string;
+  src?: string;
 }
 
 export const EmojiImg = styled.img<Props>`
