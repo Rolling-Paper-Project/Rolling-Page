@@ -1,53 +1,56 @@
 import * as React from "react";
 import axios from "axios";
-import { useParams } from 'react-router';
+import { useParams } from "react-router";
 import Input from "../../elements/input/Input";
 import { BASE_URL, TOKEN, ACCOUNTNAME } from "../../constants/index";
 import { Title, TitleWrap, DivFlex, TitleBtn } from "./titleInputStyle";
 import "./titleInputStyle";
 
-const TitleInput = () => {
-  const [text, setText] = React.useState('');
-  const {id} = useParams();
-  
+interface TitleProps {
+  done?: string | undefined;
+}
+
+const TitleInput = ({ done }: TitleProps) => {
+  const [text, setText] = React.useState("");
+
   const handleSubmit = async () => {
     const url = `${BASE_URL}/post`;
 
     try {
-      const res = await axios.post(url, {
-        "post": {
-          "content": text
-        }
-      },
+      const res = await axios.post(
+        url,
+        {
+          post: {
+            content: text,
+          },
+        },
         {
           headers: {
             Authorization: `Bearer ${TOKEN}`,
-            "Content-type": "application/json"
-          }
-        }
+            "Content-type": "application/json",
+          },
+        },
       );
-      console.log(res.data);
-      
       return res.data;
     } catch (error) {
-      console.log(error)
+      console.log(error);
       return error;
     }
-  }
+  };
 
   const saveValue = (event: React.ChangeEvent<HTMLInputElement>) => {
     setText(event.target.value);
-  }
+  };
 
   const onClickSubmit = (e: any) => {
     handleSubmit();
     e.preventDefault();
-  }
+  };
 
   return (
     <TitleWrap>
       <h2 className="ir">타이틀 입력</h2>
-      <form>
+      <form className={done}>
         <label htmlFor="title">
           <Title>Title</Title>
         </label>
@@ -73,4 +76,3 @@ const TitleInput = () => {
 };
 
 export default TitleInput;
-
