@@ -66,6 +66,7 @@ const Share = ({ onClickToggleModal }: PropsWithChildren<ModalDefaultType>) => {
       document.body.removeChild(script);
     };
   }, []);
+
   return (
     <ModalContainer>
       <DialogBox>
@@ -80,7 +81,7 @@ const Share = ({ onClickToggleModal }: PropsWithChildren<ModalDefaultType>) => {
         />
         <LinkBox>
           <CopyBtn bottom="15px" left="550px" />
-          https::/rollingpage.com
+          {window.location.href}
         </LinkBox>
         {/* <Helmet>
           <script src="https://developers.kakao.com/sdk/js/kakao.js" />
