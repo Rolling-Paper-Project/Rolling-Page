@@ -9,8 +9,7 @@ const kakaoShare = () => {
     content: {
       title: "롤링페이지",
       description: "소중한 사람에게 마음을 전하세요.",
-      imageUrl:
-        "https://cdn.pixabay.com/photo/2014/09/15/22/23/fountain-pen-447576_960_720.jpg",
+      imageUrl: "https://mandarin.api.weniv.co.kr/1659677435300.png",
       link: {
         mobileWebUrl: "https://developers.kakao.com",
         androidExecutionParams: "test",
@@ -18,8 +17,7 @@ const kakaoShare = () => {
     },
     itemContent: {
       profileText: "Rollingpage",
-      profileImageUrl:
-        "https://images.unsplash.com/photo-1566125882500-87e10f726cdc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
+      profileImageUrl: "https://mandarin.api.weniv.co.kr/1659629333953.png",
     },
     buttons: [
       {
