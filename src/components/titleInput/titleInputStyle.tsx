@@ -11,6 +11,7 @@ const Title = styled.h2`
 
 const TitleWrap = styled.section`
   max-width: 1400px;
+  height: 100px;
   margin: 0 auto 20px;
 `;
 
