@@ -1,7 +1,8 @@
 import * as React from "react";
+import { useLocation } from "react-router";
 import styled from "styled-components";
 import Emoji, { EmojiImg } from "../../elements/emoji/Emoji";
-import CloseBtn from "../../assets/icon-close.svg"
+import CloseBtn from "../../assets/icon-close.svg";
 import DeletModal from "../deleteModal/DeleteModal";
 
 interface PostProps {
@@ -56,6 +57,7 @@ const PostCloseBtn = styled(EmojiImg)<PostProps>`
   position: absolute;
   top: 8px;
   right: 8px;
+  cursor: pointer;
 `;
 
 const Post = ({
@@ -66,13 +68,16 @@ const Post = ({
   name,
   profile,
 }: PostProps) => {
+  const location = useLocation();
+  const done =
+    location.pathname.split("/")[1] === "done" ? "hidden" : undefined;
   const [isModalState, setIsModalState] = React.useState<boolean>(false);
   const ShowDeleteModal = (): void => {
     setIsModalState(!isModalState);
-  }
+  };
   const closeDeleteModal = (): void => {
     setIsModalState(false);
-  }
+  };
 
   return (
     <div>
@@ -85,7 +90,7 @@ const Post = ({
         </PostFooter>
         <PostEdge shadowColor={shadowColor ?? shadowColor} />
         <PostCloseBtn
-          className="btn-base"
+          className={done}
           alt="포스트 삭제"
           width={15}
           height={15}
@@ -93,7 +98,9 @@ const Post = ({
           onClick={ShowDeleteModal}
         />
       </PostArticle>
-      {isModalState === true && <DeletModal key={key} closeDeleteModal={closeDeleteModal}/>}
+      {isModalState === true && (
+        <DeletModal key={key} closeDeleteModal={closeDeleteModal} />
+      )}
     </div>
   );
 };
