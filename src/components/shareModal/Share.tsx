@@ -1,6 +1,6 @@
 import * as React from "react";
-import { PropsWithChildren } from "react";
-import { Helmet } from "react-helmet";
+import { PropsWithChildren, useEffect } from "react";
+// import { Helmet } from "react-helmet";
 import styled from "styled-components";
 import { KakaoBtn, CloseBtn, CopyBtn } from "../../elements/buttons/button";
 import kakaoShare from "./kakao";
@@ -55,6 +55,17 @@ const Backdrop = styled.div`
 `;
 
 const Share = ({ onClickToggleModal }: PropsWithChildren<ModalDefaultType>) => {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://developers.kakao.com/sdk/js/kakao.js";
+    script.async = true;
+
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
   return (
     <ModalContainer>
       <DialogBox>
@@ -71,9 +82,9 @@ const Share = ({ onClickToggleModal }: PropsWithChildren<ModalDefaultType>) => {
           <CopyBtn bottom="15px" left="550px" />
           https::/rollingpage.com
         </LinkBox>
-        <Helmet>
+        {/* <Helmet>
           <script src="https://developers.kakao.com/sdk/js/kakao.js" />
-        </Helmet>
+        </Helmet> */}
         <KakaoBtn
           onClick={() => {
             kakaoShare();
