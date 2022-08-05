@@ -11,7 +11,7 @@ const FixedBoard = () => {
   return (
     <>
       <TitleInput done={done} />
-      <Container done={done} />>
+      <Container done={done} />
     </>
   );
 };
