@@ -8,6 +8,7 @@ const ModalBg = styled.div`
   right: 0;
   bottom: 0;
   position: fixed;
+  z-index: 10;
 `;
 
 const ModalWrap = styled.section`
