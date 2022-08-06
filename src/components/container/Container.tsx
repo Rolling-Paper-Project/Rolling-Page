@@ -20,7 +20,7 @@ interface TitleProps {
   done?: string | undefined;
 }
 
-const ContainerStyled = styled.div`
+export const ContainerStyled = styled.div`
   box-sizing: border-box;
   position: relative;
   width: 1400px;
