@@ -2,10 +2,9 @@
 import * as React from "react";
 import styled from "styled-components";
 import { useParams } from "react-router";
-import axios, { AxiosResponse } from "axios";
-
+import axios from "axios";
 import Post from "../post/Post";
-import { BASE_URL, TOKEN, ACCOUNTNAME } from "../../constants/index";
+import { BASE_URL, TOKEN } from "../../constants/index";
 
 interface PostDataProps {
   id: string;
@@ -133,6 +132,7 @@ const Container = ({ done }: TitleProps) => {
           return (
             <Post
               key={element.id}
+              commentId={element.id}
               bgColor={bgColor}
               shadowColor={shadowColor}
               content={content}

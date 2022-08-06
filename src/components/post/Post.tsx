@@ -6,7 +6,7 @@ import CloseBtn from "../../assets/icon-close.svg";
 import DeletModal from "../deleteModal/DeleteModal";
 
 interface PostProps {
-  key?: string;
+  commentId?: string;
   bgColor?: string;
   shadowColor?: string;
   content?: string;
@@ -61,7 +61,7 @@ const PostCloseBtn = styled(EmojiImg)<PostProps>`
 `;
 
 const Post = ({
-  key,
+  commentId,
   bgColor,
   shadowColor,
   content,
@@ -77,7 +77,7 @@ const Post = ({
   };
   const closeDeleteModal = (): void => {
     setIsModalState(false);
-  };
+  };  
 
   return (
     <div>
@@ -99,7 +99,7 @@ const Post = ({
         />
       </PostArticle>
       {isModalState === true && (
-        <DeletModal key={key} closeDeleteModal={closeDeleteModal} />
+        <DeletModal commentId={commentId} closeDeleteModal={closeDeleteModal} />
       )}
     </div>
   );
