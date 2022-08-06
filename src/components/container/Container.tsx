@@ -5,18 +5,16 @@ import { useParams } from "react-router";
 import axios from "axios";
 import Post from "../post/Post";
 import { BASE_URL, TOKEN } from "../../constants/index";
+import EmojiModal from "../emojiModal/EmojiModal";
 
 interface PostDataProps {
   id: string;
   content: string;
 }
-
-interface PostDataResponse {
-  post: PostDataProps[];
-}
-
 interface TitleProps {
   done?: string | undefined;
+  // eslint-disable-next-line react/no-unused-prop-types
+  post?: PostDataProps[];
 }
 
 export const ContainerStyled = styled.div`
@@ -26,6 +24,7 @@ export const ContainerStyled = styled.div`
   height: 750px;
   margin: 0 auto;
   border: 1px solid #efefef;
+  background-color: white;
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1);
 `;
 
@@ -36,16 +35,6 @@ const BoardTitleStyled = styled.h2`
   line-height: 44px;
   color: #977ae1;
   padding: 16px 0 24px 31px;
-`;
-
-const BoardTextStyled = styled.div`
-  width: fit-content;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-weight: 400;
-  font-size: 22px;
 `;
 
 const BoardButtonStyled = styled.button`
@@ -85,7 +74,9 @@ const BoardPostUl = styled.ul`
 
 const Container = ({ done }: TitleProps) => {
   const { id } = useParams();
-  const [postData, setPostData] = React.useState<PostDataResponse["post"]>([]);
+  const [postData, setPostData] = React.useState<
+    TitleProps["post"] | undefined
+  >();
   const colorArray = [
     "#E5EDFF, #B6CCFF",
     "#FBF1F6, #F9CCE3",
@@ -114,10 +105,15 @@ const Container = ({ done }: TitleProps) => {
     setPost();
   }, []);
 
+  const [isModalShow, setIsModalShow] = React.useState<boolean>(false);
+
+  const handleAddPostBtn = () => {
+    setIsModalShow(true);
+  };
+
   return (
     <ContainerStyled>
       <BoardTitleStyled>내가 설정한 보드 이름</BoardTitleStyled>
-      {/* <BoardTextStyled>새로운 롤링페이퍼를 만들어보세요!</BoardTextStyled> */}
       <BoardPostUl>
         {postData?.map(element => {
           const randomIdx = Math.floor(Math.random() * 3 + 1);
@@ -128,7 +124,6 @@ const Container = ({ done }: TitleProps) => {
           const content = comment[0];
           const name = comment[1];
           const profile = comment[2];
-
           return (
             <Post
               key={element.id}
@@ -138,11 +133,23 @@ const Container = ({ done }: TitleProps) => {
               content={content}
               name={name}
               profile={profile}
+              isInput={false}
+              author=""
+              mainTxt=""
+              setPost={setPost}
             />
           );
         })}
       </BoardPostUl>
-      <BoardButtonStyled className={done}>+</BoardButtonStyled>
+      <BoardButtonStyled className={done} onClick={handleAddPostBtn}>
+        +
+      </BoardButtonStyled>
+      <EmojiModal
+        setIsModalShow={setIsModalShow}
+        isModalShow={isModalShow}
+        setPostData={setPostData}
+        setPost={setPost}
+      />
     </ContainerStyled>
   );
 };

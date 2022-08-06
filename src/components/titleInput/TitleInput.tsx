@@ -1,10 +1,8 @@
 import * as React from "react";
 import axios from "axios";
-import { useParams } from "react-router";
 import Input from "../../elements/input/Input";
 import { BASE_URL, TOKEN, ACCOUNTNAME } from "../../constants/index";
 import { Title, TitleWrap, DivFlex, TitleBtn } from "./titleInputStyle";
-import "./titleInputStyle";
 
 interface TitleProps {
   done?: string | undefined;
@@ -31,6 +29,8 @@ const TitleInput = ({ done }: TitleProps) => {
           },
         },
       );
+      console.log(res.data);
+
       return res.data;
     } catch (error) {
       console.log(error);

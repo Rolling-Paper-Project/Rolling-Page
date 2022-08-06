@@ -59,7 +59,7 @@ const Main = () => {
     const getBoardList = async () => {
       try {
         const res: AxiosResponse<any> = await axios.get(
-          `${BASE_URL}/post/${ACCOUNTNAME}/userpost`,
+          `${BASE_URL}/post/${ACCOUNTNAME}/userpost/`,
           {
             headers: {
               Authorization: `Bearer ${TOKEN}`,
@@ -68,6 +68,7 @@ const Main = () => {
           },
         );
         setBoardData(res.data);
+        console.log(boardData);
       } catch (error) {
         console.log(error);
       }

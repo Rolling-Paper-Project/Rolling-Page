@@ -2,7 +2,7 @@ import * as React from "react";
 import { PropsWithChildren, useEffect } from "react";
 // import { Helmet } from "react-helmet";
 import styled from "styled-components";
-import { KakaoBtn, CloseBtn, CopyBtn } from "../../elements/buttons/button";
+import { KakaoBtn, CloseBtn, CopyBtn } from "../../hooks/buttons/button";
 import kakaoShare from "./kakao";
 
 interface ModalDefaultType {
