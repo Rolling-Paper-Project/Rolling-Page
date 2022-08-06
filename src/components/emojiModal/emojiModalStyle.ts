@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import { EmojiImg } from "../../elements/emoji/Emoji"
+import styled from "styled-components";
+import { EmojiImg } from "../../elements/emoji/Emoji";
 
 export const ModalOver = styled.div`
   position: fixed;
@@ -9,7 +9,7 @@ export const ModalOver = styled.div`
   right: 0;
   background-color: rgba(0, 0, 0, 0.2);
   z-index: 100;
-`
+`;
 export const ModalWrapper = styled.div`
   width: 50%;
   min-width: 410px;
@@ -22,27 +22,26 @@ export const ModalWrapper = styled.div`
   border-radius: 10px;
   box-sizing: border-box;
   text-align: center;
-`
+`;
 
 export const ContentsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-`
+`;
 
 export const EmojiWrapper = styled.div`
   flex: 1;
   padding: 20px;
-`
+`;
 
 export const EmojiflexBox = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
   text-align: center;
-`
+`;
 
-export const PostWrapper = styled(EmojiWrapper)`
-`
+export const PostWrapper = styled(EmojiWrapper)``;
 
 export const TitleText = styled.p`
   font-weight: 600;
@@ -50,7 +49,7 @@ export const TitleText = styled.p`
   line-height: 27px;
   text-align: center;
   margin-bottom: 40px;
-`
+`;
 
 export const Img = styled(EmojiImg)`
   border-radius: 50%;
@@ -60,4 +59,4 @@ export const Img = styled(EmojiImg)`
   :hover {
     outline: 5px solid #977ae1;
   }
-`
+`;

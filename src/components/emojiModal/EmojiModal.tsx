@@ -1,40 +1,154 @@
-import React from 'react'
-import { ModalWrapper, EmojiWrapper, PostWrapper, TitleText, Img, EmojiflexBox, ModalOver, ContentsWrapper } from "./emojiModalStyle"
-import { BasicBtn } from "../../elements/buttons/button"
-import Emoji from "../../elements/emoji/Emoji"
-import Post from "../post/Post"
-import Emoji1 from "../../assets/emoji-cute.svg"
-import Emoji2 from "../../assets/emoji-sad.svg"
-import Emoji3 from "../../assets/emoji-sad-fun.svg"
-import Emoji4 from "../../assets/emoji-happy.svg"
-import Emoji5 from "../../assets/emoji-teasing.svg"
-import Emoji6 from "../../assets/emoji-angry.svg"
+import axios from "axios";
+import React, { Dispatch, SetStateAction, useState } from "react";
+import { useParams } from "react-router";
+import {
+  ModalWrapper,
+  EmojiWrapper,
+  PostWrapper,
+  TitleText,
+  Img,
+  EmojiflexBox,
+  ModalOver,
+  ContentsWrapper,
+} from "./emojiModalStyle";
+import { BasicBtn } from "../../hooks/buttons/button";
 
-const EmojiModal = () => {
+import Post from "../post/Post";
+import {
+  ANGRY,
+  BASE_URL,
+  CUTE,
+  HAPPY,
+  SAD,
+  SADFUNNY,
+  TEASING,
+  TOKEN,
+} from "../../constants";
+
+interface PostDataProps {
+  id: string;
+  content: string;
+}
+interface ModalProps {
+  setIsModalShow: Dispatch<SetStateAction<boolean>>;
+  setPostData:
+    | Dispatch<SetStateAction<PostDataProps[] | undefined>>
+    | undefined;
+  isModalShow: boolean;
+  setPost: () => void;
+}
+
+const EmojiModal: React.FC<ModalProps> = ({
+  setIsModalShow,
+  isModalShow,
+  setPostData,
+  setPost,
+}) => {
+  const { id } = useParams();
+
+  // Post 추가 API
+  const [mainTxt, setMainTxt] = React.useState<string>("");
+  const [author, setAuthor] = React.useState<string>("");
+  const [profileEmoji, setProfileEmoji] = useState<string>(CUTE);
+
+  const contents = [mainTxt, author, profileEmoji];
+  const addImgPath = (event: React.MouseEvent<HTMLImageElement>) => {
+    event.stopPropagation();
+    const img = event.currentTarget;
+    setProfileEmoji(img.src);
+  };
+
+  const addModalReset = () => {
+    setIsModalShow(false);
+    setMainTxt("");
+    setAuthor("");
+    setProfileEmoji(CUTE);
+  };
+
+  const closeModal = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.stopPropagation();
+    const div = event.currentTarget;
+    if (event.target === div) {
+      addModalReset();
+    }
+  };
+
+  const addPost = async () => {
+    const text = contents.join("☇⚁♘");
+    try {
+      const res = await axios.post(
+        `${BASE_URL}/post/${id}/comments`,
+        {
+          comment: {
+            content: text,
+          },
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${TOKEN}`,
+            "Content-type": "application/json",
+          },
+        },
+      );
+      if (setPostData) {
+        setPostData(res.data.comments);
+      }
+      setPost();
+      addModalReset();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <ModalOver>
+    <ModalOver onClick={closeModal} className={isModalShow ? "" : "hide"}>
       <ModalWrapper>
         <ContentsWrapper>
           <EmojiWrapper>
             <TitleText>1. 스티커를 골라볼까요?</TitleText>
             <EmojiflexBox>
-              <Img width={100} height={100} src={Emoji1} />
-              <Img width={100} height={100} src={Emoji2} />
-              <Img width={100} height={100} src={Emoji3} />
-              <Img width={100} height={100} src={Emoji4} />
-              <Img width={100} height={100} src={Emoji5} />
-              <Img width={100} height={100} src={Emoji6} />
+              <Img
+                width={100}
+                height={100}
+                src={CUTE ?? CUTE}
+                onClick={addImgPath}
+              />
+              <Img width={100} height={100} src={SAD} onClick={addImgPath} />
+              <Img
+                width={100}
+                height={100}
+                src={SADFUNNY}
+                onClick={addImgPath}
+              />
+              <Img width={100} height={100} src={HAPPY} onClick={addImgPath} />
+              <Img
+                width={100}
+                height={100}
+                src={TEASING}
+                onClick={addImgPath}
+              />
+              <Img width={100} height={100} src={ANGRY} onClick={addImgPath} />
             </EmojiflexBox>
           </EmojiWrapper>
           <PostWrapper>
             <TitleText>2. 내용을 작성해봅시다!</TitleText>
-            <Post />
+            <Post
+              mainTxt={mainTxt}
+              author={author}
+              setMainTxt={setMainTxt}
+              setAuthor={setAuthor}
+              isInput
+              bgColor=""
+              shadowColor=""
+              profile={profileEmoji}
+              setPost={setPost}
+            />
           </PostWrapper>
         </ContentsWrapper>
-        <BasicBtn>저장</BasicBtn>
+        <BasicBtn onClick={addPost}>저장</BasicBtn>
       </ModalWrapper>
     </ModalOver>
-  )
-}
+  );
+};
 
 export default EmojiModal;
