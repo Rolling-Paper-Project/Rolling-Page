@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Basic } from "../../elements/buttons/button";
+import { Basic } from "../../hooks/buttons/button";
 
 const Title = styled.h2`
   color: #b4b4b4;
