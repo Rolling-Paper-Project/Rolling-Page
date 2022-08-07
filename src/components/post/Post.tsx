@@ -14,7 +14,6 @@ interface PostProps {
   content?: string;
   name?: string;
   profile: string;
-  // onClick?: () => void;
   author: string;
   mainTxt: string;
   isInput?: boolean;
@@ -27,7 +26,7 @@ const PostArticle = styled.article<{ bgColor: string }>`
   width: 250px;
   height: 250px;
   clip-path: polygon(100% 0, 100% 100%, 15% 100%, 0 85%, 0 0);
-  padding: 27px 14px 19px;
+  padding: 30px 14px 19px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -35,9 +34,16 @@ const PostArticle = styled.article<{ bgColor: string }>`
   background-color: ${props => props.bgColor};
 `;
 
-const PostContent = styled.p`
+const PostContent = styled.pre`
+  width: 222px;
   font-size: 14px;
   word-break: break-all;
+  font-weight: 400;
+  line-height: 20px;
+  white-space: pre-line;
+  /* 아래 패딩값은 pre태그를 써서인지 textarea와 동일한 조건에서 다르게 보여 임의로 패딩값을 넣었습니다 /fr.다은 */
+  padding-right: 5px;
+  overflow-wrap: break-word;
 `;
 
 const PostFooter = styled.div`
@@ -106,7 +112,7 @@ const Post = ({
         {isInput ? (
           <ContentInput setMainTxt={setMainTxt} mainTxt={mainTxt} />
         ) : (
-          <PostContent>{content}</PostContent>
+          <PostContent className="content">{content}</PostContent>
         )}
         <PostFooter>
           {isInput ? (

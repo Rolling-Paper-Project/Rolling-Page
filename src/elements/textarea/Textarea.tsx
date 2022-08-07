@@ -17,9 +17,9 @@ interface InputProps {
   required?: boolean;
   className?: string;
   onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onKeyPress?: (e: React.KeyboardEvent<HTMLTextAreaElement>) => void;
 }
 const inputCss = css<InputProps>`
-  width: 100%;
   height: ${props => props.height};
   background-color: ${props => props.bgColor};
   color: ${props => props.color};
@@ -28,6 +28,7 @@ const inputCss = css<InputProps>`
   border-radius: 5px;
   padding: ${props => props.padding};
   border: ${props => props.border};
+  overflow: hidden;
   &:focus {
     outline: none;
   }
@@ -35,7 +36,10 @@ const inputCss = css<InputProps>`
 
 const TextareaAtom = styled.textarea<InputProps>`
   ${inputCss}
+  white-space:pre-wrap;
   resize: none;
+  /* width: 222px;
+  height: 165px; */
   &::placeholder {
     font-weight: 400;
   }
@@ -57,6 +61,7 @@ const TextareaEl = ({
   className,
   required = true,
   onChange,
+  onKeyPress,
 }: InputProps) => {
   return (
     <TextareaAtom
@@ -75,6 +80,7 @@ const TextareaEl = ({
       id={id}
       className={className ?? className}
       onChange={onChange ?? onChange}
+      onKeyPress={onKeyPress ?? onKeyPress}
     />
   );
 };

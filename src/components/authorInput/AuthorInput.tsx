@@ -9,7 +9,10 @@ interface AuthorProps {
 const AuthorInput: React.FC<AuthorProps> = ({ setAuthor, author }) => {
   const onInputFunc = (event: React.ChangeEvent<HTMLInputElement>) => {
     const input = event.target;
-    if (setAuthor) {
+    const titLength = input.value.length;
+    if (titLength > 8) {
+      alert("8자까지 작성 가능합니다!");
+    } else if (setAuthor) {
       setAuthor(input.value);
     }
     return input.value;
