@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { ACCOUNTNAME, TOKEN, BASE_URL } from "../../constants";
 import { ContainerStyled } from "../../components/container/Container";
 import Header from "../../components/Header/Header";
+import { BoardWrap } from "../board/Board";
 
 
 const MainContainer = styled(ContainerStyled)`
@@ -79,16 +80,18 @@ const Main = () => {
   return (
     <>
       <Header />
-        <MainContainer>
-          <MainExp >
-          이름을 클릭해서 롤링페이지를 작성해주세요 💚
-          </MainExp>
-          {boardData?.post?.map(data => (
-            <BoardLink to={`/board/${data.id}`} key={data.id}>
-              {data.content}
-            </BoardLink>
-          ))}
-        </MainContainer>
+        <BoardWrap>
+          <MainContainer>
+            <MainExp >
+            이름을 클릭해서 롤링페이지를 작성해주세요 💚
+            </MainExp>
+            {boardData?.post?.map(data => (
+              <BoardLink to={`/board/${data.id}`} key={data.id}>
+                {data.content}
+              </BoardLink>
+            ))}
+          </MainContainer>
+        </BoardWrap>
     </>
   );
 };

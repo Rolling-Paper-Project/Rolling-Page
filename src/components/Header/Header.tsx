@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { HeaderWrap, HeaderContent, LinkButton, LogoImg } from "./headerStyle";
 import logo from "../../assets/icon-logo.svg";
 import github from "../../assets/icon-github.svg";
@@ -11,9 +10,10 @@ const Header = () => {
   return (
     <HeaderWrap>
       <h1 className="ir">롤링페이지</h1>
-      <HeaderContent onClick={onClick}>
-        <img src={logo} alt="로고" />
-        <LinkButton>
+      <HeaderContent>
+        <LogoImg src={logo} alt="로고" />
+        {/* <img src={logo} alt="로고" /> */}
+        <LinkButton onClick={onClick}>
           Contact Us
           <img src={github} alt="github" />
         </LinkButton>
