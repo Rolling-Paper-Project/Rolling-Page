@@ -8,7 +8,6 @@ import ContentInput from "../contentsInput/ContentsInput";
 import AuthorInput from "../authorInput/AuthorInput";
 
 interface PostProps {
-  key?: string;
   commentId?: string;
   bgColor: string;
   shadowColor: string;
@@ -73,7 +72,6 @@ const PostCloseBtn = styled.img`
 `;
 
 const Post = ({
-  key,
   commentId,
   bgColor,
   shadowColor,
@@ -137,7 +135,6 @@ const Post = ({
       </PostArticle>
       {isModalState && (
         <DeletModal
-          key={key}
           closeDeleteModal={closeDeleteModal}
           setPost={setPost}
           commentId={commentId}

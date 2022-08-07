@@ -21,6 +21,14 @@ interface Props {
 const DeletModal = ({ commentId, closeDeleteModal, setPost }: Props) => {
   const { id } = useParams();
 
+  const closeModal = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.stopPropagation();
+    const div = event.currentTarget;
+    if (event.target === div) {
+      closeDeleteModal();
+    }
+  };
+
   const deletePost = async () => {
     const url = `${BASE_URL}/post/${id}/comments/${commentId}`;
     const config = {
@@ -41,7 +49,7 @@ const DeletModal = ({ commentId, closeDeleteModal, setPost }: Props) => {
   };
 
   return (
-    <ModalBg>
+    <ModalBg onClick={closeModal}>
       <ModalWrap>
         <ModalTitle>정말로 삭제하시겠습니까?</ModalTitle>
         <ModalExp>삭제하면 되돌릴 수 없어요! :(</ModalExp>
