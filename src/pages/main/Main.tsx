@@ -7,12 +7,16 @@ import { ContainerStyled } from "../../components/container/Container";
 import Header from "../../components/Header/Header";
 import { BoardWrap } from "../board/Board";
 
-
 const MainContainer = styled(ContainerStyled)`
   margin-top: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  @media (max-width: 420px) {
+    width: 100%;
+    position: relative;
+    margin-top: 0;
+  }
 `;
 
 const BoardLink = styled(Link)`
@@ -28,14 +32,19 @@ const BoardLink = styled(Link)`
   font-weight: 700;
   text-align: center;
   line-height: 2.3;
-  
+
   margin: 10px auto;
   background: #977ae1;
   color: #ffffff;
   &:hover {
     background-color: #5a4a82;
   }
-  `;
+  @media (max-width: 420px) {
+    width: 50%;
+    font-size: 14px;
+    line-height: auto;
+  }
+`;
 
 const MainExp = styled.strong`
   font-size: 22px;
@@ -43,8 +52,10 @@ const MainExp = styled.strong`
   margin-bottom: 30px;
   text-align: center;
   display: block;
+  @media (max-width: 420px) {
+    font-size: 20px;
+  }
 `;
-
 
 const Main = () => {
   interface BoardDataProps {
@@ -80,18 +91,16 @@ const Main = () => {
   return (
     <>
       <Header />
-        <BoardWrap>
-          <MainContainer>
-            <MainExp >
-            이름을 클릭해서 롤링페이지를 작성해주세요 💚
-            </MainExp>
-            {boardData?.post?.map(data => (
-              <BoardLink to={`/board/${data.id}`} key={data.id}>
-                {data.content}
-              </BoardLink>
-            ))}
-          </MainContainer>
-        </BoardWrap>
+      <BoardWrap>
+        <MainContainer>
+          <MainExp>이름을 클릭해서 롤링페이지를 작성해주세요 💚</MainExp>
+          {boardData?.post?.map(data => (
+            <BoardLink to={`/board/${data.id}`} key={data.id}>
+              {data.content}
+            </BoardLink>
+          ))}
+        </MainContainer>
+      </BoardWrap>
     </>
   );
 };

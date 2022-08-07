@@ -35,61 +35,49 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 import * as React from "react";
+import { useParams } from "react-router";
 import axios from "axios";
-import { useParams } from 'react-router';
-import Input from "../../elements/input/Input";
+import { BasicBtn, CancelBtn } from "../../elements/buttons/button";
+import './deleteModalStyle';
+import { BtnWrap, ModalBg, ModalExp, ModalTitle, ModalWrap } from "./deleteModalStyle";
 import { BASE_URL, TOKEN } from "../../constants/index";
-import { Title, TitleWrap, DivFlex, TitleBtn } from "./titleInputStyle";
-import "./titleInputStyle";
-var TitleInput = function () {
-    var _a = React.useState(''), text = _a[0], setText = _a[1];
+var DeletModal = function (_a) {
+    var key = _a.key, closeDeleteModal = _a.closeDeleteModal;
     var id = useParams().id;
-    var handleSubmit = function () { return __awaiter(void 0, void 0, void 0, function () {
-        var url, res, error_1;
+    var deletePost = function () { return __awaiter(void 0, void 0, void 0, function () {
+        var url, config, res, err_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    url = "".concat(BASE_URL, "/post");
+                    url = "".concat(BASE_URL, "/post/").concat(id, "/comments/").concat(key);
+                    config = {
+                        headers: {
+                            Authorization: "Bearer ".concat(TOKEN),
+                            "Content-type": "application/json",
+                        },
+                    };
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, axios.post(url, {
-                            "post": {
-                                "content": text
-                            }
-                        }, {
-                            headers: {
-                                Authorization: "Bearer ".concat(TOKEN),
-                                "Content-type": "application/json"
-                            }
-                        })];
+                    return [4 /*yield*/, axios.delete(url, config)];
                 case 2:
                     res = _a.sent();
-                    console.log(res.data);
-                    return [2 /*return*/, res.data];
+                    return [2 /*return*/, res];
                 case 3:
-                    error_1 = _a.sent();
-                    console.log(error_1);
-                    return [2 /*return*/, error_1];
+                    err_1 = _a.sent();
+                    return [2 /*return*/, err_1];
                 case 4: return [2 /*return*/];
             }
         });
     }); };
-    var saveValue = function (event) {
-        setText(event.target.value);
-    };
-    var onClickSubmit = function (e) {
-        handleSubmit();
-        e.preventDefault();
-    };
-    return (React.createElement(TitleWrap, null,
-        React.createElement("h2", { className: "ir" }, "\uD0C0\uC774\uD2C0 \uC785\uB825"),
-        React.createElement("form", null,
-            React.createElement("label", { htmlFor: "title" },
-                React.createElement(Title, null, "Title")),
-            React.createElement(DivFlex, null,
-                React.createElement(Input, { isInput: true, height: "auto", bgColor: "#EFEFEF", placeholder: "\uBC1B\uB294 \uC0AC\uB78C\uC744 \uC785\uB825\uD574\uC8FC\uC138\uC694", id: "title", padding: "13px", fontSize: "14px", fontWeight: "400", required: true, onChange: saveValue }),
-                React.createElement(TitleBtn, { onClick: onClickSubmit }, "\uC800\uC7A5")))));
+    return (React.createElement(React.Fragment, null,
+        React.createElement(ModalWrap, null,
+            React.createElement(ModalTitle, null, "\uC815\uB9D0\uB85C \uC0AD\uC81C\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?"),
+            React.createElement(ModalExp, null, "\uC0AD\uC81C\uD558\uBA74 \uB418\uB3CC\uB9B4 \uC218 \uC5C6\uC5B4\uC694! :("),
+            React.createElement(BtnWrap, null,
+                React.createElement(CancelBtn, { onClick: closeDeleteModal }, "\uCDE8\uC18C"),
+                React.createElement(BasicBtn, { onClick: deletePost }, "\uC0AD\uC81C"))),
+        React.createElement(ModalBg, null)));
 };
-export default TitleInput;
-//# sourceMappingURL=TitleInput.js.map
+export default DeletModal;
+//# sourceMappingURL=DeleteModal.js.map
