@@ -3,13 +3,13 @@ import React, { Dispatch, SetStateAction, useState } from "react";
 import { useParams } from "react-router";
 import {
   ModalWrapper,
-  EmojiWrapper,
-  PostWrapper,
+  ContentsWrapper,
+  ContentBox,
   TitleText,
   Img,
   EmojiflexBox,
   ModalOver,
-  ContentsWrapper,
+  PostMargin,
 } from "./emojiModalStyle";
 import { BasicBtn } from "../../hooks/buttons/button";
 
@@ -32,8 +32,8 @@ interface PostDataProps {
 interface ModalProps {
   setIsModalShow: Dispatch<SetStateAction<boolean>>;
   setPostData:
-    | Dispatch<SetStateAction<PostDataProps[] | undefined>>
-    | undefined;
+  | Dispatch<SetStateAction<PostDataProps[] | undefined>>
+  | undefined;
   isModalShow: boolean;
   setPost: () => void;
 }
@@ -50,8 +50,8 @@ const EmojiModal: React.FC<ModalProps> = ({
   const [mainTxt, setMainTxt] = React.useState<string>("");
   const [author, setAuthor] = React.useState<string>("");
   const [profileEmoji, setProfileEmoji] = useState<string>(CUTE);
-
   const contents = [mainTxt, author, profileEmoji];
+
   const addImgPath = (event: React.MouseEvent<HTMLImageElement>) => {
     event.stopPropagation();
     const img = event.currentTarget;
@@ -104,7 +104,7 @@ const EmojiModal: React.FC<ModalProps> = ({
     <ModalOver onClick={closeModal} className={isModalShow ? "" : "hide"}>
       <ModalWrapper>
         <ContentsWrapper>
-          <EmojiWrapper>
+          <ContentBox>
             <TitleText>1. 스티커를 골라볼까요?</TitleText>
             <EmojiflexBox>
               <Img
@@ -113,37 +113,54 @@ const EmojiModal: React.FC<ModalProps> = ({
                 src={CUTE ?? CUTE}
                 onClick={addImgPath}
               />
-              <Img width={100} height={100} src={SAD} onClick={addImgPath} />
+              <Img
+                width={100}
+                height={100}
+                src={SAD}
+                onClick={addImgPath}
+              />
               <Img
                 width={100}
                 height={100}
                 src={SADFUNNY}
                 onClick={addImgPath}
               />
-              <Img width={100} height={100} src={HAPPY} onClick={addImgPath} />
+              <Img
+                width={100}
+                height={100}
+                src={HAPPY}
+                onClick={addImgPath}
+              />
               <Img
                 width={100}
                 height={100}
                 src={TEASING}
                 onClick={addImgPath}
               />
-              <Img width={100} height={100} src={ANGRY} onClick={addImgPath} />
+              <Img
+                width={100}
+                height={100}
+                src={ANGRY}
+                onClick={addImgPath}
+              />
             </EmojiflexBox>
-          </EmojiWrapper>
-          <PostWrapper>
+          </ContentBox>
+          <ContentBox>
             <TitleText>2. 내용을 작성해봅시다!</TitleText>
-            <Post
-              mainTxt={mainTxt}
-              author={author}
-              setMainTxt={setMainTxt}
-              setAuthor={setAuthor}
-              isInput
-              bgColor=""
-              shadowColor=""
-              profile={profileEmoji}
-              setPost={setPost}
-            />
-          </PostWrapper>
+            <PostMargin>
+              <Post
+                mainTxt={mainTxt}
+                author={author}
+                setMainTxt={setMainTxt}
+                setAuthor={setAuthor}
+                isInput
+                bgColor=""
+                shadowColor=""
+                profile={profileEmoji}
+                setPost={setPost}
+              />
+            </PostMargin>
+          </ContentBox>
         </ContentsWrapper>
         <BasicBtn onClick={addPost}>저장</BasicBtn>
       </ModalWrapper>

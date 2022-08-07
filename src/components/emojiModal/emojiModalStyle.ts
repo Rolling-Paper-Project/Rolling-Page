@@ -10,6 +10,7 @@ export const ModalOver = styled.div`
   background-color: rgba(0, 0, 0, 0.2);
   z-index: 100;
 `;
+
 export const ModalWrapper = styled.div`
   width: 50%;
   min-width: 410px;
@@ -17,7 +18,7 @@ export const ModalWrapper = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 30px;
+  padding: 70px 50px;
   background-color: white;
   border-radius: 10px;
   box-sizing: border-box;
@@ -27,21 +28,22 @@ export const ModalWrapper = styled.div`
 export const ContentsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
+  gap: 50px;
+  margin-bottom: 30px;
 `;
 
-export const EmojiWrapper = styled.div`
+export const ContentBox = styled.div`
   flex: 1;
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const EmojiflexBox = styled.div`
+  max-width: 300px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  justify-items: center;
-  text-align: center;
+  margin: auto;
 `;
-
-export const PostWrapper = styled(EmojiWrapper)``;
 
 export const TitleText = styled.p`
   font-weight: 600;
@@ -59,4 +61,11 @@ export const Img = styled(EmojiImg)`
   :hover {
     outline: 5px solid #977ae1;
   }
+`;
+
+export const PostMargin = styled.div`
+  display: flex;
+  justify-content: center;
+  min-width: 300px;
+  margin: 0 auto;
 `;
