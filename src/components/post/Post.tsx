@@ -36,13 +36,10 @@ const PostArticle = styled.article<{ bgColor: string }>`
 
 const PostContent = styled.pre`
   width: 222px;
-  font-size: 14px;
   word-break: break-all;
   font-weight: 400;
   line-height: 20px;
   white-space: pre-line;
-  /* 아래 패딩값은 pre태그를 써서인지 textarea와 동일한 조건에서 다르게 보여 임의로 패딩값을 넣었습니다 /fr.다은 */
-  padding-right: 5px;
   overflow-wrap: break-word;
 `;
 
