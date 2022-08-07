@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Basic } from "../../elements/buttons/button";
+import { Basic } from "../../hooks/buttons/button";
 
 const Title = styled.h2`
   color: #b4b4b4;
@@ -10,7 +10,8 @@ const Title = styled.h2`
 `;
 
 const TitleWrap = styled.section`
-  width: 1400px;
+  max-width: 1400px;
+  height: 100px;
   margin: 0 auto 20px;
 `;
 

@@ -1,48 +1,29 @@
-import axios, { AxiosResponse } from "axios";
 import * as React from "react";
-import { useParams } from "react-router";
+import styled from "styled-components";
 import Container from "../../components/container/Container";
-import { TOKEN, BASE_URL } from "../../constants";
+import Header from "../../components/Header/Header";
+import TitleInput from "../../components/titleInput/TitleInput";
 
-interface BoardDataResponse {
-  data: string[];
-  boardData: { content: string; id: string };
-}
-
+const BoardWrap = styled.div`
+  background-color: #fffafc;
+  height: 100vh;
+  padding-top: 15px;
+`;
 const Board = () => {
-  const { id } = useParams();
-
-  const [boardData, setBoardData] = React.useState<BoardDataResponse["data"]>(
-    [],
-  );
-
-  React.useEffect(() => {
-    const setBoard = async () => {
-      try {
-        const res: AxiosResponse<any> = await axios.get(
-          `${BASE_URL}/post/${id}`,
-          {
-            headers: {
-              Authorization: `Bearer ${TOKEN}`,
-              "Content-type": "application/json",
-            },
-          },
-        );
-        console.log(res);
-        setBoardData(res.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    setBoard();
-  }, []);
-
   return (
     <>
+<<<<<<< HEAD
       <Container />
       <div />
+=======
+      <Header />
+      <BoardWrap>
+        <TitleInput />
+        <Container post={[]} />
+      </BoardWrap>
+>>>>>>> 6c68983ef3fa19cf3de6d3d7dd51c37fb939d7b4
     </>
   );
 };
 
-export { Board, BoardDataResponse };
+export default Board;

@@ -1,9 +1,9 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const HeaderWrap = styled.header`
   width: 100vw;
   background-color: #fff;
-  border-bottom: 1px solid #EFEFEF;
+  border-bottom: 1px solid #efefef;
 `;
 
 export const HeaderContent = styled.div`
@@ -14,20 +14,20 @@ export const HeaderContent = styled.div`
   justify-content: space-between;
 `;
 
-export const LogoImg = styled.img` 
+export const LogoImg = styled.img`
   cursor: pointer;
 `;
 
 export const LinkButton = styled.button`
   font-weight: 500;
   font-size: 20px;
-  color: #977AE1;
+  color: #977ae1;
   outline: none;
   border: none;
   background-color: inherit;
   display: inline-flex;
   flex-direction: row;
-  align-items: center; 
+  align-items: center;
   gap: 7px;
   cursor: pointer;
 `;

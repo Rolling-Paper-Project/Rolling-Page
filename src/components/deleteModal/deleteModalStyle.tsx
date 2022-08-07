@@ -8,6 +8,7 @@ const ModalBg = styled.div`
   right: 0;
   bottom: 0;
   position: fixed;
+  z-index: 10;
 `;
 
 const ModalWrap = styled.section`
@@ -35,7 +36,7 @@ const ModalExp = styled.p`
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
-  color: #AFAFAF;
+  color: #afafaf;
   margin-bottom: 25px;
 `;
 

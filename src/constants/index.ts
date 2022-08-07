@@ -6,7 +6,7 @@ const ACCOUNTNAME = "rolling_page";
 // 이모지
 const ANGRY = "https://mandarin.api.weniv.co.kr/1659629333952.png";
 const CUTE = "https://mandarin.api.weniv.co.kr/1659629333953.png";
-const HAPPY = "https://mandarin.api.weniv.co.kr/1659629437421.png";
+const HAPPY = "https://mandarin.api.weniv.co.kr/1659629333955.png";
 const SAD = "https://mandarin.api.weniv.co.kr/1659629437421.png";
 const TEASING = "https://mandarin.api.weniv.co.kr/1659629437422.png";
 const SADFUNNY = "https://mandarin.api.weniv.co.kr/1659629462985.png";

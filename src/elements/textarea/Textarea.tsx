@@ -16,7 +16,7 @@ interface InputProps {
   border?: string;
   required?: boolean;
   className?: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 const inputCss = css<InputProps>`
   width: 100%;
@@ -32,18 +32,16 @@ const inputCss = css<InputProps>`
     outline: none;
   }
 `;
-const InputEl = styled.input<InputProps>`
+
+const TextareaAtom = styled.textarea<InputProps>`
   ${inputCss}
-  border: none;
-  &.right {
-    text-align: right;
-  }
+  resize: none;
   &::placeholder {
     font-weight: 400;
   }
 `;
 
-const Input = ({
+const TextareaEl = ({
   isInput = true,
   height,
   color,
@@ -61,12 +59,13 @@ const Input = ({
   onChange,
 }: InputProps) => {
   return (
-    <InputEl
+    <TextareaAtom
       height={height ?? height}
       color={color ?? color}
       bgColor={bgColor ?? bgColor}
       padding={padding ?? padding}
       value={value ?? value}
+      border={border ?? border}
       required={required ?? required}
       type={type ?? type}
       fontSize={fontSize}
@@ -79,4 +78,4 @@ const Input = ({
     />
   );
 };
-export default Input;
+export default TextareaEl;

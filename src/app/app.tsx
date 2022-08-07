@@ -2,7 +2,7 @@ import * as React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset"; // style-reset 패키지
-import { Board } from "../pages/board/Board";
+import Board from "../pages/board/Board";
 import FixedBoard from "../pages/fixedBoard/FixedBoard";
 import Main from "../pages/main/Main";
 
@@ -42,6 +42,9 @@ const GlobalStyles = createGlobalStyle`
     &.btn-base {
       border: none;
       cursor: pointer;
+    }
+    &.hidden {
+      display: none;
     }
 `;
 

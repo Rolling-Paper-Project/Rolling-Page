@@ -1,19 +1,30 @@
 import * as React from "react";
+import { useLocation } from "react-router";
 import styled from "styled-components";
-import Emoji, { EmojiImg } from "../../elements/emoji/Emoji";
-import CloseBtn from "../../assets/icon-close.svg"
+import { Emoji } from "../../elements/emoji/Emoji";
+import CloseBtn from "../../assets/icon-close.svg";
 import DeletModal from "../deleteModal/DeleteModal";
+import ContentInput from "../contentsInput/ContentsInput";
+import AuthorInput from "../authorInput/AuthorInput";
 
 interface PostProps {
   key?: string;
-  bgColor?: string;
-  shadowColor?: string;
+  commentId?: string;
+  bgColor: string;
+  shadowColor: string;
   content?: string;
   name?: string;
-  profile?: string;
+  profile: string;
+  // onClick?: () => void;
+  author: string;
+  mainTxt: string;
+  isInput?: boolean;
+  setAuthor?: React.Dispatch<React.SetStateAction<string>> | undefined;
+  setMainTxt?: React.Dispatch<React.SetStateAction<string>> | undefined;
+  setPost: () => void;
 }
 
-const PostArticle = styled.article<PostProps>`
+const PostArticle = styled.article<{ bgColor: string }>`
   width: 250px;
   height: 250px;
   clip-path: polygon(100% 0, 100% 100%, 15% 100%, 0 85%, 0 0);
@@ -25,24 +36,24 @@ const PostArticle = styled.article<PostProps>`
   background-color: ${props => props.bgColor};
 `;
 
-const PostContent = styled.p<PostProps>`
+const PostContent = styled.p`
   font-size: 14px;
   word-break: break-all;
 `;
 
-const PostFooter = styled.div<PostProps>`
+const PostFooter = styled.div`
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-start;
   align-items: center;
 `;
 
-const PostNickname = styled.strong<PostProps>`
+const PostNickname = styled.strong`
   font-size: 18px;
   font-weight: bold;
 `;
 
-const PostEdge = styled.div<PostProps>`
+const PostEdge = styled.div<{ shadowColor: string }>`
   position: absolute;
   bottom: 0;
   left: 0px;
@@ -52,49 +63,87 @@ const PostEdge = styled.div<PostProps>`
   background-color: ${props => props.shadowColor};
 `;
 
-const PostCloseBtn = styled(EmojiImg)<PostProps>`
+const PostCloseBtn = styled.img`
+  width: 15px;
+  height: 15px;
   position: absolute;
   top: 8px;
   right: 8px;
+  cursor: pointer;
 `;
 
 const Post = ({
   key,
+  commentId,
   bgColor,
   shadowColor,
   content,
   name,
   profile,
-}: PostProps) => {
+  isInput,
+  setAuthor,
+  author,
+  setMainTxt,
+  mainTxt,
+  setPost,
+}: PostProps): JSX.Element => {
+  const location = useLocation();
+
+  const done =
+    location.pathname.split("/")[1] === "done" ? "hidden" : undefined;
   const [isModalState, setIsModalState] = React.useState<boolean>(false);
+
   const ShowDeleteModal = (): void => {
     setIsModalState(!isModalState);
-  }
+  };
+
   const closeDeleteModal = (): void => {
     setIsModalState(false);
-  }
+  };
 
   return (
-    <div>
-      <PostArticle bgColor={bgColor ?? bgColor}>
+    <>
+      <PostArticle bgColor={isInput ? "#FBF1F6" : bgColor}>
         <h3 className="ir">{name}님의 포스트잇</h3>
-        <PostContent>{content}</PostContent>
+        {isInput ? (
+          <ContentInput setMainTxt={setMainTxt} mainTxt={mainTxt} />
+        ) : (
+          <PostContent>{content}</PostContent>
+        )}
         <PostFooter>
-          <Emoji width={40} height={40} src={profile} />
-          <PostNickname>{name}</PostNickname>
+          {isInput ? (
+            <>
+              <Emoji width={40} height={40} src={profile} />
+              <AuthorInput setAuthor={setAuthor} author={author} />
+            </>
+          ) : (
+            <>
+              <Emoji width={40} height={40} src={profile} />
+              <PostNickname>{name}</PostNickname>
+            </>
+          )}
         </PostFooter>
-        <PostEdge shadowColor={shadowColor ?? shadowColor} />
-        <PostCloseBtn
-          className="btn-base"
-          alt="포스트 삭제"
-          width={15}
-          height={15}
-          src={CloseBtn}
-          onClick={ShowDeleteModal}
-        />
+        <PostEdge shadowColor={isInput ? "#FED0E8" : shadowColor} />
+        {!isInput && (
+          <PostCloseBtn
+            className={done}
+            alt="포스트 삭제"
+            width={15}
+            height={15}
+            src={CloseBtn}
+            onClick={ShowDeleteModal}
+          />
+        )}
       </PostArticle>
-      {isModalState === true && <DeletModal key={key} closeDeleteModal={closeDeleteModal}/>}
-    </div>
+      {isModalState && (
+        <DeletModal
+          key={key}
+          closeDeleteModal={closeDeleteModal}
+          setPost={setPost}
+          commentId={commentId}
+        />
+      )}
+    </>
   );
 };
 
