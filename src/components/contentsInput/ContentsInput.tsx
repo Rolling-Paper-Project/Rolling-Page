@@ -1,17 +1,32 @@
 import * as React from "react";
+import { KeyboardEvent } from "react";
 import TextareaEl from "../../elements/textarea/Textarea";
 
 interface ContentProps {
   setMainTxt?: React.Dispatch<React.SetStateAction<string>>;
   mainTxt: string;
 }
+
 const ContentInput: React.FC<ContentProps> = ({ setMainTxt, mainTxt }) => {
   const onInputFunc = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const input = event.target;
-    if (setMainTxt) {
+    const contentLength = input.value.length;
+    if (contentLength > 128) {
+      event.preventDefault();
+      event.stopPropagation();
+    } else if (setMainTxt) {
       setMainTxt(input.value);
     }
+
     return input.value;
+  };
+
+  const handleKeyPress = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+    if (mainTxt.split("\n").length > 7) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+      }
+    }
   };
 
   return (
@@ -26,6 +41,7 @@ const ContentInput: React.FC<ContentProps> = ({ setMainTxt, mainTxt }) => {
       fontWeight="400"
       border="none"
       bgColor="transparent"
+      onKeyPress={handleKeyPress}
       required
     />
   );

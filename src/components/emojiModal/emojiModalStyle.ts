@@ -24,6 +24,10 @@ export const ModalWrapper = styled.div`
   box-sizing: border-box;
   text-align: center;
 `;
+export const DeleteBox = styled.div`
+  position: relative;
+  float: right;
+`;
 
 export const ContentsWrapper = styled.div`
   display: flex;

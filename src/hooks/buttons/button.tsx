@@ -15,7 +15,7 @@ interface ImgBtnProps {
   left?: string;
   right?: string;
   display?: string;
-  onClick?: () => void;
+  onClick?: (event: any) => void;
 }
 
 const Btn = styled.button`
