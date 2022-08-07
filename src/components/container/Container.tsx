@@ -30,11 +30,11 @@ export const ContainerStyled = styled.div`
 
 const BoardTitleStyled = styled.h2`
   width: fit-content;
-  font-weight: 300;
-  font-size: 35px;
+  font-weight: 600;
+  font-size: 40px;
   line-height: 44px;
   color: #977ae1;
-  padding: 16px 0 24px 31px;
+  padding: 46px 0 24px 31px;
 `;
 
 const BoardButtonStyled = styled.button`
@@ -85,7 +85,7 @@ const Container = ({ done }: TitleProps) => {
   ];
 
   const setPost = async () => {
-    const url = `${BASE_URL}/post/${id}/comments`;
+    const url = `${BASE_URL}/post/${id}/comments/?limit=100`;
     const config = {
       headers: {
         Authorization: `Bearer ${TOKEN}`,

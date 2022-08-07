@@ -12,16 +12,11 @@ const BoardWrap = styled.div`
 const Board = () => {
   return (
     <>
-<<<<<<< HEAD
-      <Container />
-      <div />
-=======
       <Header />
       <BoardWrap>
         <TitleInput />
         <Container post={[]} />
       </BoardWrap>
->>>>>>> 6c68983ef3fa19cf3de6d3d7dd51c37fb939d7b4
     </>
   );
 };

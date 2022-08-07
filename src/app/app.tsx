@@ -18,6 +18,7 @@ const GlobalStyles = createGlobalStyle`
         font-weight: 400;
         font-style: normal;
       }
+      overflow-x:hidden;
     }
     *{
       box-sizing: border-box;
