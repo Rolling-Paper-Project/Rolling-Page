@@ -8,6 +8,11 @@ export const BoardWrap = styled.div`
   background-color: #fffafc;
   height: 100vh;
   padding-top: 15px;
+  @media (max-width: 420px) {
+    height: 100%;
+    background-color: #fffafc;
+    padding-top: 0;
+  }
 `;
 const Board = () => {
   return (

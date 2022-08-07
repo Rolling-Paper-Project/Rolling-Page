@@ -12,6 +12,11 @@ const HeaderContent = styled.div`
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  @media (max-width: 420px) {
+    width: 100%;
+    position: relative;
+    padding: 17px 10px 10px;
+  }
 `;
 
 // 배포 시 뺄 코드
@@ -31,6 +36,9 @@ const LinkButton = styled.button`
   align-items: end;
   gap: 7px;
   cursor: pointer;
+  @media (max-width: 420px) {
+    font-size: 12px;
+  }
 `;
 
-export { HeaderWrap, HeaderContent, LogoImg, LinkButton};
+export { HeaderWrap, HeaderContent, LogoImg, LinkButton };

@@ -26,6 +26,11 @@ export const ContainerStyled = styled.div`
   border: 1px solid #efefef;
   background-color: white;
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1);
+  @media (max-width: 420px) {
+    width: 100%;
+    border: none;
+    box-shadow: none;
+  }
 `;
 
 const BoardTitleStyled = styled.h2`
@@ -35,6 +40,10 @@ const BoardTitleStyled = styled.h2`
   line-height: 44px;
   color: #977ae1;
   padding: 46px 0 24px 31px;
+  @media (max-width: 420px) {
+    font-size: 20px;
+    padding: 15px 0 10px 10px;
+  }
 `;
 
 const BoardButtonStyled = styled.button`
@@ -69,6 +78,9 @@ const BoardPostUl = styled.ul`
   }
   &::-webkit-scrollbar-track {
     background: white;
+  }
+  @media (max-width: 420px) {
+    justify-content: center;
   }
 `;
 

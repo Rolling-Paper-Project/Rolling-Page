@@ -26,6 +26,9 @@ const Btn = styled.button`
   border-radius: 5px;
   font-size: 18px;
   font-weight: 700;
+  @media (max-width: 420px) {
+    height: 30px;
+  }
 `;
 
 const Basic = styled(Btn)`
