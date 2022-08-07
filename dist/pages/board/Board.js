@@ -71,7 +71,7 @@ var Board = function () {
         setBoard();
     }, []);
     return (React.createElement(React.Fragment, null,
-        React.createElement(Container, { boardData: boardData }),
+        React.createElement(Container, null),
         React.createElement("div", null)));
 };
 export { Board };

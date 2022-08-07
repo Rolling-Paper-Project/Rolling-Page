@@ -39,7 +39,7 @@ const Board = () => {
 
   return (
     <>
-      <Container boardData={boardData} />
+      <Container />
       <div />
     </>
   );

@@ -1,0 +1,16 @@
+var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
+import styled from "styled-components";
+import { EmojiImg } from "../../elements/emoji/Emoji";
+export var ModalOver = styled.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  position: fixed;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  background-color: rgba(0, 0, 0, 0.2);\n  z-index: 100;\n"], ["\n  position: fixed;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  background-color: rgba(0, 0, 0, 0.2);\n  z-index: 100;\n"])));
+export var ModalWrapper = styled.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  width: 50%;\n  min-width: 410px;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  padding: 30px;\n  background-color: white;\n  border-radius: 10px;\n  box-sizing: border-box;\n  text-align: center;\n"], ["\n  width: 50%;\n  min-width: 410px;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  padding: 30px;\n  background-color: white;\n  border-radius: 10px;\n  box-sizing: border-box;\n  text-align: center;\n"])));
+export var ContentsWrapper = styled.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  display: flex;\n  flex-wrap: wrap;\n"], ["\n  display: flex;\n  flex-wrap: wrap;\n"])));
+export var EmojiWrapper = styled.div(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  flex: 1;\n  padding: 20px;\n"], ["\n  flex: 1;\n  padding: 20px;\n"])));
+export var EmojiflexBox = styled.div(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  justify-items: center;\n  text-align: center;\n"], ["\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  justify-items: center;\n  text-align: center;\n"])));
+export var PostWrapper = styled(EmojiWrapper)(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n"], ["\n"])));
+export var TitleText = styled.p(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n  font-weight: 600;\n  font-size: 22px;\n  line-height: 27px;\n  text-align: center;\n  margin-bottom: 40px;\n"], ["\n  font-weight: 600;\n  font-size: 22px;\n  line-height: 27px;\n  text-align: center;\n  margin-bottom: 40px;\n"])));
+export var Img = styled(EmojiImg)(templateObject_8 || (templateObject_8 = __makeTemplateObject(["\n  border-radius: 50%;\n  cursor: pointer;\n  box-sizing: border-box;\n\n  :hover {\n    outline: 5px solid #977ae1;\n  }\n"], ["\n  border-radius: 50%;\n  cursor: pointer;\n  box-sizing: border-box;\n\n  :hover {\n    outline: 5px solid #977ae1;\n  }\n"])));
+var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6, templateObject_7, templateObject_8;
+//# sourceMappingURL=emojiModalStyle.js.map
