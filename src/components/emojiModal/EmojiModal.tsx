@@ -77,7 +77,6 @@ const EmojiModal: React.FC<ModalProps> = ({
       addModalReset();
     }
   };
-
   const addPost = async () => {
     const text = contents.join("☇⚁♘");
     try {
@@ -102,6 +101,13 @@ const EmojiModal: React.FC<ModalProps> = ({
       addModalReset();
     } catch (error) {
       console.log(error);
+    }
+  };
+  const onClickAddBtn = () => {
+    if (mainTxt === "" || author === "") {
+      window.alert("모든 값을 입력해주세요!");
+    } else {
+      addPost();
     }
   };
 
@@ -155,7 +161,7 @@ const EmojiModal: React.FC<ModalProps> = ({
             </PostMargin>
           </ContentBox>
         </ContentsWrapper>
-        <BasicBtn onClick={addPost}>저장</BasicBtn>
+        <BasicBtn onClick={onClickAddBtn}>저장</BasicBtn>
       </ModalWrapper>
     </ModalOver>
   );
