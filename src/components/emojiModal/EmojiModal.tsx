@@ -33,8 +33,8 @@ interface PostDataProps {
 interface ModalProps {
   setIsModalShow: Dispatch<SetStateAction<boolean>>;
   setPostData:
-    | Dispatch<SetStateAction<PostDataProps[] | undefined>>
-    | undefined;
+  | Dispatch<SetStateAction<PostDataProps[] | undefined>>
+  | undefined;
   isModalShow: boolean;
   setPost: () => void;
 }
@@ -52,7 +52,8 @@ const EmojiModal: React.FC<ModalProps> = ({
   const [author, setAuthor] = React.useState<string>("");
   const [profileEmoji, setProfileEmoji] = useState<string>(CUTE);
   const contents = [mainTxt, author, profileEmoji];
-
+  const images = [CUTE ?? CUTE, SAD, SADFUNNY, HAPPY, TEASING, ANGRY];
+  
   const addImgPath = (event: React.MouseEvent<HTMLImageElement>) => {
     event.stopPropagation();
     const img = event.currentTarget;
@@ -121,27 +122,18 @@ const EmojiModal: React.FC<ModalProps> = ({
           <ContentBox>
             <TitleText>1. 스티커를 골라볼까요?</TitleText>
             <EmojiflexBox>
-              <Img
-                width={100}
-                height={100}
-                src={CUTE ?? CUTE}
-                onClick={addImgPath}
-              />
-              <Img width={100} height={100} src={SAD} onClick={addImgPath} />
-              <Img
-                width={100}
-                height={100}
-                src={SADFUNNY}
-                onClick={addImgPath}
-              />
-              <Img width={100} height={100} src={HAPPY} onClick={addImgPath} />
-              <Img
-                width={100}
-                height={100}
-                src={TEASING}
-                onClick={addImgPath}
-              />
-              <Img width={100} height={100} src={ANGRY} onClick={addImgPath} />
+              {
+                images.map((element) => (
+                  <Img
+                    key={element}
+                    width={100}
+                    height={100}
+                    src={element}
+                    onClick={addImgPath}
+                    profileEmoji={profileEmoji}
+                  />
+                ))
+              }
             </EmojiflexBox>
           </ContentBox>
           <ContentBox>

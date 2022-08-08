@@ -24,6 +24,7 @@ export const ModalWrapper = styled.div`
   box-sizing: border-box;
   text-align: center;
 `;
+
 export const DeleteBox = styled.div`
   position: relative;
   float: right;
@@ -57,14 +58,12 @@ export const TitleText = styled.p`
   margin-bottom: 40px;
 `;
 
-export const Img = styled(EmojiImg)`
+export const Img = styled(EmojiImg) <{ src: string, profileEmoji: string }>`
   border-radius: 50%;
   cursor: pointer;
   box-sizing: border-box;
-
-  :hover {
-    outline: 5px solid #977ae1;
-  }
+  outline: ${(props) => (
+    props.profileEmoji === props.src ? "5px solid #977ae1" : "none")};
 `;
 
 export const PostMargin = styled.div`
