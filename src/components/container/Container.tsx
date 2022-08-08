@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import * as React from "react";
 import styled from "styled-components";
-import { useParams } from "react-router";
+import { useParams, useLocation } from "react-router";
 import axios from "axios";
 import Post from "../post/Post";
 import { BASE_URL, TOKEN } from "../../constants/index";
@@ -16,6 +16,10 @@ interface TitleProps {
   done?: string | undefined;
   // eslint-disable-next-line react/no-unused-prop-types
   post?: PostDataProps[];
+}
+
+interface BoardTitle {
+  boardTitle : string;
 }
 
 export const ContainerStyled = styled.div`
@@ -92,6 +96,7 @@ const BoardPostUl = styled.ul`
   }
 `;
 
+
 const Container = ({ done }: TitleProps) => {
   const { id } = useParams();
   const [postData, setPostData] = React.useState<
@@ -119,6 +124,8 @@ const Container = ({ done }: TitleProps) => {
     }
   };
 
+  const location = useLocation().state as BoardTitle;
+
   const setPost = async () => {
     const url = `${BASE_URL}/post/${id}/comments/?limit=100`;
     const config = {
@@ -140,6 +147,7 @@ const Container = ({ done }: TitleProps) => {
     setPost();
   }, []);
 
+  
   const [isModalShow, setIsModalShow] = React.useState<boolean>(false);
 
   const handleAddPostBtn = () => {
@@ -149,7 +157,7 @@ const Container = ({ done }: TitleProps) => {
   return (
     <ContainerStyled>
       <BoardHeaderStyled>
-        <BoardTitleStyled>내가 설정한 보드 이름</BoardTitleStyled>
+        <BoardTitleStyled>{location.boardTitle}</BoardTitleStyled>
         <BoardPrevButtonStyled onClick={setPrev}>
           {prevBtnVal}
         </BoardPrevButtonStyled>

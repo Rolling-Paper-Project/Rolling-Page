@@ -80,7 +80,6 @@ const Main = () => {
           },
         );
         setBoardData(res.data);
-        console.log(boardData);
       } catch (error) {
         console.log(error);
       }
@@ -95,7 +94,7 @@ const Main = () => {
         <MainContainer>
           <MainExp>이름을 클릭해서 롤링페이지를 작성해주세요 💚</MainExp>
           {boardData?.post?.map(data => (
-            <BoardLink to={`/board/${data.id}`} key={data.id}>
+            <BoardLink to={`/board/${data.id}`} key={data.id} state={{boardTitle: data.content}}>
               {data.content}
             </BoardLink>
           ))}
