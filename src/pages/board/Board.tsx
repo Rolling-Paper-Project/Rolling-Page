@@ -1,12 +1,13 @@
+import axios from "axios";
 import * as React from "react";
+import { useParams } from "react-router";
 import styled from "styled-components";
 import Container from "../../components/container/Container";
 import Header from "../../components/Header/Header";
 import TitleInput from "../../components/titleInput/TitleInput";
+import { BASE_URL, TOKEN } from "../../constants";
 
 export const BoardWrap = styled.div`
-  background-color: #fffafc;
-  height: 100vh;
   padding-top: 15px;
   @media (max-width: 420px) {
     height: 100%;
@@ -15,12 +16,30 @@ export const BoardWrap = styled.div`
   }
 `;
 const Board = () => {
+  const { id } = useParams();
+  const [boardTit, setBoardTit] = React.useState("");
+  React.useEffect(() => {
+    const setBoard = async () => {
+      try {
+        const res = await axios.get(`${BASE_URL}/post/${id}`, {
+          headers: {
+            Authorization: `Bearer ${TOKEN}`,
+            "Content-type": "application/json",
+          },
+        });
+        setBoardTit(res.data.post.content);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    setBoard();
+  }, []);
   return (
     <>
       <Header />
       <BoardWrap>
-        <TitleInput />
-        <Container post={[]} />
+        {/* <TitleInput /> */}
+        <Container post={[]} boardTit={boardTit} />
       </BoardWrap>
     </>
   );

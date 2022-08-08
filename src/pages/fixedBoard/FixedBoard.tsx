@@ -1,17 +1,38 @@
+import axios from "axios";
 import * as React from "react";
-import { useLocation } from "react-router";
+import { useLocation, useParams } from "react-router";
 import Container from "../../components/container/Container";
-import TitleInput from "../../components/titleInput/TitleInput";
+import Header from "../../components/Header/Header";
+import { BASE_URL, TOKEN } from "../../constants";
+import { BoardWrap } from "../board/Board";
 
 const FixedBoard = () => {
-  const location = useLocation();
-  const done =
-    location.pathname.split("/")[1] === "done" ? "hidden" : undefined;
+  const { id } = useParams();
+  const [boardTit, setBoardTit] = React.useState("");
+
+  React.useEffect(() => {
+    const setBoard = async () => {
+      try {
+        const res = await axios.get(`${BASE_URL}/post/${id}`, {
+          headers: {
+            Authorization: `Bearer ${TOKEN}`,
+            "Content-type": "application/json",
+          },
+        });
+        setBoardTit(res.data.post.content);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    setBoard();
+  }, []);
 
   return (
     <>
-      <TitleInput done={done} />
-      <Container done={done} />
+      <Header />
+      <BoardWrap>
+        <Container post={[]} boardTit={boardTit} />
+      </BoardWrap>
     </>
   );
 };
