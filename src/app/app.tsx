@@ -48,6 +48,9 @@ const GlobalStyles = createGlobalStyle`
     &.hidden {
       display: none;
     }
+    &.block {
+      display: block;
+    }
 `;
 
 // FC : function component 라는 의미입니다.

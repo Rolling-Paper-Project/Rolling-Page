@@ -19,6 +19,7 @@ interface PostProps {
   isInput?: boolean;
   setAuthor?: React.Dispatch<React.SetStateAction<string>> | undefined;
   setMainTxt?: React.Dispatch<React.SetStateAction<string>> | undefined;
+  prevData?: string;
   setPost: () => void;
 }
 
@@ -65,7 +66,8 @@ const PostEdge = styled.div<{ shadowColor: string }>`
   background-color: ${props => props.shadowColor};
 `;
 
-const PostCloseBtn = styled.img`
+const PostCloseBtn = styled.img<{ prevData?: string }>`
+  display: ${props => props.prevData};
   width: 15px;
   height: 15px;
   position: absolute;
@@ -87,6 +89,7 @@ const Post = ({
   setMainTxt,
   mainTxt,
   setPost,
+  prevData,
 }: PostProps): JSX.Element => {
   const location = useLocation();
 
@@ -127,7 +130,7 @@ const Post = ({
         <PostEdge shadowColor={isInput ? "#FED0E8" : shadowColor} />
         {!isInput && (
           <PostCloseBtn
-            className={done}
+            className={done || prevData}
             alt="포스트 삭제"
             width={15}
             height={15}

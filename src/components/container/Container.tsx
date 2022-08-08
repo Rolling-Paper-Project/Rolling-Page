@@ -6,6 +6,7 @@ import axios from "axios";
 import Post from "../post/Post";
 import { BASE_URL, TOKEN } from "../../constants/index";
 import EmojiModal from "../emojiModal/EmojiModal";
+import { Basic } from "../../hooks/buttons/button";
 
 interface PostDataProps {
   id: string;
@@ -33,18 +34,25 @@ export const ContainerStyled = styled.div`
   }
 `;
 
+const BoardHeaderStyled = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 46px 37px 24px 30px;
+`;
+
 const BoardTitleStyled = styled.h2`
   width: fit-content;
   font-weight: 600;
   font-size: 40px;
-  line-height: 44px;
   color: #977ae1;
-  padding: 46px 0 24px 31px;
   @media (max-width: 420px) {
     font-size: 20px;
     padding: 15px 0 10px 10px;
   }
 `;
+
+const BoardPrevButtonStyled = styled(Basic)``;
 
 const BoardButtonStyled = styled.button`
   position: absolute;
@@ -89,12 +97,27 @@ const Container = ({ done }: TitleProps) => {
   const [postData, setPostData] = React.useState<
     TitleProps["post"] | undefined
   >();
+  const [countData, setCountData] = React.useState(0);
+  const [prevData, setPrevData] = React.useState("block");
+  const [prevBtnVal, setPrevBtnVal] = React.useState("미리보기");
   const colorArray = [
     "#E5EDFF, #B6CCFF",
     "#FBF1F6, #F9CCE3",
     "#EAE7F5, #CBC2FA",
     "#FCF6D8, #FCEEAB",
   ];
+
+  const setPrev = (): void => {
+    setCountData(countData + 1);
+
+    if (countData % 2 === 0) {
+      setPrevData("hidden");
+      setPrevBtnVal("수정하기");
+    } else {
+      setPrevData("block");
+      setPrevBtnVal("미리보기");
+    }
+  };
 
   const setPost = async () => {
     const url = `${BASE_URL}/post/${id}/comments/?limit=100`;
@@ -125,7 +148,12 @@ const Container = ({ done }: TitleProps) => {
 
   return (
     <ContainerStyled>
-      <BoardTitleStyled>내가 설정한 보드 이름</BoardTitleStyled>
+      <BoardHeaderStyled>
+        <BoardTitleStyled>내가 설정한 보드 이름</BoardTitleStyled>
+        <BoardPrevButtonStyled onClick={setPrev}>
+          {prevBtnVal}
+        </BoardPrevButtonStyled>
+      </BoardHeaderStyled>
       <BoardPostUl>
         {postData?.map(element => {
           const randomIdx = Math.floor(Math.random() * 3 + 1);
@@ -149,11 +177,15 @@ const Container = ({ done }: TitleProps) => {
               author=""
               mainTxt=""
               setPost={setPost}
+              prevData={prevData}
             />
           );
         })}
       </BoardPostUl>
-      <BoardButtonStyled className={done} onClick={handleAddPostBtn}>
+      <BoardButtonStyled
+        className={done || prevData}
+        onClick={handleAddPostBtn}
+      >
         +
       </BoardButtonStyled>
       <EmojiModal
