@@ -7,7 +7,7 @@ const Title = styled.h2`
   font-size: 14px;
   line-height: 18px;
   margin-bottom: 5px;
-  @media (max-width: 420px) {
+  @media (max-width: 680px) {
     display: none;
   }
 `;
@@ -16,7 +16,7 @@ const TitleWrap = styled.section`
   max-width: 1400px;
   height: 100px;
   margin: 0 auto 20px;
-  @media (max-width: 420px) {
+  @media (max-width: 680px) {
     margin: 0;
     height: auto;
     width: 100%;

@@ -12,7 +12,7 @@ const HeaderContent = styled.div`
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  @media (max-width: 420px) {
+  @media (max-width: 680px) {
     width: 100%;
     position: relative;
     padding: 17px 10px 10px;
@@ -36,7 +36,7 @@ const LinkButton = styled.button`
   align-items: end;
   gap: 7px;
   cursor: pointer;
-  @media (max-width: 420px) {
+  @media (max-width: 680px) {
     font-size: 12px;
   }
 `;

@@ -27,10 +27,15 @@ export const ContainerStyled = styled.div`
   border: 1px solid #efefef;
   background-color: white;
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1);
-  @media (max-width: 420px) {
+  @media (max-width: 680px) {
     width: 100%;
     border: none;
     box-shadow: none;
+    height: calc(100vh - 70px);
+  }
+  @media (max-width: 460px) {
+    flex-direction: column;
+    height: 90vh;
   }
 `;
 
@@ -39,6 +44,10 @@ const BoardHeaderStyled = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 46px 37px 24px 30px;
+  @media (max-width: 460px) {
+    flex-direction: column;
+    padding-top: 25px;
+  }
 `;
 
 const BoardTitleStyled = styled.h2`
@@ -46,9 +55,13 @@ const BoardTitleStyled = styled.h2`
   font-weight: 600;
   font-size: 40px;
   color: #977ae1;
-  @media (max-width: 420px) {
+  @media (max-width: 680px) {
     font-size: 20px;
     padding: 15px 0 10px 10px;
+  }
+  @media (max-width: 460px) {
+    margin-bottom: 10px;
+    font-size: 23px;
   }
 `;
 
@@ -89,7 +102,7 @@ const BoardPostUl = styled.ul`
   &::-webkit-scrollbar-track {
     background: white;
   }
-  @media (max-width: 420px) {
+  @media (max-width: 680px) {
     justify-content: center;
   }
 `;

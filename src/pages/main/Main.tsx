@@ -12,7 +12,7 @@ const MainContainer = styled(ContainerStyled)`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  @media (max-width: 420px) {
+  @media (max-width: 680px) {
     width: 100%;
     position: relative;
     margin-top: 0;
@@ -39,7 +39,7 @@ const BoardLink = styled(Link)`
   &:hover {
     background-color: #5a4a82;
   }
-  @media (max-width: 420px) {
+  @media (max-width: 680px) {
     width: 50%;
     font-size: 14px;
     line-height: auto;
@@ -52,7 +52,7 @@ const MainExp = styled.strong`
   margin-bottom: 30px;
   text-align: center;
   display: block;
-  @media (max-width: 420px) {
+  @media (max-width: 680px) {
     font-size: 20px;
   }
 `;
@@ -94,7 +94,11 @@ const Main = () => {
         <MainContainer>
           <MainExp>이름을 클릭해서 롤링페이지를 작성해주세요 💚</MainExp>
           {boardData?.post?.map(data => (
-            <BoardLink to={`/board/${data.id}`} key={data.id} state={{boardTitle: data.content}}>
+            <BoardLink
+              to={`/board/${data.id}`}
+              key={data.id}
+              state={{ boardTitle: data.content }}
+            >
               {data.content}
             </BoardLink>
           ))}
