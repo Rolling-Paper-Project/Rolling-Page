@@ -6,7 +6,7 @@ import axios from "axios";
 import Post from "../post/Post";
 import { BASE_URL, TOKEN } from "../../constants/index";
 import EmojiModal from "../emojiModal/EmojiModal";
-import { Basic } from "../../hooks/buttons/button";
+import { Basic } from "../../elements/buttons/button";
 
 interface PostDataProps {
   id: string;

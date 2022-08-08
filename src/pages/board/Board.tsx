@@ -15,6 +15,16 @@ export const BoardWrap = styled.div`
     padding-top: 0;
   }
 `;
+
+export const ShareLinkBox = styled.div`
+  width: 1400px;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 10px;
+  margin: 0 auto;
+  padding: 10px;
+`;
+
 const Board = () => {
   const { id } = useParams();
   const [boardTit, setBoardTit] = React.useState("");

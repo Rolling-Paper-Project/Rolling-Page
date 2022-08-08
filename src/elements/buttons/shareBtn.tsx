@@ -28,7 +28,7 @@ const ShareLinkToWriter = () => {
   return (
     <>
       <ShareLinkBtn onClick={onClickToggleModal}>
-        작성 링크 공유하기
+        친구와 함께 작성하기
       </ShareLinkBtn>
       {isOpenModal ? (
         <Share onClickToggleModal={onClickToggleModal} />
@@ -48,7 +48,7 @@ const ShareLinkToReceiver = () => {
   return (
     <>
       <ShareLinkBtn onClick={onClickToggleModal}>
-        완성된 롤링페이지 공유하기
+        완성된 롤링페이지 선물하기
       </ShareLinkBtn>
       {isOpenModal ? (
         <Share onClickToggleModal={onClickToggleModal} />
