@@ -3,6 +3,10 @@ import styled from "styled-components";
 import Container from "../../components/container/Container";
 import Header from "../../components/Header/Header";
 import TitleInput from "../../components/titleInput/TitleInput";
+import {
+  ShareLinkToReceiver,
+  ShareLinkToWriter,
+} from "../../elements/buttons/shareBtn";
 
 export const BoardWrap = styled.div`
   background-color: #fffafc;
@@ -14,6 +18,16 @@ export const BoardWrap = styled.div`
     padding-top: 0;
   }
 `;
+
+export const ShareLinkBox = styled.div`
+  width: 1400px;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 10px;
+  margin: 0 auto;
+  padding: 10px;
+`;
+
 const Board = () => {
   return (
     <>
@@ -21,6 +35,10 @@ const Board = () => {
       <BoardWrap>
         <TitleInput />
         <Container post={[]} />
+        <ShareLinkBox>
+          <ShareLinkToReceiver />
+          <ShareLinkToWriter />
+        </ShareLinkBox>
       </BoardWrap>
     </>
   );
