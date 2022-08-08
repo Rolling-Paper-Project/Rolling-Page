@@ -18,6 +18,8 @@ const GlobalStyles = createGlobalStyle`
         font-weight: 400;
         font-style: normal;
       }
+      background-color: #fffafc;
+      height: 100vh;
       overflow-x:hidden;
     }
     *{

@@ -13,13 +13,9 @@ interface PostDataProps {
   content: string;
 }
 interface TitleProps {
-  done?: string | undefined;
   // eslint-disable-next-line react/no-unused-prop-types
   post?: PostDataProps[];
-}
-
-interface BoardTitle {
-  boardTitle: string;
+  boardTit: string;
 }
 
 export const ContainerStyled = styled.div`
@@ -96,7 +92,7 @@ const BoardPostUl = styled.ul`
   }
 `;
 
-const Container = ({ done }: TitleProps) => {
+const Container = ({ boardTit }: TitleProps) => {
   const { id } = useParams();
   const [postData, setPostData] = React.useState<
     TitleProps["post"] | undefined
@@ -123,7 +119,7 @@ const Container = ({ done }: TitleProps) => {
     }
   };
 
-  const location = useLocation().state as BoardTitle;
+  // const location = useLocation().state as BoardTitle;
 
   const setPost = async () => {
     const url = `${BASE_URL}/post/${id}/comments/?limit=100`;
@@ -151,12 +147,15 @@ const Container = ({ done }: TitleProps) => {
   const handleAddPostBtn = () => {
     setIsModalShow(true);
   };
+  const location = useLocation();
+  const done =
+    location.pathname.split("/")[1] === "done" ? "hidden" : undefined;
 
   return (
     <ContainerStyled>
       <BoardHeaderStyled>
-        <BoardTitleStyled>{location.boardTitle}</BoardTitleStyled>
-        <BoardPrevButtonStyled onClick={setPrev}>
+        <BoardTitleStyled>{boardTit}</BoardTitleStyled>
+        <BoardPrevButtonStyled className={done} onClick={setPrev}>
           {prevBtnVal}
         </BoardPrevButtonStyled>
       </BoardHeaderStyled>
