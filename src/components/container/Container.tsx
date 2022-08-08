@@ -6,7 +6,7 @@ import axios from "axios";
 import Post from "../post/Post";
 import { BASE_URL, TOKEN } from "../../constants/index";
 import EmojiModal from "../emojiModal/EmojiModal";
-import { Basic } from "../../hooks/buttons/button";
+import { Basic } from "../../elements/buttons/button";
 
 interface PostDataProps {
   id: string;
@@ -19,7 +19,7 @@ interface TitleProps {
 }
 
 interface BoardTitle {
-  boardTitle : string;
+  boardTitle: string;
 }
 
 export const ContainerStyled = styled.div`
@@ -96,7 +96,6 @@ const BoardPostUl = styled.ul`
   }
 `;
 
-
 const Container = ({ done }: TitleProps) => {
   const { id } = useParams();
   const [postData, setPostData] = React.useState<
@@ -147,7 +146,6 @@ const Container = ({ done }: TitleProps) => {
     setPost();
   }, []);
 
-  
   const [isModalShow, setIsModalShow] = React.useState<boolean>(false);
 
   const handleAddPostBtn = () => {

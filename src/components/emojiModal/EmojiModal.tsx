@@ -12,7 +12,7 @@ import {
   PostMargin,
   DeleteBox,
 } from "./emojiModalStyle";
-import { BasicBtn, CloseBtn } from "../../hooks/buttons/button";
+import { BasicBtn, CloseBtn } from "../../elements/buttons/button";
 
 import Post from "../post/Post";
 import {
@@ -33,8 +33,8 @@ interface PostDataProps {
 interface ModalProps {
   setIsModalShow: Dispatch<SetStateAction<boolean>>;
   setPostData:
-  | Dispatch<SetStateAction<PostDataProps[] | undefined>>
-  | undefined;
+    | Dispatch<SetStateAction<PostDataProps[] | undefined>>
+    | undefined;
   isModalShow: boolean;
   setPost: () => void;
 }
@@ -53,7 +53,7 @@ const EmojiModal: React.FC<ModalProps> = ({
   const [profileEmoji, setProfileEmoji] = useState<string>(CUTE);
   const contents = [mainTxt, author, profileEmoji];
   const images = [CUTE ?? CUTE, SAD, SADFUNNY, HAPPY, TEASING, ANGRY];
-  
+
   const addImgPath = (event: React.MouseEvent<HTMLImageElement>) => {
     event.stopPropagation();
     const img = event.currentTarget;
@@ -122,18 +122,16 @@ const EmojiModal: React.FC<ModalProps> = ({
           <ContentBox>
             <TitleText>1. 스티커를 골라볼까요?</TitleText>
             <EmojiflexBox>
-              {
-                images.map((element) => (
-                  <Img
-                    key={element}
-                    width={100}
-                    height={100}
-                    src={element}
-                    onClick={addImgPath}
-                    profileEmoji={profileEmoji}
-                  />
-                ))
-              }
+              {images.map(element => (
+                <Img
+                  key={element}
+                  width={100}
+                  height={100}
+                  src={element}
+                  onClick={addImgPath}
+                  profileEmoji={profileEmoji}
+                />
+              ))}
             </EmojiflexBox>
           </ContentBox>
           <ContentBox>
