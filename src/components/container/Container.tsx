@@ -52,7 +52,9 @@ const BoardTitleStyled = styled.h2`
   }
 `;
 
-const BoardPrevButtonStyled = styled(Basic)``;
+const BoardPrevButtonStyled = styled(Basic)`
+  width: 150px;
+`;
 
 const BoardButtonStyled = styled.button`
   position: absolute;
@@ -112,10 +114,10 @@ const Container = ({ boardTit }: TitleProps) => {
 
     if (countData % 2 === 0) {
       setPrevData("hidden");
-      setPrevBtnVal("수정하기");
+      setPrevBtnVal("다시 수정하기");
     } else {
       setPrevData("block");
-      setPrevBtnVal("미리보기");
+      setPrevBtnVal("완성본 미리보기");
     }
   };
 
