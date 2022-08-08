@@ -9,7 +9,7 @@ import { BASE_URL, TOKEN } from "../../constants";
 
 export const BoardWrap = styled.div`
   padding-top: 15px;
-  @media (max-width: 420px) {
+  @media (max-width: 680px) {
     height: 100%;
     background-color: #fffafc;
     padding-top: 0;
