@@ -1,5 +1,10 @@
 const kakaoShare = () => {
   const { Kakao } = window;
+  const location = window.location.toString();
+  const url = location.includes("board")
+    ? location
+    : location.replace("board", "done");
+
   if (!Kakao.isInitialized()) {
     Kakao.init("7407a27ef864aaf8a5af6933a8b35200");
   }
@@ -23,7 +28,7 @@ const kakaoShare = () => {
       {
         title: "웹으로 이동",
         link: {
-          mobileWebUrl: "https://developers.kakao.com",
+          mobileWebUrl: url,
         },
       },
     ],
