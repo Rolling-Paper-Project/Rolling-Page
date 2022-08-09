@@ -1,5 +1,5 @@
 import * as React from "react";
-import { PropsWithChildren, useEffect } from "react";
+import { PropsWithChildren, useEffect, useState } from "react";
 // import { Helmet } from "react-helmet";
 import styled from "styled-components";
 import { KakaoBtn, CloseBtn, CopyBtn } from "../../elements/buttons/button";
@@ -36,6 +36,7 @@ const LinkBox = styled.div`
   background-color: #efefef;
   z-index: 30;
   overflow: hidden;
+  cursor: pointer;
 `;
 
 const Backdrop = styled.div`
@@ -46,6 +47,11 @@ const Backdrop = styled.div`
   left: 0;
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.2);
+`;
+
+const Copied = styled.span`
+  position: absolute;
+  top: 160px;
 `;
 
 const Share = ({
@@ -65,6 +71,8 @@ const Share = ({
   }, []);
   // console.log(children);
 
+  const [copied, setCopied] = useState("");
+
   return (
     <>
       <DialogBox>
@@ -83,16 +91,17 @@ const Share = ({
             navigator.clipboard
               .writeText(content)
               .then(() => {
-                console.log("Text copied to clipboard...");
+                setCopied("복사되었습니다!");
               })
               .catch(err => {
-                console.log("Something went wrong", err);
+                setCopied("복사에 실패했습니다!");
               });
           }}
         >
           <CopyBtn bottom="15px" left="550px" />
           {children}
         </LinkBox>
+        <Copied>{copied}</Copied>
         {/* <Helmet>
           <script src="https://developers.kakao.com/sdk/js/kakao.js" />
         </Helmet> */}
