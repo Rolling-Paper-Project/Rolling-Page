@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.js": "/Rolling-Paper-Project/Rolling-Page/static/js/main.c8c04817.js",
-    "static/media/icon-github.svg": "/Rolling-Paper-Project/Rolling-Page/static/media/icon-github.1906faeb797e507f5b838a36dd690546.svg",
-    "static/media/icon-logo.svg": "/Rolling-Paper-Project/Rolling-Page/static/media/icon-logo.78374901f9d4b1c53cda4c5edacc24b9.svg",
-    "static/media/icon-kakao.svg": "/Rolling-Paper-Project/Rolling-Page/static/media/icon-kakao.ec116fbeb072bca62f9d039de70331ad.svg",
-    "static/media/icon-copy.svg": "/Rolling-Paper-Project/Rolling-Page/static/media/icon-copy.5ffe203bd29c2eaed4033cc5d20c07fd.svg",
-    "static/media/icon-close.svg": "/Rolling-Paper-Project/Rolling-Page/static/media/icon-close.0ff2c257deeddd25f84afc59a885448c.svg",
-    "index.html": "/Rolling-Paper-Project/Rolling-Page/index.html",
-    "main.c8c04817.js.map": "/Rolling-Paper-Project/Rolling-Page/static/js/main.c8c04817.js.map"
+    "main.js": "/Rolling-Page/static/js/main.8f1e4c15.js",
+    "static/media/icon-github.svg": "/Rolling-Page/static/media/icon-github.1906faeb797e507f5b838a36dd690546.svg",
+    "static/media/icon-logo.svg": "/Rolling-Page/static/media/icon-logo.78374901f9d4b1c53cda4c5edacc24b9.svg",
+    "static/media/icon-kakao.svg": "/Rolling-Page/static/media/icon-kakao.ec116fbeb072bca62f9d039de70331ad.svg",
+    "static/media/icon-copy.svg": "/Rolling-Page/static/media/icon-copy.5ffe203bd29c2eaed4033cc5d20c07fd.svg",
+    "static/media/icon-close.svg": "/Rolling-Page/static/media/icon-close.0ff2c257deeddd25f84afc59a885448c.svg",
+    "index.html": "/Rolling-Page/index.html",
+    "main.8f1e4c15.js.map": "/Rolling-Page/static/js/main.8f1e4c15.js.map"
   },
   "entrypoints": [
-    "static/js/main.c8c04817.js"
+    "static/js/main.8f1e4c15.js"
   ]
 }
