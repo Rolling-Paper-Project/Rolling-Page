@@ -19,6 +19,7 @@ interface TitleProps {
 }
 
 export const ContainerStyled = styled.div`
+  height: 80vh;
   box-sizing: border-box;
   position: relative;
   max-width: 1400px;
@@ -28,15 +29,12 @@ export const ContainerStyled = styled.div`
   background-color: white;
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1);
   @media (max-width: 680px) {
-    max-height: 680px;
     width: 100%;
     border: none;
     box-shadow: none;
-    height: calc(100vh - 70px);
   }
   @media (max-width: 460px) {
     flex-direction: column;
-    height: 90vh;
   }
 `;
 
@@ -47,7 +45,7 @@ const BoardHeaderStyled = styled.div`
   padding: 46px 37px 24px 30px;
   @media (max-width: 460px) {
     flex-direction: column;
-    padding-top: 25px;
+    padding: 10px;
   }
 `;
 
@@ -94,14 +92,13 @@ const BoardButtonStyled = styled.button`
 `;
 
 const BoardPostUl = styled.ul`
-  max-height: 520px;
+  height: 80%;
   margin-bottom: 148px;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  padding: 0 30px;
+  padding: 10px 30px;
   overflow-y: scroll;
-
   &::-webkit-scrollbar {
     width: 7px;
   }
@@ -115,6 +112,9 @@ const BoardPostUl = styled.ul`
   @media (max-width: 680px) {
     justify-content: center;
     margin-bottom: 50px;
+  }
+  @media (max-width: 460px) {
+    margin-bottom: 30px;
   }
 `;
 

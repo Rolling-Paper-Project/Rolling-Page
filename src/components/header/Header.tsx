@@ -1,6 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { HeaderWrap, HeaderContent, LinkButton, LogoImg } from "./headerStyle";
+import {
+  HeaderWrap,
+  HeaderContent,
+  LinkButton,
+  LogoImg,
+  GitImg,
+} from "./headerStyle";
 import logo from "../../assets/icon-logo.svg";
 import github from "../../assets/icon-github.svg";
 
@@ -17,7 +23,7 @@ const Header = () => {
         </Link>
         <LinkButton onClick={onClick}>
           Contact Us
-          <img src={github} alt="github" />
+          <GitImg src={github} alt="github" />
         </LinkButton>
       </HeaderContent>
     </HeaderWrap>
