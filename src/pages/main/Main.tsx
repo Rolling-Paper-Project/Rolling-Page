@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { ACCOUNTNAME, TOKEN, BASE_URL } from "../../constants";
 import { ContainerStyled } from "../../components/container/Container";
-import Header from "../../components/Header/Header";
+import Header from "../../components/header/Header";
 import { BoardWrap } from "../board/Board";
 
 const MainContainer = styled(ContainerStyled)`

@@ -2,7 +2,7 @@ import axios from "axios";
 import * as React from "react";
 import { useLocation, useParams } from "react-router";
 import Container from "../../components/container/Container";
-import Header from "../../components/Header/Header";
+import Header from "../../components/header/Header";
 import { BASE_URL, TOKEN } from "../../constants";
 import { BoardWrap } from "../board/Board";
 
