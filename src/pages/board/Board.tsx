@@ -27,6 +27,9 @@ export const ShareLinkBox = styled.div`
   gap: 10px;
   margin: 10px auto 0;
   padding: 10px;
+  @media (max-width: 680px) {
+    justify-content: center;
+  }
 `;
 
 const Board = () => {
