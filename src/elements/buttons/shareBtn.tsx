@@ -12,16 +12,18 @@ interface ShareLinkProps {
 const ShareLinkBtn = styled.button<ShareLinkProps>`
   font-size: 20px;
   font-weight: 700;
-  line-height: 44px;
-  color: #d4caed;
+  color: #5a4a82;
   cursor: pointer;
   background-color: transparent;
   border: none;
-  border-bottom: 2px solid #d4caed;
+  border-bottom: 1px solid #5a4a82;
   &:hover {
     color: #5a4a82;
-    border-bottom: 2px solid #5a4a82;
+    /* border-bottom: 2px solid #5a4a82; */
     transform: translateY(-2px);
+  }
+  @media (max-width: 680px) {
+    font-size: 14px;
   }
 `;
 
