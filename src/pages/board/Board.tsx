@@ -3,7 +3,7 @@ import * as React from "react";
 import { useParams } from "react-router";
 import styled from "styled-components";
 import Container from "../../components/container/Container";
-import Header from "../../components/Header/Header";
+import Header from "../../components/header/Header";
 import TitleInput from "../../components/titleInput/TitleInput";
 import { BASE_URL, TOKEN } from "../../constants";
 
