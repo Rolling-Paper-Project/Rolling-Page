@@ -1,7 +1,5 @@
 import * as React from "react";
 import { useState, useCallback } from "react";
-import { useNavigate } from "react-router";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Share from "../../components/shareModal/Share";
 
@@ -10,7 +8,7 @@ interface ShareLinkProps {
 }
 
 const ShareLinkBtn = styled.button<ShareLinkProps>`
-  font-size: 20px;
+  font-size: 1.5rem;
   font-weight: 700;
   color: #5a4a82;
   cursor: pointer;
@@ -23,7 +21,7 @@ const ShareLinkBtn = styled.button<ShareLinkProps>`
     transform: translateY(-2px);
   }
   @media (max-width: 680px) {
-    font-size: 14px;
+    font-size: 0.8rem;
   }
 `;
 

@@ -24,6 +24,9 @@ const DialogBox = styled.dialog`
   box-sizing: border-box;
   background-color: white;
   z-index: 20;
+  @media (max-width: 680px) {
+    width: 260px;
+  }
 `;
 
 const LinkBox = styled.div`
@@ -38,6 +41,12 @@ const LinkBox = styled.div`
   z-index: 30;
   overflow: hidden;
   cursor: pointer;
+  @media (max-width: 680px) {
+    width: 212px;
+    margin-bottom: 30px;
+    padding: 14px;
+    overflow-x: hidden;
+  }
 `;
 
 const Backdrop = styled.div`
