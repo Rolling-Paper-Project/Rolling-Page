@@ -64,6 +64,7 @@ const Share = ({
     };
   }, []);
   // console.log(children);
+
   return (
     <>
       <DialogBox>
@@ -76,7 +77,19 @@ const Share = ({
             }
           }}
         />
-        <LinkBox>
+        <LinkBox
+          onClick={() => {
+            const content: any = children;
+            navigator.clipboard
+              .writeText(content)
+              .then(() => {
+                console.log("Text copied to clipboard...");
+              })
+              .catch(err => {
+                console.log("Something went wrong", err);
+              });
+          }}
+        >
           <CopyBtn bottom="15px" left="550px" />
           {children}
         </LinkBox>
