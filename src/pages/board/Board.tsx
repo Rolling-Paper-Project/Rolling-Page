@@ -6,6 +6,10 @@ import Container from "../../components/container/Container";
 import Header from "../../components/header/Header";
 import TitleInput from "../../components/titleInput/TitleInput";
 import { BASE_URL, TOKEN } from "../../constants";
+import {
+  ShareLinkToWriter,
+  ShareLinkToReceiver,
+} from "../../elements/buttons/shareBtn";
 
 export const BoardWrap = styled.div`
   padding-top: 15px;
@@ -50,6 +54,10 @@ const Board = () => {
       <BoardWrap>
         {/* <TitleInput /> */}
         <Container post={[]} boardTit={boardTit} />
+        <ShareLinkBox>
+          <ShareLinkToReceiver />
+          <ShareLinkToWriter />
+        </ShareLinkBox>
       </BoardWrap>
     </>
   );

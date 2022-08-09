@@ -1,9 +1,15 @@
 import * as React from "react";
 import { useState, useCallback } from "react";
+import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Share from "../../components/shareModal/Share";
 
-const ShareLinkBtn = styled.button`
+interface ShareLinkProps {
+  onClick?: () => void;
+}
+
+const ShareLinkBtn = styled.button<ShareLinkProps>`
   font-size: 20px;
   font-weight: 700;
   line-height: 44px;
@@ -31,7 +37,9 @@ const ShareLinkToWriter = () => {
         친구와 함께 작성하기
       </ShareLinkBtn>
       {isOpenModal ? (
-        <Share onClickToggleModal={onClickToggleModal} />
+        <Share onClickToggleModal={onClickToggleModal}>
+          {window.location.href}
+        </Share>
       ) : (
         <span />
       )}
@@ -45,13 +53,17 @@ const ShareLinkToReceiver = () => {
     setOpenModal(!isOpenModal);
   }, [isOpenModal]);
 
+  const url = window.location.toString();
+  const doneUrl = url.replace("board", "done");
+  const navigate = useNavigate();
+  console.log(doneUrl);
   return (
     <>
       <ShareLinkBtn onClick={onClickToggleModal}>
         완성된 롤링페이지 선물하기
       </ShareLinkBtn>
       {isOpenModal ? (
-        <Share onClickToggleModal={onClickToggleModal} />
+        <Share onClickToggleModal={onClickToggleModal}>{doneUrl}</Share>
       ) : (
         <span />
       )}

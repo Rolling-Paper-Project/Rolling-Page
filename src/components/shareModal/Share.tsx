@@ -9,16 +9,9 @@ interface ModalDefaultType {
   onClickToggleModal: () => void;
 }
 
-const ModalContainer = styled.div`
-  width: 100%;
-  top: 50vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-`;
-
 const DialogBox = styled.dialog`
+  position: fixed;
+  top: 300px;
   width: 700px;
   height: 263px;
   display: flex;
@@ -50,11 +43,15 @@ const Backdrop = styled.div`
   height: 100vh;
   position: fixed;
   top: 0;
+  left: 0;
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.2);
 `;
 
-const Share = ({ onClickToggleModal }: PropsWithChildren<ModalDefaultType>) => {
+const Share = ({
+  onClickToggleModal,
+  children,
+}: PropsWithChildren<ModalDefaultType>) => {
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://developers.kakao.com/sdk/js/kakao.js";
@@ -66,9 +63,9 @@ const Share = ({ onClickToggleModal }: PropsWithChildren<ModalDefaultType>) => {
       document.body.removeChild(script);
     };
   }, []);
-
+  // console.log(children);
   return (
-    <ModalContainer>
+    <>
       <DialogBox>
         <CloseBtn
           bottom="10px"
@@ -81,7 +78,7 @@ const Share = ({ onClickToggleModal }: PropsWithChildren<ModalDefaultType>) => {
         />
         <LinkBox>
           <CopyBtn bottom="15px" left="550px" />
-          {window.location.href}
+          {children}
         </LinkBox>
         {/* <Helmet>
           <script src="https://developers.kakao.com/sdk/js/kakao.js" />
@@ -101,7 +98,7 @@ const Share = ({ onClickToggleModal }: PropsWithChildren<ModalDefaultType>) => {
           }
         }}
       />
-    </ModalContainer>
+    </>
   );
 };
 
