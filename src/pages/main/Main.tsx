@@ -12,10 +12,12 @@ const MainContainer = styled(ContainerStyled)`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 30px;
   @media (max-width: 680px) {
     width: 100%;
     position: relative;
     margin-top: 0;
+    padding: 10px;
   }
 `;
 
@@ -32,7 +34,6 @@ const BoardLink = styled(Link)`
   font-weight: 700;
   text-align: center;
   line-height: 2.3;
-
   margin: 10px auto;
   background: #977ae1;
   color: #ffffff;
@@ -43,6 +44,10 @@ const BoardLink = styled(Link)`
     width: 70%;
     font-size: 18px;
     line-height: auto;
+  }
+  @media (max-width: 460px) {
+    font-size: 16px;
+    font-weight: 500;
   }
 `;
 

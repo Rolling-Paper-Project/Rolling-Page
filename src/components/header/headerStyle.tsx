@@ -15,7 +15,7 @@ const HeaderContent = styled.div`
   @media (max-width: 680px) {
     width: 100%;
     position: relative;
-    padding: 17px 10px 10px;
+    padding: 10px 10px 10px;
   }
 `;
 
@@ -43,5 +43,10 @@ const LinkButton = styled.button`
     font-size: 12px;
   }
 `;
-
-export { HeaderWrap, HeaderContent, LogoImg, LinkButton };
+const GitImg = styled.img`
+  @media (max-width: 680px) {
+    width: 20px;
+    height: 20px;
+  }
+`;
+export { HeaderWrap, HeaderContent, LogoImg, LinkButton, GitImg };

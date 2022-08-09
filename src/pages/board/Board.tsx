@@ -25,7 +25,7 @@ export const ShareLinkBox = styled.div`
   display: flex;
   flex-direction: row-reverse;
   gap: 10px;
-  margin: 0 auto;
+  margin: 10px auto 0;
   padding: 10px;
 `;
 
