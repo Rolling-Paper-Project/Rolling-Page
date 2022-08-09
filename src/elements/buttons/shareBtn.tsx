@@ -37,7 +37,10 @@ const ShareLinkToWriter = () => {
         친구와 함께 작성하기
       </ShareLinkBtn>
       {isOpenModal ? (
-        <Share onClickToggleModal={onClickToggleModal}>
+        <Share
+          onClickToggleModal={onClickToggleModal}
+          selecteURL={window.location.href}
+        >
           {window.location.href}
         </Share>
       ) : (
@@ -55,15 +58,15 @@ const ShareLinkToReceiver = () => {
 
   const url = window.location.toString();
   const doneUrl = url.replace("board", "done");
-  const navigate = useNavigate();
-  console.log(doneUrl);
   return (
     <>
       <ShareLinkBtn onClick={onClickToggleModal}>
         완성된 롤링페이지 선물하기
       </ShareLinkBtn>
       {isOpenModal ? (
-        <Share onClickToggleModal={onClickToggleModal}>{doneUrl}</Share>
+        <Share onClickToggleModal={onClickToggleModal} selecteURL={doneUrl}>
+          {doneUrl}
+        </Share>
       ) : (
         <span />
       )}
