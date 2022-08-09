@@ -22,6 +22,9 @@ const HeaderContent = styled.div`
 // 배포 시 뺄 코드
 const LogoImg = styled.img`
   cursor: pointer;
+  @media (max-width: 680px) {
+    width: 150px;
+  }
 `;
 
 const LinkButton = styled.button`

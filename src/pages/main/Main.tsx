@@ -40,8 +40,8 @@ const BoardLink = styled(Link)`
     background-color: #5a4a82;
   }
   @media (max-width: 680px) {
-    width: 50%;
-    font-size: 14px;
+    width: 70%;
+    font-size: 18px;
     line-height: auto;
   }
 `;
@@ -53,7 +53,10 @@ const MainExp = styled.strong`
   text-align: center;
   display: block;
   @media (max-width: 680px) {
-    font-size: 20px;
+    word-break: keep-all;
+    line-height: 28px;
+    padding: 10px;
+    font-size: 22px;
   }
 `;
 

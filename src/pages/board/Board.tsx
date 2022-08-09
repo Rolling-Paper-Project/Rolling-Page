@@ -16,12 +16,12 @@ export const BoardWrap = styled.div`
   @media (max-width: 680px) {
     height: 100%;
     background-color: #fffafc;
-    padding-top: 0;
+    padding-top: 10px;
   }
 `;
 
 export const ShareLinkBox = styled.div`
-  width: 1400px;
+  max-width: 1400px;
   display: flex;
   flex-direction: row-reverse;
   gap: 10px;

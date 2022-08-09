@@ -21,13 +21,14 @@ interface TitleProps {
 export const ContainerStyled = styled.div`
   box-sizing: border-box;
   position: relative;
-  width: 1400px;
-  height: 750px;
+  max-width: 1400px;
+  max-height: 750px;
   margin: 0 auto;
   border: 1px solid #efefef;
   background-color: white;
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1);
   @media (max-width: 680px) {
+    max-height: 680px;
     width: 100%;
     border: none;
     box-shadow: none;
@@ -57,7 +58,6 @@ const BoardTitleStyled = styled.h2`
   color: #977ae1;
   @media (max-width: 680px) {
     font-size: 20px;
-    padding: 15px 0 10px 10px;
   }
   @media (max-width: 460px) {
     margin-bottom: 10px;
@@ -67,6 +67,9 @@ const BoardTitleStyled = styled.h2`
 
 const BoardPrevButtonStyled = styled(Basic)`
   width: 150px;
+  @media (max-width: 680px) {
+    font-size: 16px;
+  }
 `;
 
 const BoardButtonStyled = styled.button`
@@ -81,10 +84,17 @@ const BoardButtonStyled = styled.button`
   bottom: 29px;
   right: 48px;
   cursor: pointer;
+  @media (max-width: 680px) {
+    width: 40px;
+    height: 40px;
+    font-size: 35px;
+    bottom: 15px;
+    right: 15px;
+  }
 `;
 
 const BoardPostUl = styled.ul`
-  height: 520px;
+  max-height: 520px;
   margin-bottom: 148px;
   display: flex;
   flex-wrap: wrap;
@@ -104,6 +114,7 @@ const BoardPostUl = styled.ul`
   }
   @media (max-width: 680px) {
     justify-content: center;
+    margin-bottom: 50px;
   }
 `;
 

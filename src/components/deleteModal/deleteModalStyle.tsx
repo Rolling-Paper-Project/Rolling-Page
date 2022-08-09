@@ -16,7 +16,8 @@ const ModalWrap = styled.section`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 436px;
+  max-width: 436px;
+  min-width: 300px;
   background: #fff;
   border-radius: 10px;
   text-align: center;
@@ -42,8 +43,11 @@ const ModalExp = styled.p`
 
 const BtnWrap = styled.div`
   display: flex;
-  padding: 0 88px;
-  justify-content: space-between;
+  gap: 60px;
+  justify-content: center;
+  @media (max-width: 680px) {
+    gap: 30px;
+  }
 `;
 
 export { ModalBg, ModalWrap, ModalTitle, ModalExp, BtnWrap };
