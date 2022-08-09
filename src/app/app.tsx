@@ -1,3 +1,4 @@
+import process from "process";
 import * as React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
