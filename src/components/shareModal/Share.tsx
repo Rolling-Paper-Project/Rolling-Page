@@ -7,6 +7,7 @@ import kakaoShare from "./kakao";
 
 interface ModalDefaultType {
   onClickToggleModal: () => void;
+  selecteURL: string;
 }
 
 const DialogBox = styled.dialog`
@@ -57,6 +58,7 @@ const Copied = styled.span`
 const Share = ({
   onClickToggleModal,
   children,
+  selecteURL,
 }: PropsWithChildren<ModalDefaultType>) => {
   useEffect(() => {
     const script = document.createElement("script");
@@ -107,7 +109,7 @@ const Share = ({
         </Helmet> */}
         <KakaoBtn
           onClick={() => {
-            kakaoShare();
+            kakaoShare(selecteURL);
           }}
         />
       </DialogBox>
