@@ -25,7 +25,9 @@ const DialogBox = styled.dialog`
   background-color: white;
   z-index: 20;
   @media (max-width: 680px) {
+    top: 250px;
     width: 260px;
+    height: 130px;
   }
 `;
 
@@ -42,10 +44,7 @@ const LinkBox = styled.div`
   overflow: hidden;
   cursor: pointer;
   @media (max-width: 680px) {
-    width: 212px;
-    margin-bottom: 30px;
-    padding: 14px;
-    overflow-x: hidden;
+    display: none;
   }
 `;
 
@@ -62,6 +61,12 @@ const Backdrop = styled.div`
 const Copied = styled.span`
   position: absolute;
   top: 160px;
+`;
+
+const Text = styled.span`
+  position: relative;
+  top: -15px;
+  font-size: 16px;
 `;
 
 const Share = ({
@@ -96,6 +101,7 @@ const Share = ({
             }
           }}
         />
+        <Text>당신의 SNS에 공유해주세요 :)</Text>
         <LinkBox
           onClick={() => {
             const content: any = children;
