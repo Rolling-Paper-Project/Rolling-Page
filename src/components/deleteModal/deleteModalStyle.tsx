@@ -16,14 +16,16 @@ const ModalWrap = styled.section`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: 436px;
-  min-width: 300px;
+  width: 436px;
   background: #fff;
   border-radius: 10px;
   text-align: center;
   padding: 40px 0;
   margin: auto;
   z-index: 20;
+  @media (max-width: 680px) {
+    width: 80%;
+  }
 `;
 
 const ModalTitle = styled.h3`

@@ -10,7 +10,6 @@ import {
   EmojiflexBox,
   ModalOver,
   PostMargin,
-  DeleteBox,
 } from "./emojiModalStyle";
 import { BasicBtn, CloseBtn } from "../../elements/buttons/button";
 
@@ -115,9 +114,7 @@ const EmojiModal: React.FC<ModalProps> = ({
   return (
     <ModalOver className={isModalShow ? "" : "hide"}>
       <ModalWrapper>
-        <DeleteBox>
-          <CloseBtn top="-40px" right="-20px" onClick={closeModal} />
-        </DeleteBox>
+        <CloseBtn top="0" right="-150px" onClick={closeModal} />
         <ContentsWrapper>
           <ContentBox>
             <TitleText>1. 스티커를 골라볼까요?</TitleText>

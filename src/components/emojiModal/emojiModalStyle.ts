@@ -12,8 +12,7 @@ export const ModalOver = styled.div`
 `;
 
 export const ModalWrapper = styled.div`
-  width: 50%;
-  min-width: 410px;
+  width: 960px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -21,20 +20,22 @@ export const ModalWrapper = styled.div`
   padding: 70px 50px;
   background-color: white;
   border-radius: 10px;
-  box-sizing: border-box;
   text-align: center;
-`;
-
-export const DeleteBox = styled.div`
-  position: relative;
-  float: right;
+  @media (max-width: 680px) {
+    width: 90%;
+    padding: 20px;
+  }
 `;
 
 export const ContentsWrapper = styled.div`
   display: flex;
-  flex-wrap: wrap;
   gap: 50px;
-  margin-bottom: 30px;
+  flex-wrap: wrap;
+  @media (max-width: 680px) {
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
 `;
 
 export const ContentBox = styled.div`
@@ -48,6 +49,9 @@ export const EmojiflexBox = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   margin: auto;
+  @media (max-width: 680px) {
+    max-width: 300px;
+  }
 `;
 
 export const TitleText = styled.p`
@@ -55,15 +59,17 @@ export const TitleText = styled.p`
   font-size: 22px;
   line-height: 27px;
   text-align: center;
-  margin-bottom: 40px;
+  @media (max-width: 680px) {
+    margin-bottom: 20px;
+  }
 `;
 
-export const Img = styled(EmojiImg) <{ src: string, profileEmoji: string }>`
+export const Img = styled(EmojiImg)<{ src: string; profileEmoji: string }>`
   border-radius: 50%;
   cursor: pointer;
   box-sizing: border-box;
-  outline: ${(props) => (
-    props.profileEmoji === props.src ? "5px solid #977ae1" : "none")};
+  outline: ${props =>
+    props.profileEmoji === props.src ? "5px solid #977ae1" : "none"};
 `;
 
 export const PostMargin = styled.div`
