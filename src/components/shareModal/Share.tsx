@@ -34,7 +34,7 @@ const DialogBox = styled.dialog`
 const LinkBox = styled.div`
   width: 590px;
   height: 100px;
-  margin: 10px 0 34px;
+  margin: 10px 0 25px;
   padding: 14px 19px 55px;
   display: flex;
   align-items: center;
