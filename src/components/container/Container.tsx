@@ -125,7 +125,7 @@ const Container = ({ boardTit }: TitleProps) => {
   >();
   const [countData, setCountData] = React.useState(0);
   const [prevData, setPrevData] = React.useState("block");
-  const [prevBtnVal, setPrevBtnVal] = React.useState("미리보기");
+  const [prevBtnVal, setPrevBtnVal] = React.useState("완성본 미리보기");
   const colorArray = [
     "#E5EDFF, #B6CCFF",
     "#FBF1F6, #F9CCE3",
