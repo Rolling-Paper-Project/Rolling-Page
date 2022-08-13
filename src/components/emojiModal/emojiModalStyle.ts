@@ -17,7 +17,7 @@ export const ModalWrapper = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 70px 50px;
+  padding: 50px;
   background-color: white;
   border-radius: 10px;
   text-align: center;
@@ -31,6 +31,8 @@ export const ContentsWrapper = styled.div`
   display: flex;
   gap: 50px;
   flex-wrap: wrap;
+  margin: 20px 0;
+
   @media (max-width: 680px) {
     align-items: center;
     gap: 20px;
@@ -59,6 +61,7 @@ export const TitleText = styled.p`
   font-size: 22px;
   line-height: 27px;
   text-align: center;
+  margin-bottom: 20px;
   @media (max-width: 680px) {
     margin-bottom: 20px;
   }

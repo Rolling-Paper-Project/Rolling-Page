@@ -14,7 +14,6 @@ const DialogBox = styled.dialog`
   position: fixed;
   top: 300px;
   width: 700px;
-  height: 263px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,6 +23,7 @@ const DialogBox = styled.dialog`
   box-sizing: border-box;
   background-color: white;
   z-index: 20;
+  padding: 20px;
   @media (max-width: 680px) {
     top: 250px;
     width: 260px;
@@ -33,8 +33,7 @@ const DialogBox = styled.dialog`
 
 const LinkBox = styled.div`
   width: 590px;
-  height: 100px;
-  margin: 10px 0 25px;
+  margin: 10px 0 30px;
   padding: 14px 19px 55px;
   display: flex;
   align-items: center;
@@ -63,9 +62,9 @@ const Copied = styled.span`
   top: 160px;
 `;
 
-const Text = styled.span`
+const Text = styled.p`
   position: relative;
-  top: -15px;
+  top: -18px;
   font-size: 16px;
 `;
 
