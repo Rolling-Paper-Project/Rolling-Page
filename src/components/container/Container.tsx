@@ -20,7 +20,6 @@ interface TitleProps {
 
 export const ContainerStyled = styled.div`
   height: 80vh;
-  box-sizing: border-box;
   position: relative;
   max-width: 1400px;
   max-height: 750px;
@@ -28,12 +27,14 @@ export const ContainerStyled = styled.div`
   border: 1px solid #efefef;
   background-color: white;
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1);
-  @media (max-width: 680px) {
+  padding: 40px 30px;
+  @media screen and (max-width: 680px) {
     width: 100%;
     border: none;
     box-shadow: none;
+    padding: 20px 10px;
   }
-  @media (max-width: 460px) {
+  @media screen and (max-width: 460px) {
     flex-direction: column;
   }
 `;
@@ -42,10 +43,11 @@ const BoardHeaderStyled = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 46px 37px 24px 30px;
+  padding: 0 37px 24px 30px;
   @media (max-width: 460px) {
     flex-direction: column;
-    padding: 10px;
+    gap: 10px;
+    padding: 15px 0;
   }
 `;
 
@@ -54,12 +56,14 @@ const BoardTitleStyled = styled.h2`
   font-weight: 600;
   font-size: 40px;
   color: #977ae1;
+  word-break: keep-all;
   @media (max-width: 680px) {
     font-size: 20px;
   }
   @media (max-width: 460px) {
     margin-bottom: 10px;
     font-size: 23px;
+    text-align: center;
   }
 `;
 
@@ -79,15 +83,15 @@ const BoardButtonStyled = styled.button`
   background-color: #977ae1;
   font-size: 45px;
   border: none;
-  bottom: 29px;
-  right: 48px;
+  bottom: 30px;
+  right: 45px;
   cursor: pointer;
   @media (max-width: 680px) {
-    width: 40px;
-    height: 40px;
-    font-size: 35px;
+    width: 50px;
+    height: 50px;
+    font-size: 40px;
     bottom: 15px;
-    right: 15px;
+    right: 50px;
   }
 `;
 
@@ -97,7 +101,6 @@ const BoardPostUl = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  padding: 10px 30px;
   overflow-y: scroll;
   &::-webkit-scrollbar {
     width: 7px;
