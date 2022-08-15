@@ -1,14 +1,8 @@
 import * as React from "react";
 import { useParams } from "react-router";
 import axios from "axios";
-import { BasicBtn, CancelBtn } from "../../elements/buttons/button";
-import {
-  BtnWrap,
-  ModalBg,
-  ModalExp,
-  ModalTitle,
-  ModalWrap,
-} from "./deleteModalStyle";
+import { BasicBtn, CancelBtn } from "../../elements/buttons/Button";
+import { BtnWrap, ModalBg, ModalExp, ModalTitle, ModalWrap } from "./style";
 
 import { BASE_URL, TOKEN } from "../../constants/index";
 
