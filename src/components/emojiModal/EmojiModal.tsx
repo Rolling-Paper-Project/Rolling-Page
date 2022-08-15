@@ -10,8 +10,8 @@ import {
   EmojiflexBox,
   ModalOver,
   PostMargin,
-} from "./emojiModalStyle";
-import { BasicBtn, CloseBtn } from "../../elements/buttons/button";
+} from "./style";
+import { BasicBtn, CloseBtn } from "../../elements/buttons/Button";
 
 import Post from "../post/Post";
 import {

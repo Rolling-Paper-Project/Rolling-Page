@@ -12,6 +12,6 @@
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
-    "typeRoots": ["./types"]
+    "typeRoots": ["./@types", "./node_modules/@types"]
   }
 }
