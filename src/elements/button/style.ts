@@ -1,24 +1,10 @@
-import * as React from "react";
 import styled from "styled-components";
+import { ImgBtnProps, ShareLinkProps } from "./Button";
 import kakaoLogo from "../../assets/icon-kakao.svg";
 import copyImg from "../../assets/icon-copy.svg";
 import closeImg from "../../assets/icon-close.svg";
 
-interface BtnProps {
-  onClick?: () => void;
-  children?: React.ReactNode;
-}
-
-interface ImgBtnProps {
-  top?: string;
-  bottom?: string;
-  left?: string;
-  right?: string;
-  display?: string;
-  onClick?: (event: any) => void;
-}
-
-const Btn = styled.button`
+export const Btn = styled.button`
   border: none;
   cursor: pointer;
   width: 100px;
@@ -31,7 +17,7 @@ const Btn = styled.button`
   }
 `;
 
-const Basic = styled(Btn)`
+export const Basic = styled(Btn)`
   background: #977ae1;
   color: #ffffff;
   &:hover {
@@ -39,7 +25,7 @@ const Basic = styled(Btn)`
   }
 `;
 
-const Cancel = styled(Btn)`
+export const Cancel = styled(Btn)`
   background: #ffffff;
   color: black;
   border: 1px solid #977ae1;
@@ -48,7 +34,7 @@ const Cancel = styled(Btn)`
   }
 `;
 
-const ShareSNS = styled.button`
+export const ShareSNS = styled.button`
   border: none;
   cursor: pointer;
   width: 212px;
@@ -73,7 +59,7 @@ const ShareSNS = styled.button`
   }
 `;
 
-const Close = styled.button<ImgBtnProps>`
+export const Close = styled.button<ImgBtnProps>`
   background-image: url(${closeImg});
   position: relative;
   width: 25px;
@@ -87,7 +73,7 @@ const Close = styled.button<ImgBtnProps>`
   cursor: pointer;
 `;
 
-const Copy = styled.button<ImgBtnProps>`
+export const Copy = styled.button<ImgBtnProps>`
   background-image: url(${copyImg});
   position: relative;
   width: 15px;
@@ -101,56 +87,20 @@ const Copy = styled.button<ImgBtnProps>`
   cursor: pointer;
 `;
 
-const BasicBtn = ({ onClick, children }: BtnProps) => {
-  return <Basic onClick={onClick}>{children}</Basic>;
-};
-
-const CancelBtn = ({ onClick, children }: BtnProps) => {
-  return <Cancel onClick={onClick}>{children}</Cancel>;
-};
-
-const KakaoBtn = ({ onClick, children }: BtnProps) => {
-  return <ShareSNS onClick={onClick}>카카오톡으로 공유하기</ShareSNS>;
-};
-
-const CloseBtn = ({
-  top,
-  bottom,
-  left,
-  right,
-  display,
-  onClick,
-}: ImgBtnProps) => {
-  return (
-    <Close
-      top={top ?? top}
-      bottom={bottom ?? bottom}
-      left={left ?? left}
-      right={right ?? right}
-      onClick={onClick}
-      display={display ?? display}
-    />
-  );
-};
-
-const CopyBtn = ({
-  top,
-  bottom,
-  left,
-  right,
-  display,
-  onClick,
-}: ImgBtnProps) => {
-  return (
-    <Copy
-      top={top ?? top}
-      bottom={bottom ?? bottom}
-      left={left ?? left}
-      right={right ?? right}
-      onClick={onClick}
-      display={display ?? display}
-    />
-  );
-};
-
-export { BasicBtn, CancelBtn, KakaoBtn, CloseBtn, CopyBtn, Basic };
+export const ShareLinkBtn = styled.button<ShareLinkProps>`
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #5a4a82;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #5a4a82;
+  &:hover {
+    color: #5a4a82;
+    /* border-bottom: 2px solid #5a4a82; */
+    transform: translateY(-2px);
+  }
+  @media (max-width: 680px) {
+    font-size: 0.8rem;
+  }
+`;

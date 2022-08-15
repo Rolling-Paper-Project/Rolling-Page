@@ -1,7 +1,7 @@
 import * as React from "react";
-import styled, { css } from "styled-components";
+import { TextareaAtom } from "./style"
 
-interface InputProps {
+export interface InputProps {
   isInput: boolean;
   bgColor?: string;
   color?: string;
@@ -19,31 +19,6 @@ interface InputProps {
   onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
   onKeyPress?: (e: React.KeyboardEvent<HTMLTextAreaElement>) => void;
 }
-const inputCss = css<InputProps>`
-  height: ${props => props.height};
-  background-color: ${props => props.bgColor};
-  color: ${props => props.color};
-  font-size: ${props => props.fontSize};
-  font-weight: ${props => props.fontWeight};
-  border-radius: 5px;
-  padding: ${props => props.padding};
-  border: ${props => props.border};
-  overflow: hidden;
-  &:focus {
-    outline: none;
-  }
-`;
-
-const TextareaAtom = styled.textarea<InputProps>`
-  ${inputCss}
-  white-space:pre-wrap;
-  resize: none;
-  /* width: 222px;
-  height: 165px; */
-  &::placeholder {
-    font-weight: 400;
-  }
-`;
 
 const TextareaEl = ({
   isInput = true,

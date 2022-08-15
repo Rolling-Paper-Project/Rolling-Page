@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { EmojiImg } from "../../elements/emoji/Emoji";
+import EmojiImg from "../../elements/image/style";
 
 export const ModalOver = styled.div`
   position: fixed;
