@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useLocation } from "react-router";
 import styled from "styled-components";
-import { Emoji } from "../../elements/emoji/Emoji";
+import Emoji from "../../elements/image/Image";
 import CloseBtn from "../../assets/icon-close.svg";
 import DeletModal from "../deleteModal/DeleteModal";
 import ContentInput from "../contentsInput/ContentsInput";

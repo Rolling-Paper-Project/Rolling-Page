@@ -11,7 +11,7 @@ import {
   ModalOver,
   PostMargin,
 } from "./style";
-import { BasicBtn, CloseBtn } from "../../elements/buttons/Button";
+import { BasicBtn, CloseBtn } from "../../elements/button/Button";
 
 import Post from "../post/Post";
 import {

@@ -1,7 +1,7 @@
 import * as React from "react";
-import styled, { css } from "styled-components";
+import { InputEl } from "./style";
 
-interface InputProps {
+export interface InputProps {
   isInput: boolean;
   bgColor?: string;
   color?: string;
@@ -18,30 +18,6 @@ interface InputProps {
   className?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
-const inputCss = css<InputProps>`
-  width: 100%;
-  height: ${props => props.height};
-  background-color: ${props => props.bgColor};
-  color: ${props => props.color};
-  font-size: ${props => props.fontSize};
-  font-weight: ${props => props.fontWeight};
-  border-radius: 5px;
-  padding: ${props => props.padding};
-  border: ${props => props.border};
-  &:focus {
-    outline: none;
-  }
-`;
-const InputEl = styled.input<InputProps>`
-  ${inputCss}
-  border: none;
-  &.right {
-    text-align: right;
-  }
-  &::placeholder {
-    font-weight: 400;
-  }
-`;
 
 const Input = ({
   isInput = true,
@@ -79,4 +55,5 @@ const Input = ({
     />
   );
 };
+
 export default Input;

@@ -9,7 +9,7 @@ import { BASE_URL, TOKEN } from "../../constants";
 import {
   ShareLinkToWriter,
   ShareLinkToReceiver,
-} from "../../elements/buttons/shareBtn";
+} from "../../elements/button/Button";
 
 export const BoardWrap = styled.div`
   padding-top: 15px;

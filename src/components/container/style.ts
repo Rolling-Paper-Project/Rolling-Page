@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Basic } from "../../elements/buttons/Button";
+import { Basic } from "../../elements/button/style";
 
 export const ContainerStyled = styled.div`
   height: 80vh;
