@@ -34,6 +34,7 @@ const DeletModal = ({ commentId, closeDeleteModal, setPost }: Props) => {
     try {
       const res = await axios.delete(url, config);
       closeDeleteModal();
+      window.alert("삭제완료!");
       setPost();
     } catch (error) {
       window.alert(error);
