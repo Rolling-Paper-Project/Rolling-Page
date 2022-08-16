@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { InputProps } from "./Textarea"
+import { InputProps } from "./Textarea";
 
 export const inputCss = css<InputProps>`
   height: ${props => props.height};
@@ -20,8 +20,6 @@ export const TextareaAtom = styled.textarea<InputProps>`
   ${inputCss}
   white-space:pre-wrap;
   resize: none;
-  /* width: 222px;
-  height: 165px; */
   &::placeholder {
     font-weight: 400;
   }
