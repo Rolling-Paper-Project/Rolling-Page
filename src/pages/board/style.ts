@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const BoardWrap = styled.div`
   padding-top: 15px;
   margin: 0 50px;
-
   @media (max-width: 680px) {
     height: 100%;
     background-color: #fffafc;
