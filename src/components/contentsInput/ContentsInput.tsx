@@ -22,7 +22,7 @@ const ContentInput: React.FC<ContentProps> = ({ setMainTxt, mainTxt }) => {
       onChange={handleOnchange}
       isInput={false}
       height="165px"
-      placeholder="내용을 입력해주세요 !"
+      placeholder="아쉽게도 한 장을 넘어가게 쓸 수 없어요. 포스트 안에서 마음껏 작성해주세요😉"
       id="contents"
       fontSize="14px"
       fontWeight="400"

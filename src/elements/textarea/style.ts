@@ -22,5 +22,6 @@ export const TextareaAtom = styled.textarea<InputProps>`
   resize: none;
   &::placeholder {
     font-weight: 400;
+    font-size: 0.8rem;
   }
 `;
