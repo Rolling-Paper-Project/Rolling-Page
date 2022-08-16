@@ -26,7 +26,7 @@ interface PostProps {
   mainTxt: string;
   isInput?: boolean;
   setAuthor?: React.Dispatch<React.SetStateAction<string>> | undefined;
-  setMainTxt?: React.Dispatch<React.SetStateAction<string>> | undefined;
+  setMainTxt?: React.Dispatch<React.SetStateAction<string>>;
   prevData?: string;
   setPost: () => void;
 }
