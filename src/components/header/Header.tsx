@@ -20,15 +20,9 @@ const Header = () => {
     <HeaderWrap>
       <h1 className="ir">롤링페이지</h1>
       <HeaderContent>
-        {location.includes("done") ? (
-          <div>
-            <LogoImg src={logo} alt="로고" />
-          </div>
-        ) : (
-          <Link to="/">
-            <LogoImg src={logo} alt="로고" />
-          </Link>
-        )}
+        <div>
+          <LogoImg src={logo} alt="로고" />
+        </div>
         <LinkButton onClick={onClick}>
           Contact Us
           <GitImg src={github} alt="github" />
