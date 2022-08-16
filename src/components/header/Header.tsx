@@ -7,7 +7,7 @@ import {
   LinkButton,
   LogoImg,
   GitImg,
-} from "./headerStyle";
+} from "./style";
 import logo from "../../assets/icon-logo.svg";
 import github from "../../assets/icon-github.svg";
 

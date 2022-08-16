@@ -2,7 +2,7 @@ import * as React from "react";
 import axios from "axios";
 import Input from "../../elements/input/Input";
 import { BASE_URL, TOKEN, ACCOUNTNAME } from "../../constants/index";
-import { Title, TitleWrap, DivFlex, TitleBtn } from "./titleInputStyle";
+import { Title, TitleWrap, DivFlex, TitleBtn } from "./style";
 
 interface TitleProps {
   done?: string | undefined;
