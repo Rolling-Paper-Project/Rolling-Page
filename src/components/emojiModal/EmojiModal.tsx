@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { useParams } from "react-router";
+import closeImg from "../../assets/icon-close.svg";
 import {
   ModalWrapper,
   ContentsWrapper,
@@ -11,7 +12,7 @@ import {
   ModalOver,
   PostMargin,
 } from "./style";
-import { BasicBtn, CloseBtn } from "../../elements/button/Button";
+import { BasicBtn, ImageBtn } from "../../elements/button/Button";
 
 import Post from "../post/Post";
 import {
@@ -32,8 +33,8 @@ interface PostDataProps {
 interface ModalProps {
   setIsModalShow: Dispatch<SetStateAction<boolean>>;
   setPostData:
-    | Dispatch<SetStateAction<PostDataProps[] | undefined>>
-    | undefined;
+  | Dispatch<SetStateAction<PostDataProps[] | undefined>>
+  | undefined;
   isModalShow: boolean;
   setPost: () => void;
 }
@@ -114,7 +115,12 @@ const EmojiModal: React.FC<ModalProps> = ({
   return (
     <ModalOver className={isModalShow ? "" : "hide"}>
       <ModalWrapper>
-        <CloseBtn top="0" right="-150px" onClick={closeModal} />
+        <ImageBtn
+          width="25px"
+          height="25px"
+          src={closeImg}
+          onClick={closeModal}
+        />
         <ContentsWrapper>
           <ContentBox>
             <TitleText>1. 스티커를 골라볼까요?</TitleText>

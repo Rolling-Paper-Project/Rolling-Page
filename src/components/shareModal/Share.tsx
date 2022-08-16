@@ -2,8 +2,10 @@ import * as React from "react";
 import { PropsWithChildren, useEffect, useState } from "react";
 // import { Helmet } from "react-helmet";
 import { DialogBox, LinkBox, Backdrop, Copied, Text } from "./style";
-import { KakaoBtn, CloseBtn, CopyBtn } from "../../elements/button/Button";
+import { KakaoBtn, ImageBtn } from "../../elements/button/Button";
 import kakaoShare from "./kakao";
+import copyImg from "../../assets/icon-copy.svg";
+import closeImg from "../../assets/icon-close.svg";
 
 interface ModalDefaultType {
   onClickToggleModal: () => void;
@@ -33,9 +35,10 @@ const Share = ({
   return (
     <>
       <DialogBox>
-        <CloseBtn
-          bottom="10px"
-          left="330px"
+        <ImageBtn
+          width="25px"
+          height="25px"
+          src={closeImg}
           onClick={() => {
             if (onClickToggleModal) {
               onClickToggleModal();
@@ -56,7 +59,11 @@ const Share = ({
               });
           }}
         >
-          <CopyBtn bottom="15px" left="550px" />
+          <ImageBtn
+            width="25px"
+            height="25px"
+            src={copyImg}
+          />
           {children}
         </LinkBox>
         <Copied>{copied}</Copied>
