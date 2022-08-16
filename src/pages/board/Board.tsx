@@ -4,36 +4,12 @@ import { useParams } from "react-router";
 import styled from "styled-components";
 import Container from "../../components/container/Container";
 import Header from "../../components/header/Header";
-import TitleInput from "../../components/titleInput/TitleInput";
 import { BASE_URL, TOKEN } from "../../constants";
 import {
   ShareLinkToWriter,
   ShareLinkToReceiver,
 } from "../../elements/button/Button";
-
-export const BoardWrap = styled.div`
-  padding-top: 15px;
-  margin: 0 50px;
-
-  @media (max-width: 680px) {
-    height: 100%;
-    background-color: #fffafc;
-    padding-top: 10px;
-    margin: 0;
-  }
-`;
-
-export const ShareLinkBox = styled.div`
-  max-width: 1400px;
-  display: flex;
-  flex-direction: row-reverse;
-  gap: 10px;
-  margin: 10px auto 0;
-  padding: 10px;
-  @media (max-width: 680px) {
-    justify-content: center;
-  }
-`;
+import { BoardWrap, ShareLinkBox } from "./style";
 
 const Board = () => {
   const { id } = useParams();
