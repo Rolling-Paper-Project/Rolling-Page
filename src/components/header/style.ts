@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const HeaderWrap = styled.header`
@@ -10,7 +11,7 @@ const HeaderWrap = styled.header`
   }
 `;
 
-const HeaderContent = styled.div`
+const HeaderContent = styled.h1`
   max-width: 1400px;
   padding: 17px 0 10px;
   margin: 0 auto;
@@ -32,7 +33,7 @@ const LogoImg = styled.img`
   }
 `;
 
-const LinkButton = styled.button`
+const LinkButton = styled(Link)`
   font-weight: 500;
   font-size: 20px;
   color: #977ae1;
