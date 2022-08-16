@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { ImgBtn } from "../../elements/button/style";
 
-const PostArticle = styled.article<{ bgColor: string }>`
+const PostArticle = styled.li<{ bgColor: string }>`
   width: 250px;
   height: 250px;
   clip-path: polygon(100% 0, 100% 100%, 15% 100%, 0 85%, 0 0);
@@ -43,14 +44,8 @@ const PostEdge = styled.div<{ shadowColor: string }>`
   background-color: ${props => props.shadowColor};
 `;
 
-const PostCloseBtn = styled.img<{ prevData?: string }>`
+const PostCloseBtn = styled(ImgBtn)<{ prevData?: string }>`
   display: ${props => props.prevData};
-  width: 15px;
-  height: 15px;
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  cursor: pointer;
 `;
 
 export {

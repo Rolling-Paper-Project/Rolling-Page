@@ -17,7 +17,6 @@ export interface ImgBtnProps {
   width?: string;
   height?: string;
   src: string;
-  backgroundSize?: string;
   onClick?: (event: any) => void;
   children?: React.ReactNode;
 }
@@ -47,7 +46,6 @@ const ImageBtn = ({
   width,
   height,
   src,
-  backgroundSize,
   onClick,
   children
 }: ImgBtnProps) => {
@@ -61,7 +59,6 @@ const ImageBtn = ({
       width={width ?? width}
       height={height ?? height}
       src={src}
-      backgroundSize={backgroundSize ?? backgroundSize}
       onClick={onClick}
     >{children}</ImgBtn>
   );

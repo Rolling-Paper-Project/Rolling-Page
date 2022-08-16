@@ -66,10 +66,11 @@ export const ImgBtn = styled.button<ImgBtnProps>`
   width: ${props => props.width};
   height: ${props => props.height};
   background: url(${props => props.src}) no-repeat center;
-  background-size: ${props => props.backgroundSize};
+  background-size: cover;
   background-color: transparent;
   border: none;
   cursor: pointer;
+  padding: 0;
 `;
 
 export const ShareLinkBtn = styled.button<ShareLinkProps>`
