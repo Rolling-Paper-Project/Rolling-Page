@@ -12,26 +12,26 @@ import logo from "../../assets/icon-logo.svg";
 import github from "../../assets/icon-github.svg";
 
 const Header = () => {
-  const onClick = () =>
-    window.open("https://github.com/Rolling-Paper-Project/Rolling-Page#readme");
   const location = useLocation().pathname;
 
   return (
     <HeaderWrap>
-      <h1 className="ir">롤링페이지</h1>
       <HeaderContent>
         {location.includes("done") ? (
           <div>
-            <LogoImg src={logo} alt="로고" />
+            <LogoImg src={logo} alt="롤링페이지" />
           </div>
         ) : (
           <Link to="/">
-            <LogoImg src={logo} alt="로고" />
+            <LogoImg src={logo} alt="롤링페이지" />
           </Link>
         )}
-        <LinkButton onClick={onClick}>
+        <LinkButton
+          target="_blank"
+          to="https://github.com/Rolling-Paper-Project/Rolling-Page#readme"
+        >
           Contact Us
-          <GitImg src={github} alt="github" />
+          <GitImg src={github} alt="" />
         </LinkButton>
       </HeaderContent>
     </HeaderWrap>
