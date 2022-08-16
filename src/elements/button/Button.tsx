@@ -9,11 +9,17 @@ interface BtnProps {
 }
 
 export interface ImgBtnProps {
+  position?: string;
+  top?: string;
+  right?: string;
+  bottom?: string;
+  left?: string;
   width?: string;
   height?: string;
   src: string;
   backgroundSize?: string;
   onClick?: (event: any) => void;
+  children?: React.ReactNode;
 }
 
 export interface ShareLinkProps {
@@ -33,20 +39,31 @@ const KakaoBtn = ({ onClick, children }: BtnProps) => {
 };
 
 const ImageBtn = ({
+  position,
+  top,
+  right,
+  bottom,
+  left,
   width,
   height,
   src,
   backgroundSize,
-  onClick
+  onClick,
+  children
 }: ImgBtnProps) => {
   return (
     <ImgBtn
+      position={position ?? position}
+      top={top ?? top}
+      right={right ?? right}
+      bottom={bottom ?? bottom}
+      left={left ?? left}
       width={width ?? width}
       height={height ?? height}
       src={src}
       backgroundSize={backgroundSize ?? backgroundSize}
       onClick={onClick}
-    />
+    >{children}</ImgBtn>
   );
 };
 

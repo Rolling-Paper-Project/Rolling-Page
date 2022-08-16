@@ -58,9 +58,14 @@ export const ShareSNS = styled.button`
 `;
 
 export const ImgBtn = styled.button<ImgBtnProps>`
+  position: ${props => props.position};
+  top: ${props => props.top};
+  right: ${props => props.right};
+  bottom: ${props => props.bottom};
+  left: ${props => props.left};
   width: ${props => props.width};
   height: ${props => props.height};
-  background: url(${props => props.src}) no-repeat;
+  background: url(${props => props.src}) no-repeat center;
   background-size: ${props => props.backgroundSize};
   background-color: transparent;
   border: none;

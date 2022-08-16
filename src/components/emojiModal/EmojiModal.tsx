@@ -39,12 +39,12 @@ interface ModalProps {
   setPost: () => void;
 }
 
-const EmojiModal: React.FC<ModalProps> = ({
+const EmojiModal = ({
   setIsModalShow,
   isModalShow,
   setPostData,
   setPost,
-}) => {
+}: ModalProps): JSX.Element => {
   const { id } = useParams();
 
   // Post 추가 API
@@ -115,12 +115,6 @@ const EmojiModal: React.FC<ModalProps> = ({
   return (
     <ModalOver className={isModalShow ? "" : "hide"}>
       <ModalWrapper>
-        <ImageBtn
-          width="25px"
-          height="25px"
-          src={closeImg}
-          onClick={closeModal}
-        />
         <ContentsWrapper>
           <ContentBox>
             <TitleText>1. 스티커를 골라볼까요?</TitleText>
@@ -155,6 +149,15 @@ const EmojiModal: React.FC<ModalProps> = ({
           </ContentBox>
         </ContentsWrapper>
         <BasicBtn onClick={onClickAddBtn}>저장</BasicBtn>
+        <ImageBtn
+          position="fixed"
+          top="15px"
+          right="15px"
+          width="25px"
+          height="25px"
+          src={closeImg}
+          onClick={closeModal}
+        ><span className="ir">닫기 버튼</span></ImageBtn>
       </ModalWrapper>
     </ModalOver>
   );
