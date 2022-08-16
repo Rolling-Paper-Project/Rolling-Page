@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router";
 import {
   HeaderWrap,
   HeaderContent,
@@ -13,14 +14,21 @@ import github from "../../assets/icon-github.svg";
 const Header = () => {
   const onClick = () =>
     window.open("https://github.com/Rolling-Paper-Project/Rolling-Page#readme");
+  const location = useLocation().pathname;
 
   return (
     <HeaderWrap>
       <h1 className="ir">롤링페이지</h1>
       <HeaderContent>
-        <Link to="/">
-          <LogoImg src={logo} alt="로고" />
-        </Link>
+        {location.includes("done") ? (
+          <div>
+            <LogoImg src={logo} alt="로고" />
+          </div>
+        ) : (
+          <Link to="/">
+            <LogoImg src={logo} alt="로고" />
+          </Link>
+        )}
         <LinkButton onClick={onClick}>
           Contact Us
           <GitImg src={github} alt="github" />
