@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState, useCallback } from "react";
-import { Basic, Cancel, ShareSNS, Close, Copy, ShareLinkBtn } from "./style";
+import { Basic, Cancel, ShareSNS, ShareLinkBtn, ImgBtn } from "./style";
 import Share from "../../components/shareModal/Share";
 
 interface BtnProps {
@@ -9,12 +9,16 @@ interface BtnProps {
 }
 
 export interface ImgBtnProps {
+  position?: string;
   top?: string;
+  right?: string;
   bottom?: string;
   left?: string;
-  right?: string;
-  display?: string;
+  width?: string;
+  height?: string;
+  src: string;
   onClick?: (event: any) => void;
+  children?: React.ReactNode;
 }
 
 export interface ShareLinkProps {
@@ -33,43 +37,30 @@ const KakaoBtn = ({ onClick, children }: BtnProps) => {
   return <ShareSNS onClick={onClick}>카카오톡으로 공유하기</ShareSNS>;
 };
 
-const CloseBtn = ({
+const ImageBtn = ({
+  position,
   top,
+  right,
   bottom,
   left,
-  right,
-  display,
+  width,
+  height,
+  src,
   onClick,
+  children
 }: ImgBtnProps) => {
   return (
-    <Close
+    <ImgBtn
+      position={position ?? position}
       top={top ?? top}
+      right={right ?? right}
       bottom={bottom ?? bottom}
       left={left ?? left}
-      right={right ?? right}
+      width={width ?? width}
+      height={height ?? height}
+      src={src}
       onClick={onClick}
-      display={display ?? display}
-    />
-  );
-};
-
-const CopyBtn = ({
-  top,
-  bottom,
-  left,
-  right,
-  display,
-  onClick,
-}: ImgBtnProps) => {
-  return (
-    <Copy
-      top={top ?? top}
-      bottom={bottom ?? bottom}
-      left={left ?? left}
-      right={right ?? right}
-      onClick={onClick}
-      display={display ?? display}
-    />
+    >{children}</ImgBtn>
   );
 };
 
@@ -122,4 +113,4 @@ const ShareLinkToReceiver = () => {
   );
 };
 
-export { BasicBtn, CancelBtn, KakaoBtn, CloseBtn, CopyBtn, ShareLinkToWriter, ShareLinkToReceiver };
+export { BasicBtn, CancelBtn, KakaoBtn, ImageBtn, ShareLinkToWriter, ShareLinkToReceiver };

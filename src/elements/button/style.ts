@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import { ImgBtnProps, ShareLinkProps } from "./Button";
 import kakaoLogo from "../../assets/icon-kakao.svg";
-import copyImg from "../../assets/icon-copy.svg";
-import closeImg from "../../assets/icon-close.svg";
 
 export const Btn = styled.button`
   border: none;
@@ -59,32 +57,20 @@ export const ShareSNS = styled.button`
   }
 `;
 
-export const Close = styled.button<ImgBtnProps>`
-  background-image: url(${closeImg});
-  position: relative;
-  width: 25px;
-  height: 25px;
+export const ImgBtn = styled.button<ImgBtnProps>`
+  position: ${props => props.position};
   top: ${props => props.top};
+  right: ${props => props.right};
   bottom: ${props => props.bottom};
   left: ${props => props.left};
-  right: ${props => props.right};
+  width: ${props => props.width};
+  height: ${props => props.height};
+  background: url(${props => props.src}) no-repeat center;
+  background-size: cover;
   background-color: transparent;
   border: none;
   cursor: pointer;
-`;
-
-export const Copy = styled.button<ImgBtnProps>`
-  background-image: url(${copyImg});
-  position: relative;
-  width: 15px;
-  height: 15px;
-  top: ${props => props.top};
-  bottom: ${props => props.bottom};
-  left: ${props => props.left};
-  right: ${props => props.right};
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
+  padding: 0;
 `;
 
 export const ShareLinkBtn = styled.button<ShareLinkProps>`

@@ -86,12 +86,14 @@ const Post = ({
         {!isInput && (
           <PostCloseBtn
             className={done || prevData}
-            alt="포스트 삭제"
-            width={15}
-            height={15}
+            position="absolute"
+            top="8px"
+            right="8px"
+            width="15px"
+            height="15px"
             src={CloseBtn}
             onClick={ShowDeleteModal}
-          />
+          ><span className="ir">포스트 삭제 버튼</span></PostCloseBtn>
         )}
       </PostArticle>
       {isModalState && (
