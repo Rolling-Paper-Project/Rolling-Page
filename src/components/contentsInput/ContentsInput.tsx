@@ -10,7 +10,7 @@ interface ContentProps {
 const ContentInput: React.FC<ContentProps> = ({ setMainTxt, mainTxt }) => {
   const handleOnchange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const input = event.target;
-    if (!checkContentOverFlow(162, getPostHeight(event))) {
+    if (!checkContentOverFlow(182, getPostHeight(event))) {
       // eslint-disable-next-line no-unused-expressions
       setMainTxt && setMainTxt(input.value);
     }
