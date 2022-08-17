@@ -1,5 +1,5 @@
 import * as React from "react";
-import { TextareaAtom } from "./style"
+import { TextareaAtom } from "./style";
 
 export interface InputProps {
   isInput: boolean;
@@ -16,7 +16,9 @@ export interface InputProps {
   border?: string;
   required?: boolean;
   className?: string;
-  onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onChange?:
+    | ((event: React.ChangeEvent<HTMLTextAreaElement>) => void)
+    | undefined;
   onKeyPress?: (e: React.KeyboardEvent<HTMLTextAreaElement>) => void;
 }
 

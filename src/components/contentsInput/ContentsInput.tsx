@@ -1,6 +1,6 @@
 import * as React from "react";
-import { KeyboardEvent } from "react";
 import TextareaEl from "../../elements/textarea/Textarea";
+import { checkContentOverFlow, getPostHeight } from "../../utils/postInput";
 
 interface ContentProps {
   setMainTxt?: React.Dispatch<React.SetStateAction<string>>;
@@ -8,40 +8,27 @@ interface ContentProps {
 }
 
 const ContentInput: React.FC<ContentProps> = ({ setMainTxt, mainTxt }) => {
-  const onInputFunc = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleOnchange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const input = event.target;
-    const contentLength = input.value.length;
-    if (contentLength > 128) {
-      event.preventDefault();
-      event.stopPropagation();
-    } else if (setMainTxt) {
-      setMainTxt(input.value);
-    }
-
-    return input.value;
-  };
-
-  const handleKeyPress = (e: KeyboardEvent<HTMLTextAreaElement>) => {
-    if (mainTxt.split("\n").length > 7) {
-      if (e.key === "Enter") {
-        e.preventDefault();
-      }
+    if (!checkContentOverFlow(182, getPostHeight(event))) {
+      // eslint-disable-next-line no-unused-expressions
+      setMainTxt && setMainTxt(input.value);
     }
   };
 
   return (
     <TextareaEl
       value={mainTxt}
-      onChange={onInputFunc}
+      onChange={handleOnchange}
       isInput={false}
       height="165px"
-      placeholder="내용을 입력해주세요 !"
+      placeholder="아쉽게도 한 장을 넘어가게 쓸 수 없어요. 포스트 안에서 마음껏 작성해주세요😉"
       id="contents"
       fontSize="14px"
       fontWeight="400"
       border="none"
       bgColor="transparent"
-      onKeyPress={handleKeyPress}
+      className="text"
       required
     />
   );

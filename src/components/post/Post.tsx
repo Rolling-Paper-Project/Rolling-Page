@@ -26,7 +26,7 @@ interface PostProps {
   mainTxt: string;
   isInput?: boolean;
   setAuthor?: React.Dispatch<React.SetStateAction<string>> | undefined;
-  setMainTxt?: React.Dispatch<React.SetStateAction<string>> | undefined;
+  setMainTxt?: React.Dispatch<React.SetStateAction<string>>;
   prevData?: string;
   setPost: () => void;
 }
@@ -93,7 +93,9 @@ const Post = ({
             height="15px"
             src={CloseBtn}
             onClick={ShowDeleteModal}
-          ><span className="ir">포스트 삭제 버튼</span></PostCloseBtn>
+          >
+            <span className="ir">포스트 삭제 버튼</span>
+          </PostCloseBtn>
         )}
       </PostArticle>
       {isModalState && (
