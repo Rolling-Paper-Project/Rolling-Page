@@ -30,11 +30,11 @@ const BasicBtn = ({ onClick, children }: BtnProps) => {
 };
 
 const CancelBtn = ({ onClick, children }: BtnProps) => {
-  return <Cancel onClick={onClick}>{children}</Cancel>;
+  return <Cancel onClick={onClick} type="button">{children}</Cancel>;
 };
 
 const KakaoBtn = ({ onClick, children }: BtnProps) => {
-  return <ShareSNS onClick={onClick}>카카오톡으로 공유하기</ShareSNS>;
+  return <ShareSNS onClick={onClick} type="button">카카오톡으로 공유하기</ShareSNS>;
 };
 
 const ImageBtn = ({
@@ -60,6 +60,7 @@ const ImageBtn = ({
       height={height ?? height}
       src={src}
       onClick={onClick}
+      type="button"
     >{children}</ImgBtn>
   );
 };
