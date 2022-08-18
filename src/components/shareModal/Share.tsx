@@ -62,7 +62,9 @@ const Share = ({
             width="15px"
             height="15px"
             src={copyImg}
-          ><span className="ir">복사 버튼</span></ImageBtn>
+          >
+            <span className="ir">복사 버튼</span>
+          </ImageBtn>
           {children}
         </LinkBox>
         <Copied>{copied}</Copied>
@@ -86,7 +88,9 @@ const Share = ({
               onClickToggleModal();
             }
           }}
-        ><span className="ir">닫기 버튼</span></CloseBtn>
+        >
+          <span className="ir">닫기 버튼</span>
+        </CloseBtn>
       </DialogBox>
     </ModalOver>
   );
