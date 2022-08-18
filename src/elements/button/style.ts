@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ImgBtnProps, ShareLinkProps } from "./Button";
+import { ImgBtnProps } from "./Button";
 import kakaoLogo from "../../assets/icon-kakao.svg";
 
 export const Btn = styled.button`
@@ -71,7 +71,7 @@ export const ImgBtn = styled.button<ImgBtnProps>`
   padding: 0;
 `;
 
-export const ShareLinkBtn = styled.button<ShareLinkProps>`
+export const ShareLinkBtn = styled.button`
   font-size: 1.5rem;
   font-weight: 700;
   color: #5a4a82;

@@ -6,7 +6,7 @@ import Share from "../../components/shareModal/Share";
 interface BtnProps {
   onClick?: () => void;
   children?: React.ReactNode;
-}
+};
 
 export interface ImgBtnProps {
   position?: string;
@@ -19,10 +19,11 @@ export interface ImgBtnProps {
   src: string;
   onClick?: (event: any) => void;
   children?: React.ReactNode;
-}
+};
 
 export interface ShareLinkProps {
-  onClick?: () => void;
+  text: string;
+  selecteURL: string;
 }
 
 const BasicBtn = ({ onClick, children }: BtnProps) => {
@@ -65,7 +66,7 @@ const ImageBtn = ({
   );
 };
 
-const ShareLinkToWriter = () => {
+const ShareLinkButton = ({ text, selecteURL }: ShareLinkProps) => {
   const [isOpenModal, setOpenModal] = useState<boolean>(false);
   const onClickToggleModal = useCallback(() => {
     setOpenModal(!isOpenModal);
@@ -73,45 +74,16 @@ const ShareLinkToWriter = () => {
 
   return (
     <>
-      <ShareLinkBtn onClick={onClickToggleModal}>
-        친구와 함께 작성하기
-      </ShareLinkBtn>
-      {isOpenModal ? (
-        <Share
-          onClickToggleModal={onClickToggleModal}
-          selecteURL={window.location.href}
-        >
-          {window.location.href}
-        </Share>
-      ) : (
-        <span />
-      )}
+      <ShareLinkBtn onClick={onClickToggleModal} type="button">{text}</ShareLinkBtn>
+      {
+        isOpenModal && (
+          <Share onClickToggleModal={onClickToggleModal} selecteURL={selecteURL}>
+            {selecteURL}
+          </Share>
+        )
+      }
     </>
   );
 };
 
-const ShareLinkToReceiver = () => {
-  const [isOpenModal, setOpenModal] = useState<boolean>(false);
-  const onClickToggleModal = useCallback(() => {
-    setOpenModal(!isOpenModal);
-  }, [isOpenModal]);
-
-  const url = window.location.toString();
-  const doneUrl = url.replace("board", "done");
-  return (
-    <>
-      <ShareLinkBtn onClick={onClickToggleModal}>
-        완성된 롤링페이지 선물하기
-      </ShareLinkBtn>
-      {isOpenModal ? (
-        <Share onClickToggleModal={onClickToggleModal} selecteURL={doneUrl}>
-          {doneUrl}
-        </Share>
-      ) : (
-        <span />
-      )}
-    </>
-  );
-};
-
-export { BasicBtn, CancelBtn, KakaoBtn, ImageBtn, ShareLinkToWriter, ShareLinkToReceiver };
+export { BasicBtn, CancelBtn, KakaoBtn, ImageBtn, ShareLinkButton };
