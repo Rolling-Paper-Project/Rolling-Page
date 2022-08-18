@@ -1,9 +1,11 @@
 import styled from "styled-components";
+import { ImgBtn } from "../../elements/button/style";
 
 const DialogBox = styled.dialog`
-  position: fixed;
-  top: 300px;
-  width: 700px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,50 +14,44 @@ const DialogBox = styled.dialog`
   box-shadow: 0 0 30px rgba(30, 30, 30, 0.185);
   box-sizing: border-box;
   background-color: white;
-  z-index: 20;
   padding: 20px;
+  margin: 0;
   @media (max-width: 680px) {
-    top: 250px;
     width: 260px;
-    height: 130px;
+    padding: 25px 20px;
+  }
+`;
+
+const Text = styled.p`
+  font-size: 16px;
+  margin-bottom: 20px;
+  @media (max-width: 680px) {
+    margin: 0;
   }
 `;
 
 const LinkBox = styled.div`
+  position: relative;
   width: 590px;
-  margin: 10px 0 30px;
-  padding: 14px 19px 55px;
-  display: flex;
-  align-items: center;
+  padding: 20px;
   border-radius: 10px;
   background-color: #efefef;
-  z-index: 30;
-  overflow: hidden;
   cursor: pointer;
   @media (max-width: 680px) {
     display: none;
   }
 `;
 
-const Backdrop = styled.div`
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10;
-  background-color: rgba(0, 0, 0, 0.2);
-`;
-
 const Copied = styled.span`
-  position: absolute;
-  top: 160px;
-`;
-
-const Text = styled.p`
-  position: relative;
-  top: -18px;
   font-size: 16px;
+  padding: 10px;
 `;
 
-export { DialogBox, LinkBox, Backdrop, Copied, Text };
+const CloseBtn = styled(ImgBtn)`
+  @media (max-width: 680px) {
+    width: 15px;
+    height: 15px;
+  }
+` 
+
+export { DialogBox, LinkBox, Copied, Text, CloseBtn };
