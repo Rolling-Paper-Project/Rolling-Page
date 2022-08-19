@@ -1,19 +1,19 @@
 import axios from "axios";
 import * as React from "react";
 import { useParams } from "react-router";
-import styled from "styled-components";
 import Container from "../../components/container/Container";
 import Header from "../../components/header/Header";
 import { BASE_URL, TOKEN } from "../../constants";
-import {
-  ShareLinkToWriter,
-  ShareLinkToReceiver,
+import { ShareLinkButton
 } from "../../elements/button/Button";
 import { BoardWrap, ShareLinkBox } from "./style";
 
 const Board = () => {
   const { id } = useParams();
   const [boardTit, setBoardTit] = React.useState("");
+  const url = window.location.toString();
+  const doneUrl = url.replace("board", "done");
+
   React.useEffect(() => {
     const setBoard = async () => {
       try {
@@ -37,8 +37,8 @@ const Board = () => {
         {/* <TitleInput /> */}
         <Container post={[]} boardTit={boardTit} />
         <ShareLinkBox>
-          <ShareLinkToReceiver />
-          <ShareLinkToWriter />
+          <ShareLinkButton text="완성된 롤링페이지 선물하기" selecteURL={doneUrl}/>
+          <ShareLinkButton text="친구와 함께 작성하기" selecteURL={url}/>
         </ShareLinkBox>
       </BoardWrap>
     </>
