@@ -4,7 +4,7 @@ import { Basic, Cancel, ShareSNS, ShareLinkBtn, ImgBtn } from "./style";
 import Share from "../../components/shareModal/Share";
 
 interface BtnProps {
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   children?: React.ReactNode;
 }
 
@@ -47,7 +47,7 @@ const ImageBtn = ({
   height,
   src,
   onClick,
-  children
+  children,
 }: ImgBtnProps) => {
   return (
     <ImgBtn
@@ -60,7 +60,9 @@ const ImageBtn = ({
       height={height ?? height}
       src={src}
       onClick={onClick}
-    >{children}</ImgBtn>
+    >
+      {children}
+    </ImgBtn>
   );
 };
 
@@ -113,4 +115,11 @@ const ShareLinkToReceiver = () => {
   );
 };
 
-export { BasicBtn, CancelBtn, KakaoBtn, ImageBtn, ShareLinkToWriter, ShareLinkToReceiver };
+export {
+  BasicBtn,
+  CancelBtn,
+  KakaoBtn,
+  ImageBtn,
+  ShareLinkToWriter,
+  ShareLinkToReceiver,
+};

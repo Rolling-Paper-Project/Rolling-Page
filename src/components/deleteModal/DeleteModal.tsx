@@ -1,47 +1,53 @@
 import * as React from "react";
 import { useParams } from "react-router";
-import axios from "axios";
+import { useMutation, useQueryClient } from "react-query";
 import { BasicBtn, CancelBtn } from "../../elements/button/Button";
 import { BtnWrap, ModalBg, ModalExp, ModalTitle, ModalWrap } from "./style";
-
-import { BASE_URL, TOKEN } from "../../constants/index";
+import { deletePost } from "../../apis/posts";
 
 interface Props {
-  commentId?: string;
-  closeDeleteModal: () => void;
-  setPost: () => void;
+  postId?: string;
+  setIsModalState: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const DeletModal = ({ commentId, closeDeleteModal, setPost }: Props) => {
+const DeletModal = ({ postId, setIsModalState }: Props) => {
   const { id } = useParams();
 
-  const closeModal = (event: React.MouseEvent<HTMLDivElement>) => {
+  const queryClient = useQueryClient();
+
+  const { mutate: deletePostList } = useMutation(
+    () => deletePost(id ?? "", postId ?? ""),
+    {
+      onSuccess: () => queryClient.invalidateQueries(["getPostData"]),
+    },
+  );
+  const closeModal = (event: {
+    stopPropagation: () => void;
+    currentTarget: any;
+    target: any;
+  }) => {
     event.stopPropagation();
     const div = event.currentTarget;
     if (event.target === div) {
-      closeDeleteModal();
+      setIsModalState(false);
     }
   };
 
-  const deletePost = async () => {
-    const url = `${BASE_URL}/post/${id}/comments/${commentId}`;
-    const config = {
-      headers: {
-        Authorization: `Bearer ${TOKEN}`,
-        "Content-type": "application/json",
-      },
-    };
-    try {
-      const res = await axios.delete(url, config);
-      closeDeleteModal();
-      window.alert("삭제완료!");
-      setPost();
-    } catch (error) {
-      window.alert(error);
-      closeDeleteModal();
-      setPost();
-    }
-  };
+  const onClickDeleteButton = React.useCallback(
+    (event: {
+      stopPropagation: () => void;
+      currentTarget: any;
+      target: any;
+    }) => {
+      event.stopPropagation();
+      const div = event.currentTarget;
+      if (event.target === div) {
+        deletePostList();
+      }
+      setIsModalState(false);
+    },
+    [deletePostList],
+  );
 
   return (
     <ModalBg onClick={closeModal}>
@@ -49,8 +55,8 @@ const DeletModal = ({ commentId, closeDeleteModal, setPost }: Props) => {
         <ModalTitle>정말로 삭제하시겠습니까?</ModalTitle>
         <ModalExp>삭제하면 되돌릴 수 없어요! :(</ModalExp>
         <BtnWrap>
-          <CancelBtn onClick={closeDeleteModal}>취소</CancelBtn>
-          <BasicBtn onClick={deletePost}>삭제</BasicBtn>
+          <CancelBtn onClick={() => setIsModalState(false)}>취소</CancelBtn>
+          <BasicBtn onClick={onClickDeleteButton}>삭제</BasicBtn>
         </BtnWrap>
       </ModalWrap>
     </ModalBg>
