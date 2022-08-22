@@ -16,7 +16,7 @@ import ContentInput from "../contentsInput/ContentsInput";
 import AuthorInput from "../authorInput/AuthorInput";
 
 interface PostProps {
-  commentId?: string;
+  postId?: string;
   bgColor: string;
   shadowColor: string;
   content?: string;
@@ -28,11 +28,10 @@ interface PostProps {
   setAuthor?: React.Dispatch<React.SetStateAction<string>> | undefined;
   setMainTxt?: React.Dispatch<React.SetStateAction<string>>;
   prevData?: string;
-  setPost: () => void;
 }
 
 const Post = ({
-  commentId,
+  postId,
   bgColor,
   shadowColor,
   content,
@@ -43,7 +42,6 @@ const Post = ({
   author,
   setMainTxt,
   mainTxt,
-  setPost,
   prevData,
 }: PostProps): JSX.Element => {
   const location = useLocation();
@@ -54,10 +52,6 @@ const Post = ({
 
   const ShowDeleteModal = (): void => {
     setIsModalState(!isModalState);
-  };
-
-  const closeDeleteModal = (): void => {
-    setIsModalState(false);
   };
 
   return (
@@ -99,11 +93,7 @@ const Post = ({
         )}
       </PostArticle>
       {isModalState && (
-        <DeletModal
-          closeDeleteModal={closeDeleteModal}
-          setPost={setPost}
-          commentId={commentId}
-        />
+        <DeletModal setIsModalState={setIsModalState} postId={postId} />
       )}
     </>
   );

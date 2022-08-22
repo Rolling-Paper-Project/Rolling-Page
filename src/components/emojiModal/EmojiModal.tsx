@@ -1,5 +1,5 @@
-import axios from "axios";
 import React, { Dispatch, SetStateAction, useState } from "react";
+import { useMutation, useQueryClient } from "react-query";
 import { useParams } from "react-router";
 import closeImg from "../../assets/icon-close.svg";
 import {
@@ -15,35 +15,17 @@ import {
 import { BasicBtn, ImageBtn } from "../../elements/button/Button";
 
 import Post from "../post/Post";
-import {
-  ANGRY,
-  BASE_URL,
-  CUTE,
-  HAPPY,
-  SAD,
-  SADFUNNY,
-  TEASING,
-  TOKEN,
-} from "../../constants";
+import { ANGRY, CUTE, HAPPY, SAD, SADFUNNY, TEASING } from "../../constants";
+import { addPost } from "../../apis/posts";
 
-interface PostDataProps {
-  id: string;
-  content: string;
-}
 interface ModalProps {
   setIsModalShow: Dispatch<SetStateAction<boolean>>;
-  setPostData:
-  | Dispatch<SetStateAction<PostDataProps[] | undefined>>
-  | undefined;
   isModalShow: boolean;
-  setPost: () => void;
 }
 
 const EmojiModal = ({
   setIsModalShow,
   isModalShow,
-  setPostData,
-  setPost,
 }: ModalProps): JSX.Element => {
   const { id } = useParams();
 
@@ -60,57 +42,29 @@ const EmojiModal = ({
     setProfileEmoji(img.src);
   };
 
-  const addModalReset = () => {
+  const queryClient = useQueryClient();
+
+  const { mutate: add } = useMutation(() => addPost(contents ?? [], id ?? ""), {
+    onSuccess: () => queryClient.invalidateQueries(["getPostData"]),
+  });
+  const closeModal = () => {
     setIsModalShow(false);
     setMainTxt("");
     setAuthor("");
-    setProfileEmoji(CUTE);
   };
 
-  const closeModal = (event: {
-    stopPropagation: () => void;
-    currentTarget: any;
-    target: any;
-  }) => {
-    event.stopPropagation();
-    const div = event.currentTarget;
-    if (event.target === div) {
-      addModalReset();
-    }
-  };
-  const addPost = async () => {
-    const text = contents.join("☇⚁♘");
-    try {
-      const res = await axios.post(
-        `${BASE_URL}/post/${id}/comments`,
-        {
-          comment: {
-            content: text,
-          },
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${TOKEN}`,
-            "Content-type": "application/json",
-          },
-        },
-      );
-      if (setPostData) {
-        setPostData(res.data.comments);
+  const onClickAddBtn = React.useCallback(
+    (event: any) => {
+      if (mainTxt.length === 0 || author.length === 0) {
+        window.alert("모든 값을 입력해주세요!");
+      } else {
+        add();
+        setIsModalShow(false);
+        closeModal();
       }
-      setPost();
-      addModalReset();
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  const onClickAddBtn = () => {
-    if (mainTxt === "" || author === "") {
-      window.alert("모든 값을 입력해주세요!");
-    } else {
-      addPost();
-    }
-  };
+    },
+    [add],
+  );
 
   return (
     <ModalOver className={isModalShow ? "" : "hide"}>
@@ -143,7 +97,7 @@ const EmojiModal = ({
                 bgColor=""
                 shadowColor=""
                 profile={profileEmoji}
-                setPost={setPost}
+                // setPost={setPost}
               />
             </PostMargin>
           </ContentBox>
@@ -157,7 +111,9 @@ const EmojiModal = ({
           height="25px"
           src={closeImg}
           onClick={closeModal}
-        ><span className="ir">닫기 버튼</span></ImageBtn>
+        >
+          <span className="ir">닫기 버튼</span>
+        </ImageBtn>
       </ModalWrapper>
     </ModalOver>
   );

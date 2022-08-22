@@ -1,9 +1,10 @@
+/* eslint-disable array-callback-return */
 /* eslint-disable react-hooks/rules-of-hooks */
 import * as React from "react";
 import { useParams, useLocation } from "react-router";
-import axios from "axios";
+import { useQueries } from "react-query";
+import { getBoardTitle, getPostData } from "../../apis/posts";
 import Post from "../post/Post";
-import { BASE_URL, TOKEN } from "../../constants/index";
 import EmojiModal from "../emojiModal/EmojiModal";
 import {
   ContainerStyled,
@@ -14,32 +15,12 @@ import {
   BoardTitleStyled,
 } from "./style";
 
-interface PostDataProps {
-  id: string;
-  content: string;
-}
-interface TitleProps {
-  // eslint-disable-next-line react/no-unused-prop-types
-  post?: PostDataProps[];
-  boardTit: string;
-}
-
-const Container = ({ boardTit }: TitleProps) => {
-  const { id } = useParams();
-  const [postData, setPostData] = React.useState<
-    TitleProps["post"] | undefined
-  >();
+const Container = () => {
   const [countData, setCountData] = React.useState(0);
   const [prevData, setPrevData] = React.useState("block");
   const [prevBtnVal, setPrevBtnVal] = React.useState("완성본 미리보기");
-  const colorArray = [
-    "#E5EDFF, #B6CCFF",
-    "#FBF1F6, #F9CCE3",
-    "#EAE7F5, #CBC2FA",
-    "#FCF6D8, #FCEEAB",
-  ];
 
-  const setPrev = (): void => {
+  const setPrev = () => {
     setCountData(countData + 1);
 
     if (countData % 2 === 0) {
@@ -51,73 +32,64 @@ const Container = ({ boardTit }: TitleProps) => {
     }
   };
 
-  // const location = useLocation().state as BoardTitle;
-
-  const setPost = async () => {
-    const url = `${BASE_URL}/post/${id}/comments/?limit=100`;
-    const config = {
-      headers: {
-        Authorization: `Bearer ${TOKEN}`,
-        "Content-type": "application/json",
-      },
-    };
-    try {
-      const res = await axios.get(url, config);
-      setPostData(res.data.comments);
-      return res.data.comments;
-    } catch (err) {
-      return err;
-    }
-  };
-
-  React.useEffect(() => {
-    setPost();
-  }, []);
-
   const [isModalShow, setIsModalShow] = React.useState<boolean>(false);
 
   const handleAddPostBtn = () => {
     setIsModalShow(true);
   };
+
+  const { id } = useParams();
   const location = useLocation();
   const done =
     location.pathname.split("/")[1] === "done" ? "hidden" : undefined;
 
+  const apis = [
+    { queryKey: "getBoardTitle", queryFn: getBoardTitle },
+    { queryKey: "getPostData", queryFn: getPostData },
+  ];
+
+  const [titleData, postsData] = useQueries(
+    apis.map(api => {
+      return {
+        queryKey: [api.queryKey],
+        queryFn: () => api.queryFn(id ?? ""),
+        // id가 존재할 때만 쿼리 요청 실행
+        enabled: !!id,
+        refetchOnWindowFocus: false,
+      };
+    }),
+  );
+
   return (
     <ContainerStyled>
       <BoardHeaderStyled>
-        <BoardTitleStyled>{boardTit}</BoardTitleStyled>
+        <BoardTitleStyled>
+          {titleData.data && titleData.data.content}
+        </BoardTitleStyled>
         <BoardPrevButtonStyled className={done} onClick={setPrev}>
           {prevBtnVal}
         </BoardPrevButtonStyled>
       </BoardHeaderStyled>
       <BoardPostUl>
-        {postData?.map(element => {
-          const randomIdx = Math.floor(Math.random() * 3 + 1);
-          const randomColor = colorArray[randomIdx].split(",");
-          const bgColor = randomColor[0];
-          const shadowColor = randomColor[1];
-          const comment = element.content.split("☇⚁♘");
-          const content = comment[0];
-          const name = comment[1];
-          const profile = comment[2];
-          return (
-            <Post
-              key={element.id}
-              commentId={element.id}
-              bgColor={bgColor}
-              shadowColor={shadowColor}
-              content={content}
-              name={name}
-              profile={profile}
-              isInput={false}
-              author=""
-              mainTxt=""
-              setPost={setPost}
-              prevData={prevData}
-            />
-          );
-        })}
+        {postsData.data &&
+          postsData.data.map((post: any) => {
+            const text = post.content.split("☇⚁♘");
+            return (
+              <Post
+                key={post.id}
+                postId={post.id}
+                content={text[0]}
+                name={text[1]}
+                profile={text[2]}
+                isInput={false}
+                author=""
+                mainTxt=""
+                prevData={prevData}
+                bgColor="#E5EDFF"
+                shadowColor="#B6CCFF"
+              />
+            );
+          })}
       </BoardPostUl>
       <BoardButtonStyled
         className={done || prevData}
@@ -125,12 +97,7 @@ const Container = ({ boardTit }: TitleProps) => {
       >
         +
       </BoardButtonStyled>
-      <EmojiModal
-        setIsModalShow={setIsModalShow}
-        isModalShow={isModalShow}
-        setPostData={setPostData}
-        setPost={setPost}
-      />
+      <EmojiModal setIsModalShow={setIsModalShow} isModalShow={isModalShow} />
     </ContainerStyled>
   );
 };
