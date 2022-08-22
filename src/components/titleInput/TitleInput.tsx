@@ -1,50 +1,27 @@
 import * as React from "react";
-import axios from "axios";
+import { useMutation } from "react-query";
+import { useNavigate } from "react-router";
 import Input from "../../elements/input/Input";
-import { BASE_URL, TOKEN, ACCOUNTNAME } from "../../constants/index";
 import { Title, TitleWrap, DivFlex, TitleBtn } from "./style";
+import { addBoard } from "../../apis/posts";
 
 interface TitleProps {
   done?: string | undefined;
 }
 
 const TitleInput = ({ done }: TitleProps) => {
+  const navigate = useNavigate();
   const [text, setText] = React.useState("");
 
-  const handleSubmit = async () => {
-    const url = `${BASE_URL}/post`;
-
-    try {
-      const res = await axios.post(
-        url,
-        {
-          post: {
-            content: text,
-          },
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${TOKEN}`,
-            "Content-type": "application/json",
-          },
-        },
-      );
-      console.log(res.data);
-
-      return res.data;
-    } catch (error) {
-      console.log(error);
-      return error;
-    }
-  };
-
-  const saveValue = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const setValue = (event: React.ChangeEvent<HTMLInputElement>) => {
     setText(event.target.value);
   };
+  const { mutate: addBoardTit, data } = useMutation(() => addBoard(text));
 
   const onClickSubmit = (e: any) => {
-    handleSubmit();
     e.preventDefault();
+    addBoardTit();
+    navigate(`/board/${data.id}`);
   };
 
   return (
@@ -66,7 +43,7 @@ const TitleInput = ({ done }: TitleProps) => {
             fontSize="14px"
             fontWeight="400"
             required
-            onChange={saveValue}
+            onChange={setValue}
           />
           <TitleBtn onClick={onClickSubmit}>저장</TitleBtn>
         </DivFlex>
