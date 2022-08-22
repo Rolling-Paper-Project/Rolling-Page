@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ImgBtnProps, ShareLinkProps } from "./Button";
+import { ImgBtnProps } from "./Button";
 import kakaoLogo from "../../assets/icon-kakao.svg";
 
 export const Btn = styled.button`
@@ -35,22 +35,20 @@ export const Cancel = styled(Btn)`
 export const ShareSNS = styled.button`
   border: none;
   cursor: pointer;
-  width: 212px;
-  height: 49px;
+  padding: 5px 20px 5px 15px;
   background-color: #ffe812;
   border-radius: 10px;
   font-size: 14px;
   font-weight: 600;
-  overflow: hidden;
-  color: black;
-  text-align: center;
-  line-height: 24px;
+  display: flex;
+  align-items: center;
   &::before {
-    display: inline;
-    content: url(${kakaoLogo});
-    position: relative;
-    left: -5px;
-    vertical-align: middle;
+    content: "";
+    width: 40px;
+    height: 40px;
+    background: url(${kakaoLogo}) no-repeat center;
+    background-size: cover;
+    float: left;
   }
   &:hover {
     filter: brightness(0.9);
@@ -73,7 +71,7 @@ export const ImgBtn = styled.button<ImgBtnProps>`
   padding: 0;
 `;
 
-export const ShareLinkBtn = styled.button<ShareLinkProps>`
+export const ShareLinkBtn = styled.button`
   font-size: 1.5rem;
   font-weight: 700;
   color: #5a4a82;
