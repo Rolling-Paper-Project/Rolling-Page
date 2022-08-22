@@ -10,6 +10,7 @@ export const addBoard = async (title: string) => {
   return res.data.post;
 };
 
+
 export const getBoardTitle = async (id: string) => {
   const res = await axiosInstance.get(`/post/${id}`);
   return res.data.post;
