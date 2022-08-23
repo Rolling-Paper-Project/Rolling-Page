@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { ImgBtn } from "../../elements/button/style";
 import EmojiImg from "../../elements/image/style";
 
-const PostArticle = styled.li<{ bgColor: string }>`
+const PostArticle = styled.li<{ bgColor: string; shadowColor: string }>`
   width: 250px;
   height: 250px;
   clip-path: polygon(100% 0, 100% 100%, 15% 100%, 0 85%, 0 0);
@@ -12,6 +12,17 @@ const PostArticle = styled.li<{ bgColor: string }>`
   flex-direction: column;
   justify-content: space-between;
   background-color: ${props => props.bgColor};
+  &::after {
+    display: block;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0px;
+    width: 38px;
+    height: 38px;
+    clip-path: polygon(0 0, 95% 5%, 100% 100%);
+    background-color: ${props => props.shadowColor};
+  }
 `;
 
 const PostContent = styled.pre`
@@ -35,16 +46,6 @@ const PostNickname = styled.strong`
   font-weight: bold;
 `;
 
-const PostEdge = styled.div<{ shadowColor: string }>`
-  position: absolute;
-  bottom: 0;
-  left: 0px;
-  width: 38px;
-  height: 38px;
-  clip-path: polygon(0 0, 95% 5%, 100% 100%);
-  background-color: ${props => props.shadowColor};
-`;
-
 const PostEmoji = styled(EmojiImg)`
   @media (max-width: 680px) {
     width: 50px;
@@ -61,7 +62,6 @@ export {
   PostContent,
   PostFooter,
   PostNickname,
-  PostEdge,
   PostEmoji,
   PostCloseBtn,
 };

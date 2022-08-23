@@ -5,7 +5,6 @@ import {
   PostContent,
   PostFooter,
   PostNickname,
-  PostEdge,
   PostEmoji,
   PostCloseBtn,
 } from "./style";
@@ -55,7 +54,10 @@ const Post = ({
 
   return (
     <>
-      <PostArticle bgColor={isInput ? "#FBF1F6" : bgColor}>
+      <PostArticle
+        bgColor={isInput ? "#FBF1F6" : bgColor}
+        shadowColor={isInput ? "#FED0E8" : shadowColor}
+      >
         <h3 className="ir">{name}님의 포스트잇</h3>
         {isInput ? (
           <ContentInput setMainTxt={setMainTxt} mainTxt={mainTxt} />
@@ -75,7 +77,6 @@ const Post = ({
             </>
           )}
         </PostFooter>
-        <PostEdge shadowColor={isInput ? "#FED0E8" : shadowColor} />
         {!isInput && (
           <PostCloseBtn
             className={done || prevData}
