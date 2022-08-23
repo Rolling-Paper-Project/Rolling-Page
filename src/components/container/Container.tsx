@@ -6,6 +6,7 @@ import { useQueries } from "react-query";
 import { getBoardTitle, getPostData } from "../../apis/posts";
 import Post from "../post/Post";
 import EmojiModal from "../emojiModal/EmojiModal";
+import colorPicker from "./colorPicker";
 import {
   ContainerStyled,
   BoardButtonStyled,
@@ -19,6 +20,7 @@ const Container = () => {
   const [countData, setCountData] = React.useState(0);
   const [prevData, setPrevData] = React.useState("block");
   const [prevBtnVal, setPrevBtnVal] = React.useState("완성본 미리보기");
+  const [bgColor, shadowColor] = colorPicker();
 
   const setPrev = () => {
     setCountData(countData + 1);
@@ -85,8 +87,8 @@ const Container = () => {
                 author=""
                 mainTxt=""
                 prevData={prevData}
-                bgColor="#E5EDFF"
-                shadowColor="#B6CCFF"
+                bgColor={bgColor}
+                shadowColor={shadowColor}
               />
             );
           })}
