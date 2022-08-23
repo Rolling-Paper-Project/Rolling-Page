@@ -9,7 +9,7 @@ import {
   PostCloseBtn,
 } from "./style";
 import CloseBtn from "../../assets/icon-close.svg";
-import DeletModal from "../deleteModal/DeleteModal";
+import DeleteModal from "../deleteModal/DeleteModal";
 import ContentInput from "../contentsInput/ContentsInput";
 import AuthorInput from "../authorInput/AuthorInput";
 
@@ -93,7 +93,7 @@ const Post = ({
         )}
       </PostArticle>
       {isModalState && (
-        <DeletModal setIsModalState={setIsModalState} postId={postId} />
+        <DeleteModal setIsModalState={setIsModalState} postId={postId} />
       )}
     </>
   );
