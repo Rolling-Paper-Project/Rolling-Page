@@ -20,7 +20,6 @@ const Container = () => {
   const [countData, setCountData] = React.useState(0);
   const [prevData, setPrevData] = React.useState("block");
   const [prevBtnVal, setPrevBtnVal] = React.useState("완성본 미리보기");
-  const [bgColor, shadowColor] = colorPicker();
 
   const setPrev = () => {
     setCountData(countData + 1);
@@ -76,6 +75,7 @@ const Container = () => {
         {postsData.data &&
           postsData.data.map((post: any) => {
             const text = post.content.split("☇⚁♘");
+            const [bgColor, shadowColor] = colorPicker();
             return (
               <Post
                 key={post.id}
