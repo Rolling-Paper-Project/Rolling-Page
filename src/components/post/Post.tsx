@@ -6,10 +6,9 @@ import {
   PostFooter,
   PostNickname,
   PostEdge,
+  PostEmoji,
   PostCloseBtn,
 } from "./style";
-
-import Emoji from "../../elements/image/Image";
 import CloseBtn from "../../assets/icon-close.svg";
 import DeletModal from "../deleteModal/DeleteModal";
 import ContentInput from "../contentsInput/ContentsInput";
@@ -66,12 +65,12 @@ const Post = ({
         <PostFooter>
           {isInput ? (
             <>
-              <Emoji width={40} height={40} src={profile} />
+              <PostEmoji width={40} height={40} src={profile} />
               <AuthorInput setAuthor={setAuthor} author={author} />
             </>
           ) : (
             <>
-              <Emoji width={40} height={40} src={profile} />
+              <PostEmoji width={40} height={40} src={profile} />
               <PostNickname>{name}</PostNickname>
             </>
           )}

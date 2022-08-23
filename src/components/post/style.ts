@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { ImgBtn } from "../../elements/button/style";
+import EmojiImg from "../../elements/image/style";
 
 const PostArticle = styled.li<{ bgColor: string }>`
   width: 250px;
@@ -44,6 +45,13 @@ const PostEdge = styled.div<{ shadowColor: string }>`
   background-color: ${props => props.shadowColor};
 `;
 
+const PostEmoji = styled(EmojiImg)`
+  @media (max-width: 680px) {
+    width: 50px;
+    height: 50px;
+  }
+`;
+
 const PostCloseBtn = styled(ImgBtn)<{ prevData?: string }>`
   display: ${props => props.prevData};
 `;
@@ -54,5 +62,6 @@ export {
   PostFooter,
   PostNickname,
   PostEdge,
+  PostEmoji,
   PostCloseBtn,
 };
