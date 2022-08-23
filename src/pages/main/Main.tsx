@@ -1,9 +1,8 @@
 import axios, { AxiosResponse } from "axios";
 import * as React from "react";
-import { ACCOUNTNAME, TOKEN, BASE_URL } from "../../constants";
 import Header from "../../components/header/Header";
 import { BoardWrap } from "../board/style";
-import { MainContainer, BoardLink, MainExp } from "./style";
+import { MainContainer } from "./style";
 import TitleInput from "../../components/titleInput/TitleInput";
 
 const Main = () => {
