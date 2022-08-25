@@ -20,6 +20,9 @@ export const Basic = styled(Btn)`
   color: #ffffff;
   &:hover {
     background-color: #5a4a82;
+    @media (max-width: 680px) {
+      background-color: #977ae1;
+    }
   }
 `;
 

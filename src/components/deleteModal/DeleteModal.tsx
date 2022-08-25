@@ -10,7 +10,7 @@ interface Props {
   setIsModalState: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const DeletModal = ({ postId, setIsModalState }: Props) => {
+const DeleteModal = ({ postId, setIsModalState }: Props) => {
   const { id } = useParams();
 
   const queryClient = useQueryClient();
@@ -63,4 +63,4 @@ const DeletModal = ({ postId, setIsModalState }: Props) => {
   );
 };
 
-export default DeletModal;
+export default DeleteModal;

@@ -1,17 +1,15 @@
 import * as React from "react";
 import { useLocation } from "react-router";
 import {
-  PostArticle,
+  PostBox,
   PostContent,
   PostFooter,
   PostNickname,
-  PostEdge,
+  PostEmoji,
   PostCloseBtn,
 } from "./style";
-
-import Emoji from "../../elements/image/Image";
 import CloseBtn from "../../assets/icon-close.svg";
-import DeletModal from "../deleteModal/DeleteModal";
+import DeleteModal from "../deleteModal/DeleteModal";
 import ContentInput from "../contentsInput/ContentsInput";
 import AuthorInput from "../authorInput/AuthorInput";
 
@@ -56,7 +54,10 @@ const Post = ({
 
   return (
     <>
-      <PostArticle bgColor={isInput ? "#FBF1F6" : bgColor}>
+      <PostBox
+        bgColor={isInput ? "#FBF1F6" : bgColor}
+        shadowColor={isInput ? "#FED0E8" : shadowColor}
+      >
         <h3 className="ir">{name}님의 포스트잇</h3>
         {isInput ? (
           <ContentInput setMainTxt={setMainTxt} mainTxt={mainTxt} />
@@ -66,17 +67,16 @@ const Post = ({
         <PostFooter>
           {isInput ? (
             <>
-              <Emoji width={40} height={40} src={profile} />
+              <PostEmoji width={40} height={40} src={profile} />
               <AuthorInput setAuthor={setAuthor} author={author} />
             </>
           ) : (
             <>
-              <Emoji width={40} height={40} src={profile} />
+              <PostEmoji width={40} height={40} src={profile} />
               <PostNickname>{name}</PostNickname>
             </>
           )}
         </PostFooter>
-        <PostEdge shadowColor={isInput ? "#FED0E8" : shadowColor} />
         {!isInput && (
           <PostCloseBtn
             className={done || prevData}
@@ -91,9 +91,9 @@ const Post = ({
             <span className="ir">포스트 삭제 버튼</span>
           </PostCloseBtn>
         )}
-      </PostArticle>
+      </PostBox>
       {isModalState && (
-        <DeletModal setIsModalState={setIsModalState} postId={postId} />
+        <DeleteModal setIsModalState={setIsModalState} postId={postId} />
       )}
     </>
   );
