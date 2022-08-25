@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { ImgBtn } from "../../elements/button/style";
 import EmojiImg from "../../elements/image/style";
 
-const PostArticle = styled.li<{ bgColor: string; shadowColor: string }>`
+const PostBox = styled.li<{ bgColor: string; shadowColor: string }>`
   width: 250px;
   height: 250px;
   clip-path: polygon(100% 0, 100% 100%, 15% 100%, 0 85%, 0 0);
@@ -58,7 +58,7 @@ const PostCloseBtn = styled(ImgBtn)<{ prevData?: string }>`
 `;
 
 export {
-  PostArticle,
+  PostBox,
   PostContent,
   PostFooter,
   PostNickname,

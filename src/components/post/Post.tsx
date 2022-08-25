@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useLocation } from "react-router";
 import {
-  PostArticle,
+  PostBox,
   PostContent,
   PostFooter,
   PostNickname,
@@ -54,7 +54,7 @@ const Post = ({
 
   return (
     <>
-      <PostArticle
+      <PostBox
         bgColor={isInput ? "#FBF1F6" : bgColor}
         shadowColor={isInput ? "#FED0E8" : shadowColor}
       >
@@ -91,7 +91,7 @@ const Post = ({
             <span className="ir">포스트 삭제 버튼</span>
           </PostCloseBtn>
         )}
-      </PostArticle>
+      </PostBox>
       {isModalState && (
         <DeleteModal setIsModalState={setIsModalState} postId={postId} />
       )}
