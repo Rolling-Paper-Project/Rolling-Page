@@ -25,6 +25,7 @@ export interface ShareLinkProps {
   text: string;
   selecteURL: string;
 }
+
 interface BasicProps {
   onClick: (event: {
     stopPropagation: () => void;
@@ -33,6 +34,7 @@ interface BasicProps {
   }) => void;
   children: React.ReactNode;
 }
+
 const BasicBtn = ({ onClick, children }: BasicProps) => {
   return <Basic onClick={onClick}>{children}</Basic>;
 };
@@ -48,7 +50,7 @@ const CancelBtn = ({ onClick, children }: BtnProps) => {
 const KakaoBtn = ({ onClick, children }: BtnProps) => {
   return (
     <ShareSNS onClick={onClick} type="button">
-      카카오톡으로 공유하기
+      {children}
     </ShareSNS>
   );
 };
