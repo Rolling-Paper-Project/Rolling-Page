@@ -51,7 +51,6 @@ export const ShareSNS = styled.button`
     height: 40px;
     background: url(${kakaoLogo}) no-repeat center;
     background-size: cover;
-    float: left;
   }
   &:hover {
     filter: brightness(0.9);

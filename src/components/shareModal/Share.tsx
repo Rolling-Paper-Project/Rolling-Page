@@ -1,7 +1,7 @@
 import * as React from "react";
 import { PropsWithChildren, useEffect, useState, useRef } from "react";
 // import { Helmet } from "react-helmet";
-import { DialogBox, LinkBox, Copied, Text, CloseBtn } from "./style";
+import { DialogBox, LinkBox, Copied, Text, CloseBtn, CopyBtn, ShareBtn } from "./style";
 import { KakaoBtn, ImageBtn } from "../../elements/button/Button";
 import { ModalOver } from "../emojiModal/style";
 import kakaoShare from "./kakao";
@@ -34,7 +34,7 @@ const Share = ({
   const outside = useRef() as React.RefObject<HTMLDivElement>;
   const closeTag = useRef() as React.RefObject<HTMLButtonElement>;
   const handleCloseModal = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if(e.target === outside.current || e.target === closeTag.current){
+    if (e.target === outside.current || e.target === closeTag.current) {
       onClickToggleModal();
     }
   };
@@ -55,7 +55,7 @@ const Share = ({
       <DialogBox>
         <Text>당신의 SNS에 공유해주세요 :)</Text>
         <LinkBox onClick={handleCopyLink}>
-          <ImageBtn
+          <CopyBtn
             position="absolute"
             top="10px"
             right="10px"
@@ -64,18 +64,20 @@ const Share = ({
             src={copyImg}
           >
             <span className="ir">복사 버튼</span>
-          </ImageBtn>
+          </CopyBtn>
           {children}
         </LinkBox>
         <Copied>{copied}</Copied>
         {/* <Helmet>
           <script src="https://developers.kakao.com/sdk/js/kakao.js" />
         </Helmet> */}
-        <KakaoBtn
+        <ShareBtn
           onClick={() => {
             kakaoShare(selecteURL);
           }}
-        />
+        >
+          카카오톡으로 공유하기
+        </ShareBtn>
         <CloseBtn
           position="absolute"
           top="7px"
