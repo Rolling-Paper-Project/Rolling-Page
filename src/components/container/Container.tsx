@@ -95,7 +95,7 @@ const Container = () => {
             fontSize="20px"
             fontWeight="600" />
         }
-        <TitleModifyBtn onClick={handleModifyBtn}>
+        <TitleModifyBtn className={done || prevData} onClick={handleModifyBtn}>
           {btnName}
         </TitleModifyBtn>
         <BoardPrevButtonStyled className={done} onClick={setPrev}>

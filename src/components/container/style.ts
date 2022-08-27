@@ -44,6 +44,7 @@ export const BoardTitleStyled = styled.h2`
   font-size: 40px;
   color: #977ae1;
   word-break: keep-all;
+  margin-right: auto;
   @media (max-width: 680px) {
     font-size: 20px;
   }
@@ -56,6 +57,7 @@ export const BoardTitleStyled = styled.h2`
 
 export const BoardTitleInput = styled(InputEl)`
   width: 40%;
+  margin-right: auto;
   @media (max-width: 680px) {
     width: 70%;
     font-size: 14px;
@@ -68,7 +70,6 @@ export const BoardTitleInput = styled(InputEl)`
 
 export const TitleModifyBtn = styled(Basic)`
   width: 150px;
-  margin-left: auto;
   white-space: nowrap;
   @media (max-width: 680px) {
     font-size: 16px;
