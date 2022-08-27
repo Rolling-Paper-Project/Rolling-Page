@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Basic } from "../../elements/button/style";
+import { InputEl } from "../../elements/input/style";
 
 export const ContainerStyled = styled.div`
   height: 80vh;
@@ -24,9 +25,12 @@ export const ContainerStyled = styled.div`
 
 export const BoardHeaderStyled = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 20px;
   padding: 0 37px 24px 30px;
+  @media (max-width: 680px) {
+    gap: 15px;
+  }
   @media (max-width: 460px) {
     flex-direction: column;
     gap: 10px;
@@ -50,8 +54,33 @@ export const BoardTitleStyled = styled.h2`
   }
 `;
 
+export const BoardTitleInput = styled(InputEl)`
+  width: 40%;
+  @media (max-width: 680px) {
+    width: 70%;
+    font-size: 14px;
+    padding: 7px;
+  }
+  @media (max-width: 460px) {
+    margin-bottom: 3px;
+  }
+`
+
+export const TitleModifyBtn = styled(Basic)`
+  width: 150px;
+  margin-left: auto;
+  white-space: nowrap;
+  @media (max-width: 680px) {
+    font-size: 16px;
+  }
+  @media (max-width: 460px) {
+    margin-left: 0;
+  }
+`;
+
 export const BoardPrevButtonStyled = styled(Basic)`
   width: 150px;
+  white-space: nowrap;
   @media (max-width: 680px) {
     font-size: 16px;
   }

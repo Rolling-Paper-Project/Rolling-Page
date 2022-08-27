@@ -14,6 +14,8 @@ import {
   BoardPostUl,
   BoardPrevButtonStyled,
   BoardTitleStyled,
+  TitleModifyBtn,
+  BoardTitleInput
 } from "./style";
 
 const Container = () => {
@@ -61,12 +63,41 @@ const Container = () => {
     }),
   );
 
+  const [isDisplay, setIsDisplay] = React.useState<boolean>(true);
+  const [btnName, setBtnName] = React.useState<string>("타이틀 수정하기");
+  const handleModifyBtn = () => {
+    if (isDisplay === true) {
+      setBtnName("수정 완료");
+    } else {
+      setBtnName("타이틀 수정하기");
+    }
+    setIsDisplay(!isDisplay);
+  };
+
   return (
     <ContainerStyled>
       <BoardHeaderStyled>
-        <BoardTitleStyled>
-          {titleData.data && titleData.data.content}
-        </BoardTitleStyled>
+        {
+          isDisplay &&
+          <BoardTitleStyled>
+            {titleData.data && titleData.data.content}
+          </BoardTitleStyled>
+        }
+        {
+          !isDisplay &&
+          <BoardTitleInput
+            isInput
+            height="auto"
+            bgColor="#EFEFEF"
+            placeholder={titleData.data && titleData.data.content}
+            id="title"
+            padding="10px"
+            fontSize="20px"
+            fontWeight="600" />
+        }
+        <TitleModifyBtn onClick={handleModifyBtn}>
+          {btnName}
+        </TitleModifyBtn>
         <BoardPrevButtonStyled className={done} onClick={setPrev}>
           {prevBtnVal}
         </BoardPrevButtonStyled>
