@@ -16,12 +16,13 @@ const TitleInput = ({ done }: TitleProps) => {
   const setValue = (event: React.ChangeEvent<HTMLInputElement>) => {
     setText(event.target.value);
   };
-  const { mutate: addBoardTit, data } = useMutation(() => addBoard(text));
+  const { mutate: addBoardTit } = useMutation(() => addBoard(text), {
+    onSuccess: data => navigate(`/board/${data.id}`),
+  });
 
   const onClickSubmit = (e: any) => {
     e.preventDefault();
     addBoardTit();
-    navigate(`/board/${data.id}`);
   };
 
   return (
